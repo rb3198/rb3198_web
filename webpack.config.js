@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const getPath = (pathName) => {
   return path.join(__dirname, pathName);
@@ -36,4 +37,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Ronit Bhatia",
+      filename: "index.html",
+      template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
+    }),
+  ],
 };
