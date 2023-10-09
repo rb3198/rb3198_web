@@ -1,4 +1,5 @@
 const path = require("path");
+const babelOptions = require("./babel/babel.config");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const getPath = (pathName) => {
@@ -12,7 +13,7 @@ const PATHS = {
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(PATHS.SOURCE_DIR, "index.js"),
+  entry: path.resolve(PATHS.SOURCE_DIR, "index.tsx"),
   output: {
     path: PATHS.BUILD_DIR,
     filename: "main.js",
@@ -26,14 +27,32 @@ module.exports = {
     liveReload: true,
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".tsx", ".ts", ".js", ".jsx", ".json"],
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, //kind of file extension this rule should look for and apply in test
+        test: /\.ts(x?)$/, //kind of file extension this rule should look for and apply in test
         exclude: /node_modules/, //folder to be excluded
-        use: "babel-loader", //loader which we are going to use
+        use: [
+          {
+            loader: "babel-loader",
+            options: babelOptions,
+          },
+          {
+            loader: "ts-loader",
+          },
+        ], //loader which we are going to use
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: babelOptions,
+          },
+        ],
       },
     ],
   },
