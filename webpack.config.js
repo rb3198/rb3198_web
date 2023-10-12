@@ -9,6 +9,7 @@ const getPath = (pathName) => {
 const PATHS = {
   SOURCE_DIR: getPath("src"),
   BUILD_DIR: getPath("build"),
+  THEME_DIR: getPath("theme"),
 };
 
 module.exports = {
@@ -28,6 +29,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json", ".css", ".scss"],
+    alias: {
+      rb3198: PATHS.SOURCE_DIR,
+      theme: PATHS.THEME_DIR,
+    },
   },
   module: {
     rules: [
@@ -65,6 +70,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  stats: {
+    loggingDebug: ["sass-loader"],
   },
   plugins: [
     new HtmlWebpackPlugin({
