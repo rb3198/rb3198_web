@@ -1,0 +1,40 @@
+@import "~theme/_section";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme/";
+
+.helloSection {
+    @include section;
+    flex-direction: column;
+    padding: 0 map-get($map: $abs_spacing, $key: 42);
+    justify-content: center;
+}
+
+.subtext {
+    font-family: "Raleway";
+    font-size: map-get($font-sizes, "m");
+}
+
+.oneLineDesc {
+    font-size: clamp(map-get($font-sizes, "l"), 4vw, map-get($font-sizes, "subtitle"));
+    font-family: "Playfair Display";
+    font-weight: 600;
+    margin-top: map-get($abs_spacing, 5);
+
+    span {
+        font-weight: bold;
+        @include themed() {
+            color: getThemeColor("accent");
+        }
+    }
+}
+
+.title {
+    font-size: clamp(map-get($font-sizes, "xxl"), 8vw, map-get($font-sizes, "title"));
+    font-weight: bold;
+    font-family: "Playfair Display";
+    line-height: 96px;
+    @include themed() {
+        color: getThemeColor("active_font");
+    }
+}
