@@ -3,16 +3,32 @@
 $theme-map: null;
 $themes: (
     light: (
-        primary_background: list.nth($primary_background, 1),
+        bg_0: list.nth($primary_background, 1),
         active_font: list.nth($active_font_color, 1),
         inactive_font: list.nth($inactive_font_color, 1),
-        accent: list.nth($accent_color, 1)
+        accent: list.nth($accent_color, 1),
+        bg_1: lighten(list.nth($primary_background, 1), 4),
+        bg_2: lighten(list.nth($primary_background, 1), 8),
+        bg_3: lighten(list.nth($primary_background, 1), 12),
+        bg_4: lighten(list.nth($primary_background, 1), 16),
+        bg_5: lighten(list.nth($primary_background, 1), 20),
+        bg_6: lighten(list.nth($primary_background, 1), 24),
+        theme_toggle_outer: #f1ce06,
+        theme_toggle_inner: lighten(#f1ce06, 30),
     ),
     dark: (
-        primary_background: list.nth($primary_background, 2),
+        bg_0: list.nth($primary_background, 2),
         active_font: list.nth($active_font_color, 2),
         inactive_font: list.nth($inactive_font_color, 2),
-        accent: list.nth($accent_color, 2)
+        accent: list.nth($accent_color, 2),
+        bg_1: lighten(list.nth($primary_background, 2), 4),
+        bg_2: lighten(list.nth($primary_background, 2), 8),
+        bg_3: lighten(list.nth($primary_background, 2), 12),
+        bg_4: lighten(list.nth($primary_background, 2), 16),
+        bg_5: lighten(list.nth($primary_background, 2), 20),
+        bg_6: lighten(list.nth($primary_background, 2), 24),
+        theme_toggle_outer: #fff,
+        theme_toggle_inner: lighten(list.nth($primary_background, 2), 16),
     ),
 );
 
