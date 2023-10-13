@@ -1,0 +1,17 @@
+.cursor {
+    animation-name: flicker;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    font-weight: 400;
+    color: grey;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

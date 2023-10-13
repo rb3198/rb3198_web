@@ -1,0 +1,9 @@
+@import "~theme/index.scss";
+
+@mixin section {
+    display: flex;
+    height: 92vh;
+    @include themed() {
+        background-color: getThemeColor("bg_0");
+    }
+}

@@ -40,7 +40,7 @@ export const withTheme = <P extends Object>(
 
     return (
       <div className={theme === Theme.Dark ? "theme--dark" : "theme--light"}>
-        <Component {...props} toggleTheme={toggleTheme} />
+        <Component {...props} toggleTheme={toggleTheme} theme={theme} />
       </div>
     );
   };
