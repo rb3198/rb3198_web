@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "ES6",
+    "outDir": "build",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "paths": {
+      "rb3198/*":[
+        "./src/*"
+      ],
+      "theme/*": [
+        "./theme/*"
+      ]
+    },
+    "sourceMap": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  }
+}
