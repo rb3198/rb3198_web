@@ -14,6 +14,7 @@ const PATHS = {
 
 module.exports = {
   mode: "development",
+  devtool: "source-map",
   entry: path.resolve(PATHS.SOURCE_DIR, "index.tsx"),
   output: {
     path: PATHS.BUILD_DIR,
