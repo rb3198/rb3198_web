@@ -12,22 +12,9 @@ const PATHS = {
   THEME_DIR: getPath("theme"),
 };
 
-module.exports = {
-  mode: "development",
-  devtool: "source-map",
+const commonConfig = {
   entry: path.resolve(PATHS.SOURCE_DIR, "index.tsx"),
-  output: {
-    path: PATHS.BUILD_DIR,
-    filename: "main.js",
-  },
   target: "web",
-  devServer: {
-    port: "9500",
-    static: PATHS.BUILD_DIR,
-    open: true,
-    hot: true,
-    liveReload: true,
-  },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json", ".css", ".scss"],
     alias: {
@@ -82,4 +69,9 @@ module.exports = {
       template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
     }),
   ],
+};
+
+module.exports = {
+  PATHS,
+  commonConfig,
 };
