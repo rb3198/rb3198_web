@@ -20,13 +20,6 @@
     font-family: "Playfair Display";
     font-weight: 600;
     margin-top: map-get($abs_spacing, 5);
-
-    span {
-        font-weight: bold;
-        @include themed() {
-            color: getThemeColor("accent");
-        }
-    }
 }
 
 .title {
@@ -37,4 +30,20 @@
     @include themed() {
         color: getThemeColor("active_font");
     }
+}
+
+.oneLiners {
+    display: inline;
+    font-weight: bold;
+
+    @include themed() {
+        color: getThemeColor("accent");
+    }
+}
+
+.detailedDescription {
+    margin-top: map-get($abs_spacing, 7);
+    max-width: 800px;
+    font-family: Raleway;
+    font-size: map-get($font-sizes, "m");
 }
