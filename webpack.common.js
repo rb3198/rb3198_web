@@ -1,6 +1,5 @@
 const path = require("path");
 const babelOptions = require("./babel/babel.config");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
@@ -68,14 +67,7 @@ const commonConfig = {
   stats: {
     loggingDebug: ["sass-loader"],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Ronit Bhatia",
-      filename: "index.html",
-      template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
-    }),
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-  ],
+  plugins: [new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" })],
 };
 
 module.exports = {

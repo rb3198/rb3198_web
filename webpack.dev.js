@@ -1,5 +1,7 @@
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const { PATHS, commonConfig } = common;
 module.exports = merge(commonConfig, {
@@ -19,4 +21,11 @@ module.exports = merge(commonConfig, {
   stats: {
     loggingDebug: ["sass-loader"],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Ronit Bhatia",
+      filename: "index.html",
+      template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
+    }),
+  ],
 });
