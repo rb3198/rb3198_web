@@ -3,12 +3,14 @@ import styles from "../styles/scss/sections/hello_section.scss";
 import { Typing } from "rb3198/components/Typing";
 import { DETAILED_DESC, ONE_LINERS } from "rb3198/constants/";
 import { InProgressDisclaimer } from "rb3198/components/InProgressDisclaimer";
+import { Section } from "./Section";
+import { HeaderOption } from "rb3198/types/enum/HeaderOption";
 
 interface HelloSectionProps {}
 
 export const HelloSection: React.FC<HelloSectionProps> = (props) => {
   return (
-    <div className={styles.helloSection}>
+    <Section id={HeaderOption.Hello} classes={styles.helloSection}>
       <p className={styles.subtext}>Hello there, I'm</p>
       <p className={styles.title}>Ronit.</p>
       <p className={styles.oneLineDesc}>
@@ -26,6 +28,6 @@ export const HelloSection: React.FC<HelloSectionProps> = (props) => {
         dangerouslySetInnerHTML={{ __html: DETAILED_DESC }}
       ></p>
       <InProgressDisclaimer />
-    </div>
+    </Section>
   );
 };
