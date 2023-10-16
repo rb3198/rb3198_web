@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/scss/hello_section.scss";
+import styles from "../styles/scss/sections/hello_section.scss";
 import { Typing } from "rb3198/components/Typing";
 import { DETAILED_DESC, ONE_LINERS } from "rb3198/constants/";
 import { InProgressDisclaimer } from "rb3198/components/InProgressDisclaimer";
