@@ -14,7 +14,9 @@ export const HeaderNavigation: React.FC<HeaderNavigationProps> = () => {
     (e) => {
       const { target } = e;
       const option = (target as HTMLAnchorElement).getAttribute("data-section");
-      let helloOption = document.querySelector(`[data-section="Hello"]`);
+      let helloOption = document.querySelector(
+        `[data-section="${HeaderOption.Hello}"]`
+      );
       if (option === HeaderOption.Hello) {
         e.preventDefault();
         window.history.pushState({}, "", `/#${option}`);
@@ -42,7 +44,7 @@ export const HeaderNavigation: React.FC<HeaderNavigationProps> = () => {
             isSelected = location.hash === `#${option}`;
           }
           return (
-            <li>
+            <li key={`#${option}`}>
               <HashLink
                 to={`#${option}`}
                 data-section={option}

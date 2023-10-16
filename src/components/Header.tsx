@@ -12,21 +12,28 @@ export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const pageScrollTop = useRef(window?.scrollY);
 
   const scrollListener = useCallback(function (this: Window, e: Event) {
-    const newScrollTop = this?.scrollY;
-    const header = this.document.getElementById(HEADER_ID);
-    if (newScrollTop < pageScrollTop.current) {
-      // Scrolled up, add scrolledUp class
+    const handleScrollUp = () => {
       header?.classList.add(styles.scrolledUp);
       header?.classList.remove(styles.scrolled);
       if (newScrollTop < 100) {
         header?.classList.remove(styles.scrolledUp);
       }
-    } else {
+    };
+
+    const handleScrollDown = () => {
       header?.classList.add(styles.scrolled);
       header?.classList.remove(styles.scrolledUp);
       if (newScrollTop < 100) {
         header?.classList.remove(styles.scrolled);
       }
+    };
+
+    const newScrollTop = this?.scrollY;
+    const header = this.document.getElementById(HEADER_ID);
+    if (newScrollTop < pageScrollTop.current) {
+      handleScrollUp();
+    } else {
+      handleScrollDown();
     }
     pageScrollTop.current = newScrollTop;
   }, []);
