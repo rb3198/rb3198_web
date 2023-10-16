@@ -58,3 +58,7 @@ $themes: (
         color: getThemeColor("inactive_font");
     }
 }
+
+:global(.theme--dark) {
+    background-color: list.nth($primary_background, 2);
+}
