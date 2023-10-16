@@ -5,13 +5,13 @@
     width: 60px;
     cursor: pointer;
     height: 30px;
-    box-shadow: 0 0 4px #a1a1a1;
     position: relative;
     border-radius: 20%/50%;
     display: flex;
     align-items: center;
     @include themed() {
         background-color: getThemeColor("bg_3");
+        box-shadow: 0 0 4px getThemeColor("shadow");
     }
 }
 

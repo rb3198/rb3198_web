@@ -4,6 +4,8 @@ interface CssExports {
   'header': string;
   'logo': string;
   'navAndToggleContainer': string;
+  'scrolled': string;
+  'scrolledUp': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
