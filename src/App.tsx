@@ -7,13 +7,18 @@ import { ExpertiseSection } from "./sections/ExpertiseSection";
 import { WorkSection } from "./sections/WorkSection";
 import { ExperienceSection } from "./sections/ExperienceSection";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { legacy_createStore as createStore } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "./reducers";
 
 interface AppProps extends ThemedProps {}
+
+const store = createStore(rootReducer);
 
 const App: React.FC<AppProps> = (props) => {
   const { theme, toggleTheme } = props;
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route
@@ -31,7 +36,7 @@ const App: React.FC<AppProps> = (props) => {
           />
         </Routes>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 };
 
