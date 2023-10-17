@@ -10,6 +10,7 @@ module.exports = merge(commonConfig, {
   output: {
     path: PATHS.BUILD_DIR,
     filename: "[name].js",
+    assetModuleFilename: "assets/[name][ext]",
   },
   devServer: {
     port: "9500",

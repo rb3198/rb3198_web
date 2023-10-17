@@ -1,5 +1,19 @@
 @import "~theme/_section";
+@import "~theme/_spacings";
+@import "~theme";
+@import "~theme/_fonts";
 
 .section {
     @include section;
+
+    .title {
+        font-size: map-get($font-sizes, "subtitle");
+        font-family: "Playfair Display";
+        width: 20%;
+        margin-top: map-get($abs_spacing, 14);
+        margin-bottom: map-get($abs_spacing, 14);
+        @include themed() {
+            border-bottom: 1px solid getThemeColor("active_font");
+        }
+    }
 }

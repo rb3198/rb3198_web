@@ -1,4 +1,4 @@
-import { HeaderOption } from "rb3198/types/enum/HeaderOption";
+import { Sections } from "rb3198/types/enum/Sections";
 import React, { useCallback } from "react";
 import styles from "rb3198/styles/scss/header_navigation.scss";
 import { HashLink } from "react-router-hash-link";
@@ -8,7 +8,7 @@ import { connect, ConnectedProps } from "react-redux";
 
 interface HeaderNavigationProps {}
 
-const OPTIONS: HeaderOption[] = Object.values(HeaderOption);
+const OPTIONS: Sections[] = Object.values(Sections);
 
 type ReduxProps = ConnectedProps<typeof connector>;
 
@@ -21,20 +21,8 @@ const HeaderNavigationComponent: React.FC<
       const { target } = e;
       const option = (target as HTMLAnchorElement).getAttribute("data-section");
       let helloOption = document.querySelector(
-        `[data-section="${HeaderOption.Hello}"]`
+        `[data-section="${Sections.Hello}"]`
       );
-      if (option === HeaderOption.Hello) {
-        e.preventDefault();
-        window.history.pushState({}, "", `/#${option}`);
-        window.scrollTo({ behavior: "smooth", top: 0 });
-        let prevSelectedOption = document.querySelector(
-          `[data-selected="true"]`
-        );
-        prevSelectedOption?.setAttribute("data-selected", "false");
-        helloOption?.setAttribute("data-selected", "true");
-      } else {
-        helloOption?.setAttribute("data-selected", "false");
-      }
     },
     []
   );

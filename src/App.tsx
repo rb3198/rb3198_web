@@ -3,10 +3,10 @@ import { withTheme } from "./hocs/withTheme";
 import { Header } from "./components/Header";
 import { HelloSection } from "./sections/HelloSection";
 import { ThemedProps } from "./types/interfaces/ThemedProps";
-import { ExpertiseSection } from "./sections/ExpertiseSection";
+import { SkillsSection } from "./sections/SkillsSection";
 import { WorkSection } from "./sections/WorkSection";
 import { ExperienceSection } from "./sections/ExperienceSection";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, HashRouter, Routes } from "react-router-dom";
 import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "./reducers";
@@ -19,23 +19,22 @@ const App: React.FC<AppProps> = (props) => {
   const { theme, toggleTheme } = props;
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
-            index
             path="/"
             element={
               <>
                 <Header toggleTheme={toggleTheme} theme={theme} />
                 <HelloSection />
-                {false && <ExpertiseSection />}
+                <SkillsSection />
                 {false && <WorkSection />}
                 {false && <ExperienceSection />}
               </>
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 };
