@@ -17,6 +17,7 @@
     cursor: pointer;
     @include themed() {
         background-color: getThemeColor("bg_2");
+        box-shadow: 0 0 5px getThemeColor("shadow");
     }
 }
 
