@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
-import { HeaderOption } from "./enum/HeaderOption";
+import { Sections } from "./enum/Sections";
 
 export type SectionAction = AnyAction & {
-    value: HeaderOption,
+    value: Sections,
 }

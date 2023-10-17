@@ -1,4 +1,4 @@
-export enum HeaderOption {
+export enum Sections {
     Hello = "hello",
     Expertise = "expertise",
     Work = "work",

@@ -4,10 +4,10 @@ import styles from "rb3198/styles/scss/sections/section.scss";
 import { Dispatch, bindActionCreators } from "redux";
 import { setActiveSection } from "rb3198/action_creators";
 import { connect, ConnectedProps } from "react-redux";
-import { HeaderOption } from "rb3198/types/enum/HeaderOption";
+import { Sections } from "rb3198/types/enum/Sections";
 
 interface SectionProps {
-  id: HeaderOption;
+  id: Sections;
   classes?: string;
 }
 
