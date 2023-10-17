@@ -10,6 +10,7 @@ import { Route, HashRouter, Routes } from "react-router-dom";
 import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "./reducers";
+import { ScrollUp } from "./components/ScrollUp";
 
 interface AppProps extends ThemedProps {}
 
@@ -30,6 +31,7 @@ const App: React.FC<AppProps> = (props) => {
                 <SkillsSection />
                 {false && <WorkSection />}
                 {false && <ExperienceSection />}
+                <ScrollUp />
               </>
             }
           />
