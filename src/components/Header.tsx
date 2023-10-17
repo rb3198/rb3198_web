@@ -7,29 +7,28 @@ import { ThemedProps } from "rb3198/types/interfaces/ThemedProps";
 interface HeaderProps extends ThemedProps {}
 
 const HEADER_ID = "header";
-
+const HEADER_HEIGHT = 0.08 * window.innerHeight;
 export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const pageScrollTop = useRef(window?.scrollY);
 
   const scrollListener = useCallback(function (this: Window, e: Event) {
+    const header = this.document.getElementById(HEADER_ID);
     const handleScrollUp = () => {
       header?.classList.add(styles.scrolledUp);
       header?.classList.remove(styles.scrolled);
-      if (newScrollTop < 100) {
+      if (newScrollTop < HEADER_HEIGHT) {
         header?.classList.remove(styles.scrolledUp);
       }
     };
 
     const handleScrollDown = () => {
-      header?.classList.add(styles.scrolled);
-      header?.classList.remove(styles.scrolledUp);
-      if (newScrollTop < 100) {
-        header?.classList.remove(styles.scrolled);
+      if (newScrollTop > HEADER_HEIGHT) {
+        header?.classList.add(styles.scrolled);
+        header?.classList.remove(styles.scrolledUp);
       }
     };
 
     const newScrollTop = this?.scrollY;
-    const header = this.document.getElementById(HEADER_ID);
     if (newScrollTop < pageScrollTop.current) {
       handleScrollUp();
     } else {

@@ -25,7 +25,7 @@
     padding-left: map-get($map: $abs_spacing, $key: 14);
     padding-right: map-get($map: $abs_spacing, $key: 14);
     font-weight: bold;
-    transition: transform .25s ease-in;
+    transition: transform .25s ease-in, box-shadow 0s .25s;
     @include themed() {
         background-color: getThemeColor("bg_0");
     }
