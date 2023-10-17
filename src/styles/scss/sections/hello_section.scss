@@ -4,7 +4,6 @@
 
 .helloSection {
     flex-direction: column;
-    padding: 0 map-get($map: $abs_spacing, $key: 42);
     justify-content: center;
 }
 

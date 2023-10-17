@@ -8,13 +8,14 @@ import { Sections } from "rb3198/types/enum/Sections";
 
 interface SectionProps {
   id: Sections;
+  title?: string;
   classes?: string;
 }
 
 type ReduxProps = ConnectedProps<typeof connector>;
 const SectionComponent: React.FC<
   PropsWithChildren<SectionProps> & ReduxProps
-> = ({ id, classes, children, setActiveSection }) => {
+> = ({ id, title, classes, children, setActiveSection }) => {
   const handleChange = (isInViewport: boolean) => {
     isInViewport && setActiveSection(id);
   };
@@ -27,6 +28,7 @@ const SectionComponent: React.FC<
       onChange={handleChange}
       threshold={0.8}
     >
+      {title && <h1 className={styles.title}>{title}</h1>}
       {children}
     </InView>
   );

@@ -7,8 +7,10 @@ interface WorkSectionProps {}
 
 export const WorkSection: React.FC<WorkSectionProps> = (props) => {
   return (
-    <Section id={Sections.Work} classes={styles.workSection}>
-      Work
-    </Section>
+    <Section
+      id={Sections.Work}
+      classes={styles.workSection}
+      title="Work"
+    ></Section>
   );
 };
