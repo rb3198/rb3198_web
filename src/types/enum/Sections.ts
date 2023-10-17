@@ -1,6 +1,6 @@
 export enum Sections {
     Hello = "hello",
-    Expertise = "expertise",
+    Skills = "skills",
     Work = "work",
     Experience = "experience",
     Contact = "contact",
