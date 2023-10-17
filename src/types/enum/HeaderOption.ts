@@ -1,8 +1,8 @@
 export enum HeaderOption {
-    Hello = "Hello",
-    Expertise = "Expertise",
-    Work = "Work",
-    Experience = "Experience",
-    Contact = "Contact",
-    Resume = "Resume",
+    Hello = "hello",
+    Expertise = "expertise",
+    Work = "work",
+    Experience = "experience",
+    Contact = "contact",
+    Resume = "resume",
 }

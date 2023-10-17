@@ -1,16 +1,17 @@
 @import "~theme/index.scss";
+@import "~theme/_z_levels.scss";
 
 .container {
     width: 60px;
     cursor: pointer;
     height: 30px;
-    box-shadow: 0 0 4px #a1a1a1;
     position: relative;
     border-radius: 20%/50%;
     display: flex;
     align-items: center;
     @include themed() {
         background-color: getThemeColor("bg_3");
+        box-shadow: 0 0 4px getThemeColor("shadow");
     }
 }
 
@@ -23,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: map-get($zLevels, 2);
     @include themed() {
         background-color: getThemeColor("theme_toggle_outer");
         div {
@@ -55,13 +56,11 @@
 }
 
 .iconContainer[data-theme="1"] {
-    z-index: 1;
     transition: transform .25s;
     transform: translateX(35px);
 }
 
 .iconContainer[data-theme="2"] {
-    z-index: 1;
     transition: transform .25s;
     transform: translateX(8px);
 }

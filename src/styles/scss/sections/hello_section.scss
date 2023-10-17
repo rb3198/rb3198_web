@@ -1,10 +1,8 @@
-@import "~theme/_section";
 @import "~theme/_spacings";
 @import "~theme/_fonts";
 @import "~theme/";
 
 .helloSection {
-    @include section;
     flex-direction: column;
     padding: 0 map-get($map: $abs_spacing, $key: 42);
     justify-content: center;

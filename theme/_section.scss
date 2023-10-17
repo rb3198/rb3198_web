@@ -2,7 +2,7 @@
 
 @mixin section {
     display: flex;
-    height: 92vh;
+    min-height: 92vh;
     @include themed() {
         background-color: getThemeColor("bg_0");
     }
