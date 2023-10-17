@@ -1,3 +1,44 @@
-.expertiseSection {
-    font-size: 18px;
+@import "~theme/_fonts";
+@import "~theme";
+@import "~theme/_spacings";
+
+.skillsSection {
+    flex-direction: column;
+}
+
+.subsectionTitle {
+    font-size: map-get($font-sizes, "l");
+    font-family: "Raleway";
+    font-weight: 600;
+}
+
+.titleIconTd {
+    width: map-get($abs_spacing, 12);
+}
+
+.subsectionTitleIcon {
+    margin-right: map-get($abs_spacing, 5);
+}
+
+.subsectionTitleIcon path{
+    @include themed() {
+        color: getThemeColor("accent");
+    }
+}
+
+.skillTable {
+    width: max-content;
+}
+
+.skillTd {
+    padding-top: map-get($abs_spacing, 12);
+    padding-bottom: map-get($abs_spacing, 12);
+    padding-right: map-get($map: $abs_spacing, $key: 28);
+    a {
+        cursor: pointer;
+    }
+}
+
+.skillTooltip {
+    font-family: Raleway;
 }
