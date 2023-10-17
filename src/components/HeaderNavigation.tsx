@@ -23,18 +23,6 @@ const HeaderNavigationComponent: React.FC<
       let helloOption = document.querySelector(
         `[data-section="${Sections.Hello}"]`
       );
-      if (option === Sections.Hello) {
-        e.preventDefault();
-        window.history.pushState({}, "", `/#${option}`);
-        window.scrollTo({ behavior: "smooth", top: 0 });
-        let prevSelectedOption = document.querySelector(
-          `[data-selected="true"]`
-        );
-        prevSelectedOption?.setAttribute("data-selected", "false");
-        helloOption?.setAttribute("data-selected", "true");
-      } else {
-        helloOption?.setAttribute("data-selected", "false");
-      }
     },
     []
   );
