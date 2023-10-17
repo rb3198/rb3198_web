@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/scss/sections/hello_section.scss";
 import { Typing } from "rb3198/components/Typing";
 import { DETAILED_DESC, ONE_LINERS } from "rb3198/constants/";
-import { InProgressDisclaimer } from "rb3198/components/InProgressDisclaimer";
 import { Section } from "./Section";
 import { Sections } from "rb3198/types/enum/Sections";
 
@@ -27,7 +26,6 @@ export const HelloSection: React.FC<HelloSectionProps> = (props) => {
         className={styles.detailedDescription}
         dangerouslySetInnerHTML={{ __html: DETAILED_DESC }}
       ></p>
-      <InProgressDisclaimer />
     </Section>
   );
 };
