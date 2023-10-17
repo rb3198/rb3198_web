@@ -1,19 +1,43 @@
 import React, { PropsWithChildren } from "react";
+import { InView } from "react-intersection-observer";
 import styles from "rb3198/styles/scss/sections/section.scss";
+import { Dispatch, bindActionCreators } from "redux";
+import { setActiveSection } from "rb3198/action_creators";
+import { connect, ConnectedProps } from "react-redux";
+import { HeaderOption } from "rb3198/types/enum/HeaderOption";
 
 interface SectionProps {
-  id: string;
+  id: HeaderOption;
   classes?: string;
 }
 
-export const Section: React.FC<PropsWithChildren<SectionProps>> = ({
-  id,
-  classes,
-  children,
-}) => {
+type ReduxProps = ConnectedProps<typeof connector>;
+const SectionComponent: React.FC<
+  PropsWithChildren<SectionProps> & ReduxProps
+> = ({ id, classes, children, setActiveSection }) => {
+  const handleChange = (isInViewport: boolean) => {
+    isInViewport && setActiveSection(id);
+  };
+
   return (
-    <section id={id} className={`${styles.section} ${classes}`}>
+    <InView
+      as="section"
+      id={id}
+      className={`${styles.section} ${classes}`}
+      onChange={handleChange}
+      threshold={0.8}
+    >
       {children}
-    </section>
+    </InView>
   );
 };
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    setActiveSection: bindActionCreators(setActiveSection, dispatch),
+  };
+};
+
+const connector = connect(undefined, mapDispatchToProps);
+
+export const Section = connector(SectionComponent);

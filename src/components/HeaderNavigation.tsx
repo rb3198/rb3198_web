@@ -3,12 +3,18 @@ import React, { useCallback } from "react";
 import styles from "rb3198/styles/scss/header_navigation.scss";
 import { HashLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
+import { RootReducer } from "rb3198/reducers";
+import { connect, ConnectedProps } from "react-redux";
 
 interface HeaderNavigationProps {}
 
 const OPTIONS: HeaderOption[] = Object.values(HeaderOption);
 
-export const HeaderNavigation: React.FC<HeaderNavigationProps> = () => {
+type ReduxProps = ConnectedProps<typeof connector>;
+
+const HeaderNavigationComponent: React.FC<
+  HeaderNavigationProps & ReduxProps
+> = ({ activeSection }) => {
   const location = useLocation();
   const navigate: React.MouseEventHandler<HTMLAnchorElement> = useCallback(
     (e) => {
@@ -37,19 +43,13 @@ export const HeaderNavigation: React.FC<HeaderNavigationProps> = () => {
     <nav>
       <ul className={styles.navigationList}>
         {OPTIONS.map((option) => {
-          let isSelected = false;
-          if (!location.hash) {
-            isSelected = option === HeaderOption.Hello;
-          } else {
-            isSelected = location.hash === `#${option}`;
-          }
           return (
             <li key={`#${option}`}>
               <HashLink
                 to={`#${option}`}
                 data-section={option}
                 onClick={navigate}
-                data-selected={isSelected}
+                data-selected={option === activeSection}
               >
                 {option}
               </HashLink>
@@ -60,3 +60,14 @@ export const HeaderNavigation: React.FC<HeaderNavigationProps> = () => {
     </nav>
   );
 };
+
+const mapStateToProps = (state: RootReducer) => {
+  const { activeSection } = state;
+  return {
+    activeSection,
+  };
+};
+
+const connector = connect(mapStateToProps);
+
+export const HeaderNavigation = connector(HeaderNavigationComponent);
