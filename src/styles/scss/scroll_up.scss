@@ -1,0 +1,32 @@
+@import "~theme/_spacings";
+@import "~theme/_z_levels";
+@import "~theme";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: map-get($abs_spacing, 10);
+    bottom: 0;
+    transform: translateY(- map-get($abs_spacing, 7));
+    transition: transform .25s ease-in-out;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    @include themed() {
+        background-color: getThemeColor("bg_2");
+        box-shadow: 0 0 5px getThemeColor("shadow");
+    }
+}
+
+.container.hidden {
+    transform: translateY(100%);
+}
+
+.scrollUpIcon path {
+    @include themed() {
+        color: getThemeColor("active_font");
+    }
+}

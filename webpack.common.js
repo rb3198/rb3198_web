@@ -62,6 +62,10 @@ const commonConfig = {
           },
         ],
       },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        type: "asset/resource",
+      },
     ],
   },
   stats: {

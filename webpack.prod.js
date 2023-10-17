@@ -9,6 +9,7 @@ module.exports = merge(commonConfig, {
   output: {
     path: PATHS.BUILD_DIR,
     filename: "[name].[contenthash].js",
+    assetModuleFilename: "assets/[name].[contenthash][ext]",
   },
   plugins: [
     new CleanWebpackPlugin(),

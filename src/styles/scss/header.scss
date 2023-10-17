@@ -1,6 +1,7 @@
 @import "~theme/_spacings.scss";
 @import "~theme/index.scss";
 @import "~theme/fonts.scss";
+@import "~theme/_z_levels";
 
 .logo {
     @include themed()
@@ -15,14 +16,29 @@
 
 .header {
     height: 8vh;
+    position: sticky;
+    top: 0;
+    z-index: map-get($zLevels, "max");
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: map-get($map: $abs_spacing, $key: 14);
     padding-right: map-get($map: $abs_spacing, $key: 14);
     font-weight: bold;
+    transition: transform .25s ease-in, box-shadow 0s .25s;
     @include themed() {
         background-color: getThemeColor("bg_0");
+    }
+}
+
+.header.scrolled {
+    transform: translateY(-100%);
+}
+
+.header.scrolledUp {
+    transform: translateY(0);
+    @include themed() {
+        box-shadow: 0 0 10px getThemeColor("shadow");
     }
 }
 

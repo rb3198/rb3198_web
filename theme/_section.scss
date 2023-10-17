@@ -1,8 +1,12 @@
 @import "~theme/index.scss";
+@import "~theme/_spacings.scss";
 
 @mixin section {
     display: flex;
-    height: 92vh;
+    min-height: 100vh;
+    padding: 0 map-get($abs_spacing, 42);
+    flex-direction: column;
+    position: relative;
     @include themed() {
         background-color: getThemeColor("bg_0");
     }
