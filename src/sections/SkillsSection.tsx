@@ -33,7 +33,7 @@ const subsectionTitleIconConfig = {
 };
 
 const techIconConfig = {
-  size: "75px",
+  className: styles.techIcon,
 };
 
 export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {

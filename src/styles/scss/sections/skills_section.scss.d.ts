@@ -7,6 +7,7 @@ interface CssExports {
   'skillsSection': string;
   'subsectionTitle': string;
   'subsectionTitleIcon': string;
+  'techIcon': string;
   'titleIconTd': string;
 }
 export const cssExports: CssExports;
