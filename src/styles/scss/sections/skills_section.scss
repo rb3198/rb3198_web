@@ -7,9 +7,9 @@
 }
 
 .subsectionTitle {
-    font-size: map-get($font-sizes, "l");
     font-family: "Raleway";
     font-weight: 600;
+    font-size: map-get($font-sizes, "l");
 }
 
 .titleIconTd {
@@ -31,9 +31,9 @@
 }
 
 .skillTd {
-    padding-top: map-get($abs_spacing, 12);
-    padding-bottom: map-get($abs_spacing, 12);
-    padding-right: map-get($map: $abs_spacing, $key: 28);
+    padding-top: map-get($abs_spacing, 8);
+    padding-bottom: map-get($abs_spacing, 8);
+    padding-right: map-get($map: $abs_spacing, $key: 20);
     a {
         cursor: pointer;
     }
@@ -41,4 +41,10 @@
 
 .skillTooltip {
     font-family: Raleway;
+    font-size: map-get($font-sizes, "s");
+}
+
+.techIcon {
+    height: map-get($font-sizes, "subtitle");
+    width: map-get($font-sizes, "subtitle");
 }

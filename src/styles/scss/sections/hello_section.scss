@@ -13,14 +13,13 @@
 }
 
 .oneLineDesc {
-    font-size: clamp(map-get($font-sizes, "l"), 4vw, map-get($font-sizes, "subtitle"));
+    font-size: map-get($font-sizes, "subtitle");
     font-family: "Playfair Display";
     font-weight: 600;
-    margin-top: map-get($abs_spacing, 5);
 }
 
 .title {
-    font-size: clamp(map-get($font-sizes, "xxl"), 8vw, map-get($font-sizes, "title"));
+    font-size: map-get($font-sizes, "title");
     font-weight: bold;
     font-family: "Playfair Display";
     line-height: 96px;
@@ -42,5 +41,5 @@
     margin-top: map-get($abs_spacing, 7);
     max-width: 800px;
     font-family: Raleway;
-    font-size: map-get($font-sizes, "m");
+    font-size: map-get($font-sizes, "s");
 }

@@ -2,8 +2,8 @@
 @import "~theme/_fonts";
 
 .inProgress {
-    position: "absolute";
-    bottom: map-get($abs_spacing, 7);
+    position: absolute;
+    bottom: map-get($abs_spacing, 5);
     left: 50%;
     transform: translateX(-50%);
     font-size: map-get($font-sizes, "m");
