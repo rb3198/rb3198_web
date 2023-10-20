@@ -1,8 +1,8 @@
 export enum Sections {
-    Hello = "hello",
-    Skills = "skills",
-    Work = "work",
-    Experience = "experience",
-    Contact = "contact",
-    Resume = "resume",
+  Hello = "hello",
+  Work = "work",
+  Skills = "skills",
+  Experience = "experience",
+  Contact = "contact",
+  Resume = "resume",
 }
