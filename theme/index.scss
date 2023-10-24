@@ -14,6 +14,7 @@ $themes: (
         bg_5: lighten(list.nth($primary_background, 1), 20),
         bg_6: lighten(list.nth($primary_background, 1), 24),
         shadow: list.nth($shadow, 1),
+        border: list.nth($border, 1),
         theme_toggle_outer: #f1ce06,
         theme_toggle_inner: lighten(#f1ce06, 30),
     ),
@@ -29,6 +30,7 @@ $themes: (
         bg_5: lighten(list.nth($primary_background, 2), 20),
         bg_6: lighten(list.nth($primary_background, 2), 24),
         shadow: list.nth($shadow, 2),
+        border: list.nth($border, 2),
         theme_toggle_outer: #fff,
         theme_toggle_inner: lighten(list.nth($primary_background, 2), 16),
     ),
@@ -56,6 +58,7 @@ $themes: (
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    box-sizing: border-box;
     @include themed() {
         color: getThemeColor("inactive_font");
     }
