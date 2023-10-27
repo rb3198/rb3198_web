@@ -64,7 +64,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
                   <td colSpan={1} className={styles.skillTd} key={anchorId}>
                     <a id={anchorId}>
                       <IconContext.Provider value={techIconConfig}>
-                        <TechIcon />
+                        <TechIcon className={techIconConfig.className} />
                       </IconContext.Provider>
                     </a>
                     <Tooltip

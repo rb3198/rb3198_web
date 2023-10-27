@@ -45,6 +45,5 @@
 }
 
 .techIcon {
-    height: map-get($font-sizes, "subtitle");
-    width: map-get($font-sizes, "subtitle");
+    font-size: map-get($font-sizes, "subtitle");
 }
