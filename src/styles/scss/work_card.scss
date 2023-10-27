@@ -1,0 +1,100 @@
+@import "~theme";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+
+.card {
+    display: flex;
+    padding-top: calc(9 * 100% / 21); // 21:9 Aspect ratio box
+    position: relative;
+    width: 99.8%;
+    @include themed() {
+        border: 1px solid getThemeColor("border");
+    }
+    .content {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: map-get($abs_spacing, 10);
+    }
+}
+
+.textContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding-right: map-get($abs_spacing, 8);
+}
+
+.cardTitle {
+    font-family: Inter;
+    text-transform: uppercase;
+    font-size: map-get($font-sizes, "xxl");
+}
+
+.cardSubtitle {
+    margin-top: map-get($abs_spacing, 6);
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: map-get($font-sizes, "m");
+    span {
+        font-style: italic;
+        font-weight: normal;
+    }
+}
+
+.subtitleSeparator {
+    margin-top: map-get($abs_spacing, 6);
+    width: map-get($pc_spacing, 3);
+    @include themed() {
+        border-width: 2px;
+        border-color: getThemeColor("accent");
+    }
+}
+
+.cardText {
+    text-align: justify;
+    margin-top: map-get($abs_spacing, 6);
+    margin-bottom: map-get($abs_spacing, 6);
+    font-size: map-get($font-sizes, "m");
+    font-family: Raleway;
+}
+
+.actionsContainer {
+    display: flex;
+}
+
+.gitButton {
+    margin-left: map-get($abs_spacing, 5);
+}
+
+.readMore {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-family: Inter;
+    text-transform: uppercase;
+}
+
+.techStackContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: map-get($abs_spacing, 6);
+}
+
+.techStackFacet {
+    display: flex;
+    align-items: center;
+    margin-top: map-get($abs_spacing, 5);
+
+    p {
+        font-family: Raleway;
+        font-size: map-get($font-sizes, "m");
+        margin-left: map-get($abs_spacing, 4);
+    }
+}
