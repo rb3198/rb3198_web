@@ -19,7 +19,7 @@ const ScrollUpComponent: React.FC<ReduxProps> = ({ activeSection }) => {
       }`}
     >
       <IconContext.Provider
-        value={{ size: "30px", className: styles.scrollUpIcon }}
+        value={{ size: "24px", className: styles.scrollUpIcon }}
       >
         <BsChevronDoubleUp />
       </IconContext.Provider>
