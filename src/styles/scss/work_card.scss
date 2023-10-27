@@ -32,6 +32,9 @@
     font-family: Inter;
     text-transform: uppercase;
     font-size: map-get($font-sizes, "xxl");
+    @include themed() {
+        color: getThemeColor("inactive_font");
+    }
 }
 
 .cardSubtitle {
@@ -96,5 +99,12 @@
         font-family: Raleway;
         font-size: map-get($font-sizes, "m");
         margin-left: map-get($abs_spacing, 4);
+    }
+}
+
+.techStackIcon path{
+    @include themed()
+    {
+        color: getThemeColor("inactive_font");
     }
 }

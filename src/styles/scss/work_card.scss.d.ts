@@ -12,6 +12,7 @@ interface CssExports {
   'subtitleSeparator': string;
   'techStackContainer': string;
   'techStackFacet': string;
+  'techStackIcon': string;
   'textContainer': string;
 }
 export const cssExports: CssExports;

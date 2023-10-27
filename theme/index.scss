@@ -4,7 +4,9 @@ $theme-map: null;
 $themes: (
     light: (
         bg_0: list.nth($primary_background, 1),
+        inverted_bg: list.nth($primary_background, 2),
         active_font: list.nth($active_font_color, 1),
+        inverted_font: list.nth($active_font_color, 2),
         inactive_font: list.nth($inactive_font_color, 1),
         accent: list.nth($accent_color, 1),
         bg_1: lighten(list.nth($primary_background, 1), 4),
@@ -20,7 +22,9 @@ $themes: (
     ),
     dark: (
         bg_0: list.nth($primary_background, 2),
+        inverted_bg: list.nth($primary_background, 1),
         active_font: list.nth($active_font_color, 2),
+        inverted_font: list.nth($active_font_color, 1),
         inactive_font: list.nth($inactive_font_color, 2),
         accent: list.nth($accent_color, 2),
         bg_1: lighten(list.nth($primary_background, 2), 4),

@@ -12,6 +12,15 @@
     }
 }
 
+.buttonContainer:hover {
+    @include themed() {
+        background-color: getThemeColor("inverted_bg");
+        div, p, svg path {
+            color: getThemeColor("inverted_font");
+        }
+    }
+}
+
 .buttonContainer[data-disabled="true"] {
     cursor: default;
     pointer-events: none;

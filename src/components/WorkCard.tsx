@@ -71,7 +71,9 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     const { frontend, backend, dbs, tools } = techStack;
     return (
       <div className={styles.techStackContainer}>
-        <IconContext.Provider value={{ size: "24px" }}>
+        <IconContext.Provider
+          value={{ size: "24px", className: styles.techStackIcon }}
+        >
           <div className={styles.techStackFacet}>
             <PiMonitorDuotone />
             <p>{frontend.join(", ")}</p>

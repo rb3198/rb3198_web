@@ -10,6 +10,12 @@
     font-family: Inter;
 }
 
+.gitLinkContainer:hover {
+    @include themed() {
+        background-color: getThemeColor("inverted_bg") !important;
+    }
+}
+
 .gitLinkContainer[data-uppercase="true"] {
     text-transform: uppercase;
 }
