@@ -9,7 +9,7 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 
 export const IconGrpcLogo: React.FunctionComponent<IconProps> = ({
   color = "currentColor",
-  size = 75,
+  size = "1em",
   ...other
 }) => {
   return (
