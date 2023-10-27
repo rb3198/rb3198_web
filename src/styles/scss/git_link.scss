@@ -1,0 +1,24 @@
+@import "~theme/_spacings";
+@import "~theme";
+@import "~theme/_fonts";
+
+.gitLinkContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-family: Inter;
+}
+
+.gitLinkContainer[data-uppercase="true"] {
+    text-transform: uppercase;
+}
+
+.iconAndLabelContainer {
+    display: flex;
+    align-items: center;
+}
+
+.iconClasses {
+    margin-right: map-get($abs_spacing, 4);
+}
