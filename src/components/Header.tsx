@@ -3,6 +3,7 @@ import styles from "rb3198/styles/scss/header.scss";
 import { HeaderNavigation } from "./HeaderNavigation";
 import { ThemeToggle } from "./ThemeToggle";
 import { ThemedProps } from "rb3198/types/interfaces/ThemedProps";
+import { HashLink } from "react-router-hash-link";
 
 interface HeaderProps extends ThemedProps {}
 
@@ -37,6 +38,10 @@ export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     pageScrollTop.current = newScrollTop;
   }, []);
 
+  const handleLogoClick = useCallback(() => {
+    window.scrollTo({ behavior: "smooth", top: 0 });
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", scrollListener);
 
@@ -47,7 +52,9 @@ export const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
 
   return (
     <header className={styles.header} id={HEADER_ID}>
-      <h1 className={styles.logo}>RB</h1>
+      <h1 className={styles.logo} onClick={handleLogoClick}>
+        RB
+      </h1>
       <div className={styles.navAndToggleContainer}>
         <HeaderNavigation />
         <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
