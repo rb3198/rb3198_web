@@ -30,7 +30,7 @@ const App: React.FC<AppProps> = (props) => {
                 <HelloSection />
                 <WorkSection />
                 <SkillsSection />
-                {false && <ExperienceSection />}
+                <ExperienceSection />
                 <ScrollUp />
               </>
             }
