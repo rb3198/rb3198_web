@@ -192,28 +192,37 @@ $contentBg: "bg_2";
 
     /* Place the timeline to the left */
     .timeline::after {
-        left: 31px;
+        left: 0;
     }
 
     /* Full-width containers */
     .container {
         width: 100%;
-        padding-left: 70px;
+        padding-left: map-get($abs_spacing, 5);
         padding-right: 25px;
     }
 
     /* Make sure that all arrows are pointing leftwards */
     .container::before {
-        left: 60px;
+        left: 5px;
         border: medium solid white;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent white transparent transparent;
+        @include themed() {
+            border: medium solid getThemeColor($contentBg);
+            border-color: transparent getThemeColor($contentBg) transparent transparent;
+            border-width: 0 10px 10px 0;
+        }
+    }
+
+    .leftContainer .content{
+        border-top-right-radius: 3px;
+        border-top-left-radius: 0;
     }
 
     /* Make sure all circles are at the same spot */
     .leftContainer::after,
     .rightContainer::after {
-        left: 15px;
+        left: calc($timelineWidth / 2);
+        transform: translateX(-50%);
     }
 
     /* Make all right containers behave like the left ones */
