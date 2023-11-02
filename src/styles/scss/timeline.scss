@@ -47,6 +47,7 @@ $contentBg: "bg_2";
 .container::after {
     content: '';
     position: absolute;
+    cursor: pointer;
     width: map-get($font-sizes, "s");
     height: map-get($font-sizes, "s");
     top: calc($containerPaddingTop - $timelineWidth);
@@ -85,6 +86,7 @@ $contentBg: "bg_2";
     width: 0;
     z-index: 1;
     right: 5px;
+    cursor: pointer;
     @include themed() {
         border: medium solid getThemeColor($contentBg);
         border-color: transparent transparent transparent getThemeColor($contentBg);
@@ -100,6 +102,7 @@ $contentBg: "bg_2";
     width: 0;
     z-index: 1;
     left: 5px;
+    cursor: pointer;
     @include themed() {
         border: medium solid getThemeColor($contentBg);
         border-color: transparent getThemeColor($contentBg) transparent transparent;
