@@ -5,6 +5,7 @@ import { HashLink } from "react-router-hash-link";
 import { useLocation } from "react-router-dom";
 import { RootReducer } from "rb3198/reducers";
 import { connect, ConnectedProps } from "react-redux";
+import resume from "../../assets/pdf/ronit_bhatia_resume.pdf";
 
 interface HeaderNavigationProps {}
 
@@ -44,6 +45,11 @@ const HeaderNavigationComponent: React.FC<
             </li>
           );
         })}
+        <li>
+          <a href={resume} download={"Ronit_Bhatia_Resume"} target="_blank">
+            Resume
+          </a>
+        </li>
       </ul>
     </nav>
   );
