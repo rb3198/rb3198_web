@@ -4,5 +4,4 @@ export enum Sections {
   Skills = "skills",
   Experience = "experience",
   Contact = "contact",
-  Resume = "resume",
 }
