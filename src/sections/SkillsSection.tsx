@@ -18,7 +18,6 @@ import {
   TOOLS_DEV_DATA,
 } from "rb3198/constants";
 import { Tooltip } from "react-tooltip";
-import { InProgressDisclaimer } from "rb3198/components/InProgressDisclaimer";
 
 interface SkillsSectionProps {}
 
@@ -64,7 +63,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
                   <td colSpan={1} className={styles.skillTd} key={anchorId}>
                     <a id={anchorId}>
                       <IconContext.Provider value={techIconConfig}>
-                        <TechIcon />
+                        <TechIcon className={techIconConfig.className} />
                       </IconContext.Provider>
                     </a>
                     <Tooltip
@@ -100,7 +99,6 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
       {renderSubsection("Databases", PiDatabaseDuotone, DB_DEV_DATA)}
       {renderSubsection("Testing", PiFlaskDuotone, TESTING_DEV_DATA)}
       {renderSubsection("Tools & Platforms", PiHammerDuotone, TOOLS_DEV_DATA)}
-      <InProgressDisclaimer />
     </Section>
   );
 };

@@ -7,7 +7,7 @@
 }
 
 .subsectionTitle {
-    font-family: "Raleway";
+    font-family: "Inter";
     font-weight: 600;
     font-size: map-get($font-sizes, "l");
 }
@@ -45,6 +45,5 @@
 }
 
 .techIcon {
-    height: map-get($font-sizes, "subtitle");
-    width: map-get($font-sizes, "subtitle");
+    font-size: map-get($font-sizes, "subtitle");
 }

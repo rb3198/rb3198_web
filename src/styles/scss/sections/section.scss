@@ -7,12 +7,25 @@
     @include section;
 
     .title {
-        font-size: map-get($font-sizes, "subtitle");
-        font-family: "Playfair Display";
-        width: 20%;
+        text-decoration: none;
+        width: 25%;
         margin-top: map-get($abs_spacing, 12);
         margin-bottom: map-get($abs_spacing, 12);
         @include themed() {
+            border-bottom: 1px solid getThemeColor("inactive_font");
+        }
+        
+        h1 {
+            font-size: map-get($font-sizes, "subtitle");
+            font-family: "Playfair Display";
+        }
+    }
+
+    .title:hover {
+        @include themed() {
+            h1 {
+                color: getThemeColor("active_font");
+            }
             border-bottom: 1px solid getThemeColor("active_font");
         }
     }

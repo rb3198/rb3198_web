@@ -28,9 +28,9 @@ const App: React.FC<AppProps> = (props) => {
               <>
                 <Header toggleTheme={toggleTheme} theme={theme} />
                 <HelloSection />
+                <WorkSection />
                 <SkillsSection />
-                {false && <WorkSection />}
-                {false && <ExperienceSection />}
+                <ExperienceSection />
                 <ScrollUp />
               </>
             }

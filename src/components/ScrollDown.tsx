@@ -20,7 +20,7 @@ export const ScrollDown: React.FC<ScrollDownProps> = ({ scrollTo }) => {
   return (
     <div className={styles.container} onClick={scroll}>
       <IconContext.Provider
-        value={{ size: "40px", className: styles.scrollIcon }}
+        value={{ size: "32px", className: styles.scrollIcon }}
       >
         <p>Explore my Profile!</p>
         <BsChevronDoubleDown />

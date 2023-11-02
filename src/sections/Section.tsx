@@ -5,6 +5,7 @@ import { Dispatch, bindActionCreators } from "redux";
 import { setActiveSection } from "rb3198/action_creators";
 import { connect, ConnectedProps } from "react-redux";
 import { Sections } from "rb3198/types/enum/Sections";
+import { HashLink } from "react-router-hash-link";
 
 interface SectionProps {
   id: Sections;
@@ -28,7 +29,11 @@ const SectionComponent: React.FC<
       onChange={handleChange}
       threshold={0.8}
     >
-      {title && <h1 className={styles.title}>{title}</h1>}
+      {title && (
+        <HashLink to={`#${id.toString()}`} className={styles.title}>
+          <h1>{title}</h1>
+        </HashLink>
+      )}
       {children}
     </InView>
   );

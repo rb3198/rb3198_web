@@ -1,8 +1,7 @@
 export enum Sections {
-    Hello = "hello",
-    Skills = "skills",
-    Work = "work",
-    Experience = "experience",
-    Contact = "contact",
-    Resume = "resume",
+  Hello = "hello",
+  // Work = "work", TODO: Add after finalizing the content
+  Skills = "skills",
+  Experience = "experience",
+  // Contact = "contact",
 }
