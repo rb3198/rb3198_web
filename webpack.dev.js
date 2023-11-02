@@ -26,6 +26,7 @@ module.exports = merge(commonConfig, {
     new HtmlWebpackPlugin({
       title: "Ronit Bhatia",
       filename: "index.html",
+      favicon: "assets/icons/favicon.ico",
       template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
     }),
   ],
