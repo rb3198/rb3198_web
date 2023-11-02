@@ -22,9 +22,19 @@
     font-size: map-get($font-sizes, "title");
     font-weight: bold;
     font-family: "Playfair Display";
-    line-height: 96px;
     @include themed() {
         color: getThemeColor("active_font");
+    }
+}
+
+.titleIcons {
+    margin-left: map-get($abs_spacing, 8);
+    font-size: map-get($font-sizes, "xxl");
+}
+
+.titleIcons path {
+    @include themed() {
+        color: getThemeColor("accent");
     }
 }
 
