@@ -17,6 +17,7 @@ module.exports = merge(commonConfig, {
       title: "Ronit Bhatia",
       filename: "index.html",
       template: path.resolve(PATHS.SOURCE_DIR, "index.html"),
+      favicon: "assets/icons/favicon.ico",
       minify: {
         removeComments: true,
         collapseWhitespace: true,
