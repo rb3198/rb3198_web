@@ -134,3 +134,5 @@ export const TESTING_DEV_DATA = [
     label: "Xunit",
   },
 ];
+
+export const EMAIL_HASH = "d94d454f3a9d1cd57e67577e35006f93";
