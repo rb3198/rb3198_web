@@ -3,5 +3,5 @@ export enum Sections {
   // Work = "work", TODO: Add after finalizing the content
   Skills = "skills",
   Experience = "experience",
-  // Contact = "contact",
+  Contact = "contact",
 }
