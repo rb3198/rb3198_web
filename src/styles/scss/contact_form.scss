@@ -1,0 +1,160 @@
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme";
+
+.nameEmailContainer {
+    display: flex;
+    width: 100%;    
+}
+
+.inputs {
+    margin-bottom: map-get($abs_spacing, 7);
+    height: 50px;
+    width: 100%;
+}
+
+.message {
+    height: 150px;
+    width: 100%;
+    outline: none;
+    text-indent: map-get($abs_spacing, 4);
+    padding-top: map-get($abs_spacing, 4);
+    @include themed() {
+        border: 1px solid getThemeColor("border");
+        background-color: getThemeColor("bg_2");
+    }
+}
+
+.message[data-isValid="false"] {
+    @include themed() {
+        border: 1px solid getThemeColor("error");
+    }
+}
+
+.messageError {
+    font-size: map-get($font-sizes, "xs");
+    font-family: Inter;
+    margin-top: map-get($abs_spacing, 1);
+    @include themed() {
+        color: getThemeColor("error");
+    }
+}
+
+.message:focus {
+    @include themed() {
+        border: 1px solid getThemeColor("active_font");
+        background-color: getThemeColor("bg_1");
+    }
+}
+
+.nameEmail {
+    display: flex;
+    flex: 1;
+}
+
+.nameEmail:first-of-type {
+    margin-right: map-get($abs_spacing, 5);
+}
+
+.submit {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-top: map-get($abs_spacing, 7);
+    text-transform: uppercase;
+    svg {
+        margin-left: map-get($abs_spacing, 4);
+    }
+}
+
+.submit[data-stage="1"], .submit[data-stage="2"] {
+    @include themed() {
+        border-color: getThemeColor("active_font");
+    }
+}
+
+.submit[data-stage="2"], .submit[data-stage="3"] {
+    justify-content: center;
+    pointer-events: none;
+    svg {
+        margin-left: 0;
+    }
+}
+
+.submit[data-stage="3"] {
+    @include themed() {
+        background-color: getThemeColor("success") !important;
+        border-color: getThemeColor("success");
+        p {
+            color: getThemeColor("inverted_font");
+        }
+    }
+}
+
+.submit[data-stage="4"] {
+    @include themed() {
+        border-color: getThemeColor("error");
+        p, svg path {
+            color: getThemeColor("error");
+        }
+    }
+}
+
+.submit[data-stage="4"]:hover {
+    @include themed() {
+        border-color: getThemeColor("active_font");
+    }
+}
+
+.loader {
+    width: 20px;
+    path {
+        @include themed() {
+            fill: getThemeColor("active_font");
+        }
+    }
+}
+
+.honeypot {
+    display: none;
+}
+
+.submit svg {
+    font-size: 18px;
+}
+
+.errorMsg {
+    font-size: map-get($font-sizes, "s");
+    font-family: Inter;
+    margin-top: map-get($abs_spacing, 3);
+    font-weight: 600;
+    @include themed() {
+        color: getThemeColor("error");
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .submit {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .submit {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .submit {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .submit {
+        width: 100%;
+        justify-content: center;
+    }
+}

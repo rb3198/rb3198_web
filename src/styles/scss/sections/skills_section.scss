@@ -1,6 +1,7 @@
 @import "~theme/_fonts";
 @import "~theme";
 @import "~theme/_spacings";
+@import "~theme/_z_levels";
 
 .skillsSection {
     flex-direction: column;
@@ -42,6 +43,7 @@
 .skillTooltip {
     font-family: Raleway;
     font-size: map-get($font-sizes, "s");
+    z-index: map-get($zLevels, 2);
 }
 
 .techIcon {
