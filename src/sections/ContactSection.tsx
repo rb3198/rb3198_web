@@ -5,6 +5,7 @@ import styles from "rb3198/styles/scss/sections/contact_section.scss";
 import { ContactForm } from "rb3198/components/ContactForm";
 import { contactSectionLinks } from "rb3198/constants/contact";
 import { IconContext, IconType } from "react-icons";
+import { InProgressDisclaimer } from "rb3198/components/InProgressDisclaimer";
 
 interface ContactSectionProps {}
 
@@ -46,6 +47,7 @@ export const ContactSection: React.FC<ContactSectionProps> = (props) => {
         <ContactForm containerClasses={styles.contactForm} />
         {renderContactLinks()}
       </div>
+      <InProgressDisclaimer />
     </Section>
   );
 };

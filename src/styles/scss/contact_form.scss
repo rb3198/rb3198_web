@@ -63,11 +63,14 @@
     font-weight: bold;
     margin-top: map-get($abs_spacing, 7);
     text-transform: uppercase;
-    @include themed() {
-        border-color: getThemeColor("active_font") !important;
-    }
     svg {
         margin-left: map-get($abs_spacing, 4);
+    }
+}
+
+.submit[data-stage="1"], .submit[data-stage="2"] {
+    @include themed() {
+        border-color: getThemeColor("active_font");
     }
 }
 
@@ -82,9 +85,25 @@
 .submit[data-stage="3"] {
     @include themed() {
         background-color: getThemeColor("success") !important;
+        border-color: getThemeColor("success");
         p {
             color: getThemeColor("inverted_font");
         }
+    }
+}
+
+.submit[data-stage="4"] {
+    @include themed() {
+        border-color: getThemeColor("error");
+        p, svg path {
+            color: getThemeColor("error");
+        }
+    }
+}
+
+.submit[data-stage="4"]:hover {
+    @include themed() {
+        border-color: getThemeColor("active_font");
     }
 }
 
