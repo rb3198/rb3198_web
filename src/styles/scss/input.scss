@@ -1,0 +1,57 @@
+@import "~theme";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input {
+    outline: none;
+    text-indent: map-get($abs_spacing, 4);
+    @include themed() {
+        border: 1px solid getThemeColor("border");
+        background-color: getThemeColor("bg_2");
+    }
+}
+
+.input[data-isValid="false"] {
+    @include themed() {
+        border: 1px solid getThemeColor("error");
+    }
+}
+
+.message {
+    font-size: map-get($font-sizes, "xs");
+    font-family: Inter;
+    position: absolute;
+    bottom: map-get($abs_spacing, 3);
+    left: 0;
+}
+
+.message[data-isValid="false"] {
+    @include themed() {
+        color: getThemeColor("error");
+    }
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-internal-autofill-selected,
+input:-internal-autofill-previewed {
+    @include themed() {
+        background-color: getThemeColor("bg_1") !important;
+    }
+}
+
+.input:focus {
+    @include themed() {
+        border: 1px solid getThemeColor("active_font");
+        background-color: getThemeColor("bg_1");
+    }
+}

@@ -7,6 +7,7 @@ interface CssExports {
   'oneLiners': string;
   'subtext': string;
   'title': string;
+  'titleIcons': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

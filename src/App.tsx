@@ -11,6 +11,7 @@ import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "./reducers";
 import { ScrollUp } from "./components/ScrollUp";
+import { ContactSection } from "./sections/ContactSection";
 
 interface AppProps extends ThemedProps {}
 
@@ -31,6 +32,7 @@ const App: React.FC<AppProps> = (props) => {
                 <WorkSection />
                 <SkillsSection />
                 <ExperienceSection />
+                <ContactSection />
                 <ScrollUp />
               </>
             }
