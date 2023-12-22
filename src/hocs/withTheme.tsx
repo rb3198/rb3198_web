@@ -1,5 +1,5 @@
 import { Theme } from "rb3198/types/enum/Theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { THEME_COOKIE } from "rb3198/constants/cookies";
 
@@ -31,6 +31,11 @@ export const withTheme = <P extends Object>(
 ) => {
   const WithTheme: React.FC<P & WithThemeProps> = (props) => {
     const [theme, setTheme] = useState(getDefaultTheme());
+
+    useEffect(() => {
+      const body = document.getElementsByTagName("body")[0];
+      body.setAttribute("data-theme", theme.toString());
+    }, [theme]);
 
     const toggleTheme = () => {
       const newTheme = theme === Theme.Dark ? Theme.Light : Theme.Dark;
