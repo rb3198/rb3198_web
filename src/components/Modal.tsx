@@ -24,6 +24,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   const closeModal = useCallback(() => {
     const body = document.getElementsByTagName("body")[0];
     body.setAttribute("data-modal-open", "false");
+    onClose();
   }, [onClose]);
 
   const renderModalHeader = useCallback(() => {
