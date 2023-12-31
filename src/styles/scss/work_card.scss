@@ -60,13 +60,14 @@
 .cardText {
     text-align: justify;
     margin-top: map-get($abs_spacing, 6);
-    margin-bottom: map-get($abs_spacing, 6);
     font-size: map-get($font-sizes, "m");
     font-family: Raleway;
 }
 
 .actionsContainer {
     display: flex;
+    flex-grow: 1;
+    align-items: center;
 }
 
 .gitButton {
@@ -84,10 +85,8 @@
 
 .techStackContainer {
     display: flex;
-    flex-grow: 1;
     flex-direction: column;
     justify-content: flex-end;
-    margin-top: map-get($abs_spacing, 6);
 }
 
 .techStackFacet {
