@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "rb3198/styles/scss/work_card.scss";
 import { GitLink } from "./GitLink";
 import { Button } from "./Button";
@@ -12,6 +12,12 @@ import {
   PiHammerDuotone,
 } from "react-icons/pi";
 import { TechStack } from "rb3198/types/TechStack";
+import { ProjectDetailModal } from "./ProjectDetailModal";
+import {
+  GalleryImage,
+  TabularProjectData,
+} from "rb3198/types/TabularProjectData";
+import { Gallery } from "./Gallery";
 
 export interface WorkCardProps {
   title: string;
@@ -20,6 +26,8 @@ export interface WorkCardProps {
   timeline: string;
   gitLinkConfig: GitLinkConfig;
   techStack: TechStack;
+  images?: GalleryImage[];
+  tabularProjectData: TabularProjectData[];
 }
 
 export const WorkCard: React.FC<WorkCardProps> = ({
@@ -29,7 +37,19 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   description,
   gitLinkConfig,
   techStack,
+  images,
+  tabularProjectData,
 }) => {
+  const [modalActive, setModalActive] = useState(false);
+  const [activeImgIdx, setActiveImgIdx] = useState(0);
+
+  const openModal = useCallback(() => {
+    setModalActive(true);
+  }, []);
+  const closeModal = useCallback(() => {
+    setModalActive(false);
+  }, []);
+
   const renderTitleAndDesc = useCallback(() => {
     return (
       <>
@@ -46,11 +66,11 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     );
   }, [title, description]);
 
-  const renderViewMoreAndGitLinks = useCallback(() => {
+  const renderReadMoreAndGitLinks = useCallback(() => {
     const { label, link } = gitLinkConfig;
     return (
       <div className={styles.actionsContainer}>
-        <Button containerClasses={styles.readMore}>
+        <Button containerClasses={styles.readMore} onClick={openModal}>
           <p>Read More</p>
           <BiChevronRight />
         </Button>
@@ -62,7 +82,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({
         />
       </div>
     );
-  }, [gitLinkConfig]);
+  }, [gitLinkConfig, openModal]);
 
   const renderTechStack = useCallback(() => {
     if (!techStack) {
@@ -98,18 +118,40 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     return (
       <div className={styles.textContainer}>
         {renderTitleAndDesc()}
-        {renderViewMoreAndGitLinks()}
+        {renderReadMoreAndGitLinks()}
         {renderTechStack()}
       </div>
     );
-  }, [renderTitleAndDesc, renderViewMoreAndGitLinks]);
+  }, [renderTitleAndDesc, renderReadMoreAndGitLinks]);
+
+  const renderImages = useCallback(() => {
+    if (!images || images.length === 0) {
+      return null;
+    }
+    return <Gallery images={images} />;
+  }, [images]);
 
   return (
-    <div className={styles.card}>
-      <div className={styles.content}>
-        {renderContent()}
-        <div style={{ display: "flex", flex: 1, background: "#aaa" }}></div>
+    <>
+      <div className={styles.card}>
+        <div className={styles.content}>
+          {renderContent()}
+          {renderImages()}
+          {/* {imgSrc && (
+            <div
+              className={styles.mainImg}
+              style={{ backgroundImage: `url(${imgSrc})` }}
+            ></div>
+          )} */}
+        </div>
       </div>
-    </div>
+      {modalActive && (
+        <ProjectDetailModal
+          onClose={closeModal}
+          title={title}
+          tabularProjectData={tabularProjectData}
+        />
+      )}
+    </>
   );
 };

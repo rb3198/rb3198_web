@@ -1,0 +1,52 @@
+@import "~theme";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+
+.imgWithSelections {
+    min-width: map-get($pc_spacing, 5);
+    display: flex;
+    flex-direction: column;
+}
+
+.mainImg {
+    display: flex;
+    background-repeat: no-repeat;
+    min-width: map-get($pc_spacing, 5);
+    background-size: contain;
+    background-position: center;
+    overflow: hidden;
+    max-height: 100%;
+    flex-grow: 1;
+}
+
+.imgSelectionsRow {
+    display: flex;
+}
+
+.imgSelectionsContainer {
+    display: flex;
+    flex-grow: .1;
+    flex-direction: column;
+    width: 100%;
+    font-family: Inter;
+}
+
+.imgSelections {
+    display: flex;
+    height: map-get($abs_spacing, 12);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: map-get($font-sizes, "m");
+}
+
+.imgSelections[data-active="true"],
+.imgSelections:hover {
+    @include themed() {
+        color: getThemeColor("accent");
+    }
+}
+
+.imgSelections[data-active="true"] {
+    font-weight: bold;
+}

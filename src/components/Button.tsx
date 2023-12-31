@@ -10,11 +10,10 @@ export interface ButtonProps
   size?: "s" | "m" | "l" | "xl";
 }
 
-const forbiddenDomKeys = ["containerClasses"];
-
-const initDomProps: { [key: string]: any } = {};
+const forbiddenDomKeys = ["containerClasses", "children"];
 
 export const Button: React.FC<ButtonProps> = (props) => {
+  const initDomProps: { [key: string]: any } = {};
   const { containerClasses, children, size = "m", disabled = false } = props;
   const domProps = Object.keys(props)
     .filter((key) => !forbiddenDomKeys.includes(key))
