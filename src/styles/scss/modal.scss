@@ -33,7 +33,7 @@
     h3 {
         font-size: map-get($font-sizes, "xxl");
         @include themed() {
-            color: getThemeColor("active_font");
+            color: getThemeColor("inactive_font");
         }
     }
 }
