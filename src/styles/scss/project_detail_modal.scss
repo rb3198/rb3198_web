@@ -1,0 +1,33 @@
+@import "~theme";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+
+.tabHeadsContainer {
+    display: flex;
+    margin-bottom: map-get($abs_spacing, 4);
+}
+
+.tabHead {
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: Inter;
+    font-weight: 600;
+    margin-right: map-get($abs_spacing, 5);
+    padding-bottom: map-get($abs_spacing, 2);
+    font-size: map-get($font-sizes, "m");
+    text-transform: capitalize;
+}
+
+.tabHead:hover {
+    @include themed() {
+        color: getThemeColor("accent");
+        border-bottom: map-get($abs_spacing, 1) solid getThemeColor("accent");
+    }
+}
+
+.tabHead[data-isActive="true"] {
+    @include themed() {
+        color: getThemeColor("accent");
+        border-bottom: map-get($abs_spacing, 1) solid getThemeColor("accent");
+    }
+}
