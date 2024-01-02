@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "rb3198/styles/scss/header_navigation.mobile.scss";
 import { RootReducer } from "rb3198/reducers";
 import { connect, ConnectedProps } from "react-redux";
@@ -33,14 +33,21 @@ const HeaderNavigationComponent: React.FC<
   setNavActive,
 }) => {
   const [drawerClosing, setDrawerClosing] = useState(false);
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const closeNavigation = useCallback(() => {
     setDrawerClosing(true);
-    setTimeout(() => {
+    closeTimeout.current = setTimeout(() => {
       setNavActive(false);
       setDrawerClosing(false);
     }, DRAWER_ANIM_DURATION);
   }, [setNavActive]);
+
+  useEffect(() => {
+    return () => {
+      closeTimeout.current && clearTimeout(closeTimeout.current);
+    };
+  }, []);
 
   const renderCloseIcon = useCallback(() => {
     return (

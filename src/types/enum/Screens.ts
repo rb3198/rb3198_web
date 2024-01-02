@@ -1,3 +1,6 @@
+/**
+ * Enum mapping the upper limits for each screen type
+ */
 export enum Screens {
   Mobile = 599,
   Small = 767,

@@ -1,2 +1,3 @@
-export const SET_ACTIVE_SECTION = "SET_ACTIVE_SECTION";
-export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
+export type ActiveSectionActionTypes = "SET_ACTIVE_SECTION";
+export type ScreenSizeActionTypes = "SET_SCREEN_SIZE";
+export type NavActiveActionTypes = "SET_NAV_ACTIVE";

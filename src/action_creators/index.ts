@@ -1,4 +1,3 @@
-import { SET_ACTIVE_SECTION, SET_SCREEN_SIZE } from "rb3198/action_types";
 import { NavActiveAction } from "rb3198/types/NavActiveAction";
 import { ScreenSizeAction } from "rb3198/types/ScreenSizeAction";
 import { SectionAction } from "rb3198/types/SectionAction";
@@ -10,7 +9,7 @@ export const setActiveSection: ActionCreator<SectionAction> = (
   newSection: Sections
 ) => {
   return {
-    type: SET_ACTIVE_SECTION,
+    type: "SET_ACTIVE_SECTION",
     value: newSection,
   };
 };
@@ -19,7 +18,7 @@ export const setScreenSize: ActionCreator<ScreenSizeAction> = (
   value: Screens
 ) => {
   return {
-    type: SET_SCREEN_SIZE,
+    type: "SET_SCREEN_SIZE",
     value,
   };
 };

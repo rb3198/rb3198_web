@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { withTheme } from "./hocs/withTheme";
 import { Header } from "./components/Header";
 import { HelloSection } from "./sections/HelloSection";
