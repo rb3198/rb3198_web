@@ -12,6 +12,8 @@ import { Provider } from "react-redux";
 import { rootReducer } from "./reducers";
 import { ScrollUp } from "./components/ScrollUp";
 import { ContactSection } from "./sections/ContactSection";
+import { ScreenSizeListener } from "./components/ScreenSizeListener";
+import { HeaderNavigationMobile } from "./components/HeaderNavigation.mobile";
 
 interface AppProps extends ThemedProps {}
 
@@ -21,6 +23,7 @@ const App: React.FC<AppProps> = (props) => {
   const { theme, toggleTheme } = props;
   return (
     <Provider store={store}>
+      <ScreenSizeListener />
       <HashRouter>
         <Routes>
           <Route
@@ -28,6 +31,10 @@ const App: React.FC<AppProps> = (props) => {
             element={
               <>
                 <Header toggleTheme={toggleTheme} theme={theme} />
+                <HeaderNavigationMobile
+                  theme={theme}
+                  toggleTheme={toggleTheme}
+                />
                 <HelloSection />
                 <WorkSection />
                 <SkillsSection />
