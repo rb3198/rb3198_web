@@ -1,22 +1,24 @@
 $screens: (
     // pairs of (min-width, max-width)
     mobile: (0, 599px),
-    sm: (0, 767px),
+    sm: (0, 768px),
     tablet_portrait: (600px, 899px),
-    md: (768px),
-    tablet_landscape: (900px, 1199px),
-    desktop: (1200px, 1799px),
+    md: (769px),
+    tablet_landscape: (900px, 1368px),
+    desktop: (1369px, 1799px),
     big_desktop: (1800px),
 );
 
-@mixin media($screen_type) {
-    @if length(map-get($screens, $screen_type)) == 2 {
-        @media (min-width: nth(map-get($screens, $screen_type), 1)) and (max-width: nth(map-get($screens, $screen_type), 2)) {
-            @content;
-        }
-    } @else {
-        @media (min-width: nth(map-get($screens, $screen_type), 1)) {
-            @content;
+@mixin media($screen_types...) {
+    @each $screen_type in $screen_types {
+        @if length(map-get($screens, $screen_type)) == 2 {
+            @media (min-width: nth(map-get($screens, $screen_type), 1)) and (max-width: nth(map-get($screens, $screen_type), 2)) {
+                @content;
+            }
+        } @else {
+            @media (min-width: nth(map-get($screens, $screen_type), 1)) {
+                @content;
+            }
         }
     }
 }
