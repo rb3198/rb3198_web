@@ -37,3 +37,6 @@ $pc_spacing: (
     11: 91.6667%,
     12: 100%,
 );
+
+// header + section padding for small screens
+$sm_padding: map-get($abs_spacing, 9);
