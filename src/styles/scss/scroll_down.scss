@@ -1,4 +1,6 @@
 @import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme/_screens";
 
 .container {
     position: absolute;
@@ -10,8 +12,18 @@
     align-items: center;
     font-family: Raleway;
     cursor: pointer;
+    svg {
+        font-size: map-get($font-sizes, "xl");
+    }
     p {
         margin-bottom: map-get($abs_spacing, 7);
+        font-size: map-get($font-sizes, "m");
+        @include media("tablet_portrait") {
+            font-size: map-get($font-sizes, "l");
+        }
+        @include media("mobile") {
+            margin-bottom: map-get($abs_spacing, 5);
+        }
     }
 }
 
