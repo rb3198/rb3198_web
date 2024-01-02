@@ -1,6 +1,7 @@
 @import "~theme/_spacings";
 @import "~theme/_fonts";
 @import "~theme/";
+@import "~theme/_screens";
 
 .helloSection {
     flex-direction: column;
@@ -16,6 +17,9 @@
     font-size: map-get($font-sizes, "subtitle");
     font-family: "Playfair Display";
     font-weight: 600;
+    @include media("mobile") {
+        font-size: map-get($font-sizes, "xxl");
+    }
 }
 
 .title {
@@ -25,11 +29,18 @@
     @include themed() {
         color: getThemeColor("active_font");
     }
+    @include media("mobile") {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .titleIcons {
     margin-left: map-get($abs_spacing, 8);
     font-size: map-get($font-sizes, "xxl");
+    @include media("mobile") {
+        margin-left: 0;
+    }
 }
 
 .titleIcons path {
@@ -51,5 +62,6 @@
     margin-top: map-get($abs_spacing, 7);
     max-width: 800px;
     font-family: Raleway;
-    font-size: map-get($font-sizes, "s");
+    font-size: map-get($font-sizes, "m");
+    text-align: justify;
 }
