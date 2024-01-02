@@ -8,6 +8,8 @@ import { ConnectedProps, connect } from "react-redux";
 import { Screens } from "rb3198/types/enum/Screens";
 import { IconContext } from "react-icons";
 import { TbMenuDeep } from "react-icons/tb";
+import { Dispatch, bindActionCreators } from "redux";
+import { setNavActive } from "rb3198/action_creators";
 
 interface HeaderProps extends ThemedProps {}
 
@@ -20,6 +22,7 @@ const HeaderComponent: React.FC<ConnectedHeaderProps> = ({
   theme,
   screenSize,
   toggleTheme,
+  setNavActive,
 }) => {
   const pageScrollTop = useRef(window?.scrollY);
 
@@ -69,6 +72,11 @@ const HeaderComponent: React.FC<ConnectedHeaderProps> = ({
       </>
     );
   }, [theme, toggleTheme]);
+
+  const onMenuIconClick = useCallback(() => {
+    setNavActive(true);
+  }, [setNavActive]);
+
   return (
     <header className={styles.header} id={HEADER_ID}>
       <h1 className={styles.logo} onClick={handleLogoClick}>
@@ -77,7 +85,7 @@ const HeaderComponent: React.FC<ConnectedHeaderProps> = ({
       <div className={styles.navAndToggleContainer}>
         {screenSize <= Screens.Small ? (
           <IconContext.Provider value={{ className: styles.menuIcon }}>
-            <TbMenuDeep />
+            <TbMenuDeep onClick={onMenuIconClick} />
           </IconContext.Provider>
         ) : (
           renderDesktopNav()
@@ -94,5 +102,11 @@ const mapStateToProps = (state: RootReducer) => {
   };
 };
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    setNavActive: bindActionCreators(setNavActive, dispatch),
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 export const Header = connector(HeaderComponent);
