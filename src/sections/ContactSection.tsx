@@ -20,7 +20,12 @@ const ContactLink: React.FC<ContactLinkProps> = memo((props) => {
   const { href, icon: Icon, label, value } = props;
   return (
     <IconContext.Provider value={{ className: styles.contactIcon }}>
-      <a href={href} className={styles.contactLink} target="_blank">
+      <a
+        href={href}
+        className={styles.contactLink}
+        target="_blank"
+        title={label}
+      >
         <Icon />
         <div>
           <p className={styles.contactLinkTitle}>{label}</p>

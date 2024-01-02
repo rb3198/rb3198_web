@@ -7,7 +7,7 @@ export const validateName: ValidationFunction = (name: string) => {
   const isValid = /^[a-z ,.'-]+$/i.test(name);
   return {
     isValid,
-    message: isValid ? "" : "Please enter a valid alphanumeric name.",
+    message: isValid ? "" : "Name must be alphanumeric.",
   };
 };
 
