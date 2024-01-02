@@ -1,1 +1,2 @@
 export const SET_ACTIVE_SECTION = "SET_ACTIVE_SECTION";
+export const SET_SCREEN_SIZE = "SET_SCREEN_SIZE";
