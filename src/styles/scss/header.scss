@@ -23,8 +23,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: map-get($abs_spacing, 14);
-    padding-right: map-get($abs_spacing, 14);
+    padding-left: $common_header_section_padding;
+    padding-right: $common_header_section_padding;
     font-weight: bold;
     transition: transform .25s ease-in, box-shadow 0s .25s;
     @include themed() {
