@@ -6,6 +6,12 @@
 .helloSection {
     flex-direction: column;
     justify-content: center;
+    @include media("sm") {
+        min-height: 100vh !important;
+    }
+    @include screenHeightCutoff {
+        min-height: 100vh !important;
+    }
 }
 
 .subtext {

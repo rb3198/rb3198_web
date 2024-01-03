@@ -6,6 +6,7 @@
 .contactContainer {
     display: flex;
     width: 100%;
+    padding-bottom: 4vh;
     @include media("mobile") {
         flex-direction: column;
         flex-flow: column-reverse;
@@ -29,6 +30,9 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    @include media("sm") {
+        flex: unset;
+    }
     @include media("mobile") {
         flex-direction: row;
         justify-content: space-between;

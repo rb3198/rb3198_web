@@ -12,13 +12,19 @@ $screens: (
 @mixin media($screen_types...) {
     @each $screen_type in $screen_types {
         @if length(map-get($screens, $screen_type)) == 2 {
-            @media (min-width: nth(map-get($screens, $screen_type), 1)) and (max-width: nth(map-get($screens, $screen_type), 2)) {
+            @media screen and (min-width: nth(map-get($screens, $screen_type), 1)) and (max-width: nth(map-get($screens, $screen_type), 2)) {
                 @content;
             }
         } @else {
-            @media (min-width: nth(map-get($screens, $screen_type), 1)) {
+            @media screen and (min-width: nth(map-get($screens, $screen_type), 1)) {
                 @content;
             }
         }
+    }
+}
+
+@mixin screenHeightCutoff() {
+    @media screen and (min-height: 950px) {
+        @content;
     }
 }

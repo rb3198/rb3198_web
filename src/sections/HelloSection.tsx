@@ -41,7 +41,7 @@ export const HelloSection: React.FC<HelloSectionProps> = (props) => {
         className={styles.detailedDescription}
         dangerouslySetInnerHTML={{ __html: DETAILED_DESC }}
       ></p>
-      <ScrollDown scrollTo={Sections.Work} />
+      <ScrollDown scrollTo={Sections.Skills} />
     </Section>
   );
 };

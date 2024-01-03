@@ -1,5 +1,6 @@
 @import "~theme/_spacings";
 @import "~theme/_fonts";
+@import "~theme/_screens";
 
 .inProgress {
     position: absolute;
@@ -8,4 +9,7 @@
     transform: translateX(-50%);
     font-size: map-get($font-sizes, "m");
     font-family: "Raleway";
+    @include media("mobile") {
+        position: relative;
+    }
 }

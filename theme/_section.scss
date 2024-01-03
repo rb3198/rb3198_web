@@ -16,5 +16,9 @@
     }
     @include media("sm") {
         padding: 0 $sm_padding;
+        min-height: 75vh;
+    }
+    @include screenHeightCutoff {
+        min-height: 65vh;
     }
 }
