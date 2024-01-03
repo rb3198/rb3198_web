@@ -2,19 +2,29 @@
 @import "~theme/_spacings";
 @import "~theme";
 @import "~theme/_fonts";
+@import "~theme/_screens";
 
 .section {
     @include section;
 
     .title {
         text-decoration: none;
-        width: 25%;
+        width: min-content;
+        padding-left: map-get($abs_spacing, 4);
+        padding-right: map-get($abs_spacing, 14);
         margin-top: map-get($abs_spacing, 12);
         margin-bottom: map-get($abs_spacing, 12);
         @include themed() {
             border-bottom: 1px solid getThemeColor("inactive_font");
         }
-        
+        @include media("mobile") {
+            padding-left: map-get($abs_spacing, 10);
+            padding-right: map-get($abs_spacing, 10);
+            margin-left: map-get($pc_spacing, 6);
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
         h1 {
             font-size: map-get($font-sizes, "subtitle");
             font-family: "Playfair Display";
