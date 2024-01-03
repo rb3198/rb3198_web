@@ -30,7 +30,7 @@ const sde1Props: ContentBoxProps = {
 
 const sdeProps: ContentBoxProps = {
   type: "left",
-  title: "Associate Software Development Engineer",
+  title: "Associate Software Developer",
   at: "CarTrade Tech, India",
   timeline: "November 2020 - September 2021",
   bullets: [
@@ -43,7 +43,7 @@ const sdeProps: ContentBoxProps = {
 
 const ctInternProps: ContentBoxProps = {
   type: "left",
-  title: "Associate Software Development Engineer",
+  title: "Software Development Intern",
   at: "CarTrade Tech, India",
   timeline: "November 2020 - September 2021",
   bullets: [
