@@ -28,7 +28,6 @@ type SubsectionData = {
 
 const subsectionTitleIconConfig = {
   className: styles.subsectionTitleIcon,
-  size: "28px",
 };
 
 const techIconConfig = {
