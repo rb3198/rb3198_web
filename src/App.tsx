@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { HelloSection } from "./sections/HelloSection";
 import { ThemedProps } from "./types/interfaces/ThemedProps";
 import { SkillsSection } from "./sections/SkillsSection";
-import { WorkSection } from "./sections/WorkSection";
+// import { WorkSection } from "./sections/WorkSection";
 import { ExperienceSection } from "./sections/ExperienceSection";
 import { Route, HashRouter, Routes } from "react-router-dom";
 import { legacy_createStore as createStore } from "redux";
@@ -36,7 +36,7 @@ const App: React.FC<AppProps> = (props) => {
                   toggleTheme={toggleTheme}
                 />
                 <HelloSection />
-                <WorkSection />
+                {/* <WorkSection /> */}
                 <SkillsSection />
                 <ExperienceSection />
                 <ContactSection />
