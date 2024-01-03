@@ -40,3 +40,6 @@ $pc_spacing: (
 
 // header + section padding for small screens
 $sm_padding: map-get($abs_spacing, 9);
+
+// header + section padding for tablets (portrait + landscape)
+$common_header_section_padding: map-get($abs_spacing, 14);

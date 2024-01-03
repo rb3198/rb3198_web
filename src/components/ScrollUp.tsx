@@ -18,9 +18,7 @@ const ScrollUpComponent: React.FC<ReduxProps> = ({ activeSection }) => {
         (activeSection === Sections.Hello && styles.hidden) || ""
       }`}
     >
-      <IconContext.Provider
-        value={{ size: "24px", className: styles.scrollUpIcon }}
-      >
+      <IconContext.Provider value={{ className: styles.scrollUpIcon }}>
         <BsChevronDoubleUp />
       </IconContext.Provider>
     </div>
