@@ -101,14 +101,28 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
     }
     return rows;
   }, [images, activeImgIdx, maxSelectionsPerRow]);
+
+  const onImgLoad: React.ReactEventHandler<HTMLImageElement> = useCallback(
+    (event) => {
+      const { target } = event;
+      // @ts-ignore
+      target.classList.add(styles.loaded);
+    },
+    []
+  );
+
   const { src, alt } = images[activeImgIdx] || {};
   return (
     <div className={styles.imgWithSelections}>
-      <div
-        className={styles.mainImg}
-        style={{ backgroundImage: `url(${src})` }}
-        title={alt}
-      ></div>
+      <div className={styles.mainImgContainer} title={alt}>
+        <img
+          src={src}
+          key={src}
+          loading="lazy"
+          onLoad={onImgLoad}
+          className={styles.mainImg}
+        />
+      </div>
       <div className={styles.imgSelectionsContainer}>{renderSelections()}</div>
     </div>
   );

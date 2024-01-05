@@ -5,7 +5,9 @@ interface CssExports {
   'imgSelectionsContainer': string;
   'imgSelectionsRow': string;
   'imgWithSelections': string;
+  'loaded': string;
   'mainImg': string;
+  'mainImgContainer': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
