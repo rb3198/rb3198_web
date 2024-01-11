@@ -1,11 +1,15 @@
 @import "~theme/_spacings";
 @import "~theme/_fonts";
 @import "~theme";
+@import "~theme/_screens";
 
 .mainContainer {
     display: flex;
-    width: 100%;
+    width: map-get($pc_spacing, 12);
     min-height: 0;
+    @include media("sm") {
+        flex-direction: column-reverse;
+    }
 }
 
 // Text content
@@ -30,14 +34,11 @@
     border: solid 6px transparent;
 }
 
-.mainImg {
-    background-repeat: no-repeat;
-    min-width: map-get($pc_spacing, 5);
-    margin-left: map-get($abs_spacing, 7);
-    background-size: contain;
-    background-position: center;
-    overflow: hidden;
-    max-height: 100%;
+.galleryWidthClasses {
+    width: map-get($pc_spacing, 5);
+    @include media("sm") {
+        width: map-get($pc_spacing, 12);
+    }
 }
 
 .title {

@@ -3,10 +3,10 @@
 interface CssExports {
   'contentContainer': string;
   'description': string;
+  'galleryWidthClasses': string;
   'liveLink': string;
   'liveLinkButton': string;
   'mainContainer': string;
-  'mainImg': string;
   'title': string;
 }
 export const cssExports: CssExports;

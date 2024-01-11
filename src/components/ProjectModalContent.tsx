@@ -51,7 +51,9 @@ export const ProjectModalContent: React.FC<ProjectModalContentProps> = ({
           </div>
         ))}
       </div>
-      {images && images.length > 0 && <Gallery images={images} />}
+      {images && images.length > 0 && (
+        <Gallery images={images} widthClasses={styles.galleryWidthClasses} />
+      )}
     </div>
   );
 };
