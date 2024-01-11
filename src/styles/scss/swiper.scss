@@ -33,6 +33,9 @@
     @include themed() {
         background-color: getThemeColor("bg_2");
         box-shadow: 0 0 10px getThemeColor("shadow");
+        svg {
+            color: getThemeColor("active_font");
+        }
     }
     @include media("sm") {
         height: 4.5vw;

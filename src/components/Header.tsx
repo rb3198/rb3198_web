@@ -78,7 +78,7 @@ const HeaderComponent: React.FC<ConnectedHeaderProps> = ({
   }, [setNavActive]);
 
   return (
-    <header className={styles.header} id={HEADER_ID}>
+    <header className={styles.header} id={HEADER_ID} data-theme={theme}>
       <h1 className={styles.logo} onClick={handleLogoClick}>
         RB
       </h1>

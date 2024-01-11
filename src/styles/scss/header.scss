@@ -36,6 +36,10 @@
     }
 }
 
+.header[data-theme="2"].scrolledUp {
+    border-bottom: 1px solid #333;
+}
+
 .header.scrolled {
     transform: translateY(-100%);
 }
