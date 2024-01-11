@@ -4,13 +4,15 @@ import styles from "rb3198/styles/scss/gallery.scss";
 
 interface GalleryProps {
   images: GalleryImage[];
+  widthClasses: string;
   /**
    * Default 3
    */
   maxSelectionsPerRow?: number;
+  showControls?: boolean;
 }
 const DEFAULT_MAX_SELECTIONS_PER_ROW = 3;
-
+const DEFAULT_SHOW_CONTROLS = true;
 interface SelectionProps {
   images: GalleryImage[];
   rowNo: number;
@@ -60,8 +62,12 @@ const Selection: React.FC<SelectionProps> = (props) => {
 };
 
 export const Gallery: React.FC<GalleryProps> = (props) => {
-  const { images, maxSelectionsPerRow = DEFAULT_MAX_SELECTIONS_PER_ROW } =
-    props;
+  const {
+    images,
+    widthClasses,
+    showControls = DEFAULT_SHOW_CONTROLS,
+    maxSelectionsPerRow = DEFAULT_MAX_SELECTIONS_PER_ROW,
+  } = props;
   const [activeImgIdx, setActiveImgIdx] = useState(0);
   const [imgLoaded, setImgLoaded] = useState(false);
   if (!images || images.length === 0) {
@@ -115,7 +121,7 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
 
   const { src, alt } = images[activeImgIdx] || {};
   return (
-    <div className={styles.imgWithSelections}>
+    <div className={`${styles.imgWithSelections} ${widthClasses}`}>
       <div
         className={`${styles.mainImgContainer} ${
           (!imgLoaded && styles.notLoaded) || ""
@@ -130,7 +136,11 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
           className={`${styles.mainImg} ${imgLoaded && styles.loaded}`}
         />
       </div>
-      <div className={styles.imgSelectionsContainer}>{renderSelections()}</div>
+      {(showControls && (
+        <div className={styles.imgSelectionsContainer}>
+          {renderSelections()}
+        </div>
+      )) || <></>}
     </div>
   );
 };
