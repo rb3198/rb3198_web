@@ -6,13 +6,11 @@
     display: flex;
     width: 100%;
     min-height: 0;
-    flex-grow: 1;
 }
 
 // Text content
 .contentContainer {
     overflow: auto;
-    height: 100%;
     padding-top: map-get($abs_spacing, 7);
 }
 

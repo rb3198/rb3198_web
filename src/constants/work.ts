@@ -224,7 +224,7 @@ export const compareCarsCardProps: WorkCardProps = {
 const retailSummary = `
 <p>
 <b>Bikewale Retail</b> is <a href="https://www.bikewale.com/" target="_blank">bikewale.com</a>'s e-commerce arm, selling new motorcycles directly to the consumers. Prior to this, Bikewale's primary focus was selling customer leads to motorcycle dealers. This project is an effort to pivot the primary revenue model to derive revenue from selling motorcycles directly to the consumers.<br><br>
-It simplifies the motorcycle shopping process, bringing the ease of online consumable shopping to two-wheelers and makes the experience complete with <b>test drives</b>. Customers can acquire their chosen motorcycles with a modest upfront payment, and the remaining amount can be covered through deferred payments. Customers are provided real-time updates regarding their motorcycle shipment, from documentation to delivery, making the experience hassle-free.
+It simplifies the motorcycle shopping process, bringing the ease of online consumable shopping to two-wheelers and makes the experience complete with <b>test drives</b>. Customers can acquire their chosen motorcycles with a modest upfront payment, and are provided real-time updates regarding their motorcycle shipment, from documentation to delivery, making the experience hassle-free.
 </p>`;
 
 // TODO: Add Test Drive Screens
