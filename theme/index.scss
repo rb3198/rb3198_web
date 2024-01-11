@@ -86,8 +86,13 @@ body[data-theme="2"][data-modal-open="false"]::-webkit-scrollbar {
     background-color: list.nth($primary_background, 2);
 }
 
+body[data-modal-open="true"] {
+    overflow-y: hidden;
+}
+
 body[data-modal-open="true"]::-webkit-scrollbar {
     background-color: rgba(0,0,0,1);
+    width: 0;
 }
 
 body::-webkit-scrollbar-track {

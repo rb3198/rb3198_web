@@ -23,7 +23,7 @@ import retailFlow from "../../assets/work/retail/retail_flow.svg";
 
 //#region Compare Cars
 
-const compareCarsSummary = `<p><b>Compare Cars</b> is <a href="https://www.carwale.com/compare-cars" target="_blank">carwale.com's car comparison tool</a>, enabling buyers to make informed decisions when purchasing a car. It is an intuitive tool allowing users to compare up to 4 cars at once, saving their time. The tool simplifies the process of researching and comparing cars by presenting information in a structured and easy-to-navigate format. <br> Users can explore and contrast factors including specifications, like engine power, fuel efficiency, etc., features, and more, enabling a nuanced understanding of each vehicle's strengths and weaknesses. The page is SEO optimized, and is always the top result in any Indian car comparison search.</p>`;
+const compareCarsSummary = `<b>Compare Cars</b> is <a href="https://www.carwale.com/compare-cars" target="_blank">carwale.com's car comparison tool</a>, enabling buyers to make informed decisions when purchasing a car. It is an intuitive tool allowing users to compare up to 4 cars at once, saving their time. The tool simplifies the process of researching and comparing cars by presenting information in a structured and easy-to-navigate format. <br> Users can explore and contrast factors including specifications, like engine power, fuel efficiency, etc., features, and more, enabling a nuanced understanding of each vehicle's strengths and weaknesses. The page is SEO optimized, and is always the top result in any Indian car comparison search.`;
 
 const compareCarsImages: GalleryImage[] = [
   {
@@ -222,10 +222,8 @@ export const compareCarsCardProps: WorkCardProps = {
 
 //#region Retail
 const retailSummary = `
-<p>
-<b>Bikewale Retail</b> is <a href="https://www.bikewale.com/" target="_blank">bikewale.com</a>'s e-commerce arm, selling new motorcycles directly to the consumers. Prior to this, Bikewale's primary focus was selling customer leads to motorcycle dealers. This project is an effort to pivot the primary revenue model to derive revenue from selling motorcycles directly to the consumers.<br><br>
-It simplifies the motorcycle shopping process, bringing the ease of online consumable shopping to two-wheelers and makes the experience complete with <b>test drives</b>. Customers can acquire their chosen motorcycles with a modest upfront payment, and the remaining amount can be covered through deferred payments. Customers are provided real-time updates regarding their motorcycle shipment, from documentation to delivery, making the experience hassle-free.
-</p>`;
+<b>Bikewale Retail</b> is <a href="https://www.bikewale.com/" target="_blank">bikewale.com</a>'s e-commerce arm, selling new motorcycles directly to the consumers. Prior to this, Bikewale's primary focus was selling customer leads to motorcycle dealers. This project is an effort to pivot the primary revenue model to derive revenue from selling motorcycles directly to the consumers. <br><br>
+It simplifies the motorcycle shopping process, bringing the ease of online consumable shopping to two-wheelers and makes the experience complete with <b>test drives</b>. Customers can acquire their chosen motorcycles with a modest upfront payment, and are provided real-time updates regarding their motorcycle shipment, from documentation to delivery, making the experience hassle-free.`;
 
 // TODO: Add Test Drive Screens
 const retailProductGallery: GalleryImage[] = [
@@ -241,7 +239,7 @@ const retailProductGallery: GalleryImage[] = [
   },
   {
     src: retailMyBookings,
-    label: "My Bookings Page",
+    label: "My Bookings",
     alt: "Page to see all of your bookings",
   },
 ];

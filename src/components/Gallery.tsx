@@ -4,13 +4,15 @@ import styles from "rb3198/styles/scss/gallery.scss";
 
 interface GalleryProps {
   images: GalleryImage[];
+  widthClasses: string;
   /**
    * Default 3
    */
   maxSelectionsPerRow?: number;
+  showControls?: boolean;
 }
 const DEFAULT_MAX_SELECTIONS_PER_ROW = 3;
-
+const DEFAULT_SHOW_CONTROLS = true;
 interface SelectionProps {
   images: GalleryImage[];
   rowNo: number;
@@ -60,16 +62,26 @@ const Selection: React.FC<SelectionProps> = (props) => {
 };
 
 export const Gallery: React.FC<GalleryProps> = (props) => {
-  const { images, maxSelectionsPerRow = DEFAULT_MAX_SELECTIONS_PER_ROW } =
-    props;
+  const {
+    images,
+    widthClasses,
+    showControls = DEFAULT_SHOW_CONTROLS,
+    maxSelectionsPerRow = DEFAULT_MAX_SELECTIONS_PER_ROW,
+  } = props;
   const [activeImgIdx, setActiveImgIdx] = useState(0);
+  const [imgLoaded, setImgLoaded] = useState(false);
   if (!images || images.length === 0) {
     return null;
   }
 
   useEffect(() => {
     setActiveImgIdx(0);
+    setImgLoaded(false);
   }, [images]);
+
+  useEffect(() => {
+    setImgLoaded(false);
+  }, [activeImgIdx]);
 
   const renderSelections = useCallback(() => {
     const noOfImages = images.length;
@@ -102,28 +114,33 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
     return rows;
   }, [images, activeImgIdx, maxSelectionsPerRow]);
 
-  const onImgLoad: React.ReactEventHandler<HTMLImageElement> = useCallback(
-    (event) => {
-      const { target } = event;
-      // @ts-ignore
-      target.classList.add(styles.loaded);
-    },
-    []
-  );
+  const onImgLoad: React.ReactEventHandler<HTMLImageElement> =
+    useCallback(() => {
+      setImgLoaded(true);
+    }, []);
 
   const { src, alt } = images[activeImgIdx] || {};
   return (
-    <div className={styles.imgWithSelections}>
-      <div className={styles.mainImgContainer} title={alt}>
+    <div className={`${styles.imgWithSelections} ${widthClasses}`}>
+      <div
+        className={`${styles.mainImgContainer} ${
+          (!imgLoaded && styles.notLoaded) || ""
+        }`}
+        title={alt}
+      >
         <img
           src={src}
           key={src}
           loading="lazy"
           onLoad={onImgLoad}
-          className={styles.mainImg}
+          className={`${styles.mainImg} ${imgLoaded && styles.loaded}`}
         />
       </div>
-      <div className={styles.imgSelectionsContainer}>{renderSelections()}</div>
+      {(showControls && (
+        <div className={styles.imgSelectionsContainer}>
+          {renderSelections()}
+        </div>
+      )) || <></>}
     </div>
   );
 };

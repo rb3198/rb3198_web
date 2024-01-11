@@ -18,6 +18,10 @@ import {
   TabularProjectData,
 } from "rb3198/types/TabularProjectData";
 import { Gallery } from "./Gallery";
+import { useVerticalTextOverflow } from "rb3198/hooks/useVerticalTextOverflow";
+import { RootReducer } from "rb3198/reducers";
+import { ConnectedProps, connect } from "react-redux";
+import { Screens } from "rb3198/types/enum/Screens";
 
 export interface WorkCardProps {
   title: string;
@@ -30,7 +34,9 @@ export interface WorkCardProps {
   tabularProjectData: TabularProjectData[];
 }
 
-export const WorkCard: React.FC<WorkCardProps> = ({
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
   title,
   subtitle,
   timeline,
@@ -38,10 +44,11 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   gitLinkConfig,
   techStack,
   images,
+  screenSize,
   tabularProjectData,
 }) => {
   const [modalActive, setModalActive] = useState(false);
-  const [activeImgIdx, setActiveImgIdx] = useState(0);
+  const [_, summaryBoxRectRef] = useVerticalTextOverflow();
 
   const openModal = useCallback(() => {
     setModalActive(true);
@@ -49,22 +56,6 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   const closeModal = useCallback(() => {
     setModalActive(false);
   }, []);
-
-  const renderTitleAndDesc = useCallback(() => {
-    return (
-      <>
-        <h3 className={styles.cardTitle}>{title}</h3>
-        <p className={styles.cardSubtitle}>
-          {subtitle}, <span>{timeline}</span>
-        </p>
-        <hr className={styles.subtitleSeparator} />
-        <p
-          className={styles.cardText}
-          dangerouslySetInnerHTML={{ __html: description }}
-        ></p>
-      </>
-    );
-  }, [title, description]);
 
   const renderReadMoreAndGitLinks = useCallback(() => {
     const { label, link } = gitLinkConfig;
@@ -84,6 +75,30 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     );
   }, [gitLinkConfig, openModal]);
 
+  const renderTitle = useCallback(() => {
+    return (
+      <>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardSubtitle}>
+          {subtitle + (screenSize === Screens.Mobile ? "" : ", ")}
+          <span>{timeline}</span>
+        </p>
+        <hr className={styles.subtitleSeparator} />
+      </>
+    );
+  }, [title, screenSize, renderReadMoreAndGitLinks]);
+
+  const renderDescription = useCallback(() => {
+    return (
+      <div className={styles.cardTextContainer} ref={summaryBoxRectRef}>
+        <p
+          className={styles.cardText}
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></p>
+      </div>
+    );
+  }, [description]);
+
   const renderTechStack = useCallback(() => {
     if (!techStack) {
       return null;
@@ -91,9 +106,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     const { frontend, backend, dbs, tools } = techStack;
     return (
       <div className={styles.techStackContainer}>
-        <IconContext.Provider
-          value={{ size: "24px", className: styles.techStackIcon }}
-        >
+        <IconContext.Provider value={{ className: styles.techStackIcon }}>
           <div className={styles.techStackFacet}>
             <PiMonitorDuotone />
             <p>{frontend.join(", ")}</p>
@@ -117,19 +130,28 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   const renderContent = useCallback(() => {
     return (
       <div className={styles.textContainer}>
-        {renderTitleAndDesc()}
-        {renderReadMoreAndGitLinks()}
-        {renderTechStack()}
+        {renderTitle()}
+        <div className={styles.descButtonsStackContainer}>
+          {renderDescription()}
+          {renderReadMoreAndGitLinks()}
+          {renderTechStack()}
+        </div>
       </div>
     );
-  }, [renderTitleAndDesc, renderReadMoreAndGitLinks]);
+  }, [renderTitle, renderDescription, renderReadMoreAndGitLinks]);
 
   const renderImages = useCallback(() => {
     if (!images || images.length === 0) {
       return null;
     }
-    return <Gallery images={images} />;
-  }, [images]);
+    return (
+      <Gallery
+        images={images}
+        showControls={screenSize > Screens.Mobile}
+        widthClasses={styles.galleryWidthClasses}
+      />
+    );
+  }, [images, screenSize]);
 
   return (
     <>
@@ -137,12 +159,6 @@ export const WorkCard: React.FC<WorkCardProps> = ({
         <div className={styles.content}>
           {renderContent()}
           {renderImages()}
-          {/* {imgSrc && (
-            <div
-              className={styles.mainImg}
-              style={{ backgroundImage: `url(${imgSrc})` }}
-            ></div>
-          )} */}
         </div>
       </div>
       {modalActive && (
@@ -155,3 +171,14 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     </>
   );
 };
+
+const mapStateToProps = (state: RootReducer) => {
+  const { screenSize } = state;
+  return {
+    screenSize,
+  };
+};
+
+const connector = connect(mapStateToProps);
+
+export const WorkCard = connector(WorkCardComponent);

@@ -8,6 +8,7 @@ interface CssExports {
   'loaded': string;
   'mainImg': string;
   'mainImgContainer': string;
+  'notLoaded': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

@@ -1,38 +1,42 @@
 @import "~theme";
 @import "~theme/_spacings";
 @import "~theme/_fonts";
+@import "~theme/_screens";
 
 .imgWithSelections {
     min-width: map-get($pc_spacing, 5);
-    width: map-get($pc_spacing, 5);
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .mainImgContainer {
     display: flex;
-    background-image: url("../../../assets/icons/loading_light.svg");
     background-size: 40px;
     background-position: center;
     background-repeat: no-repeat;
     width: map-get($pc_spacing, 12);
     overflow: hidden;
     max-height: 100%;
-    flex-grow: 1;
 }
 
-:global(.theme--dark) .mainImgContainer {
+.mainImgContainer.notLoaded {
+    background-image: url("../../../assets/icons/loading_light.svg");
+}
+
+:global(.theme--dark) .mainImgContainer.notLoaded {
     background-image: url("../../../assets/icons/loading_dark.svg");
 }
+
 .mainImg {
     object-position: center;
     object-fit: contain;
     width: map-get($pc_spacing, 12);
     aspect-ratio: 1 / 1;
     opacity: 0;
-    transition: opacity .05s ease-in-out;
-    @include themed() {
-        background-color: getThemeColor("bg_0");
+    transition: opacity .5s ease-in-out;
+    @include media("sm") {
+        aspect-ratio: 1.75;
     }
 }
 
@@ -46,14 +50,14 @@
 
 .imgSelectionsContainer {
     display: flex;
-    flex-grow: .1;
     flex-direction: column;
-    width: 100%;
+    width: map-get($pc_spacing, 12);
     font-family: Inter;
 }
 
 .imgSelections {
     display: flex;
+    text-align: center;
     height: map-get($abs_spacing, 12);
     justify-content: center;
     align-items: center;
