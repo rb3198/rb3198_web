@@ -26,6 +26,8 @@ export const setScreenSize: ActionCreator<ScreenSizeAction> = (
 export const setNavActive: ActionCreator<NavActiveAction> = (
   value: boolean
 ) => {
+  const body = document.getElementsByTagName("body")[0];
+  body.setAttribute("data-nav-open", String(value));
   return {
     type: "SET_NAV_ACTIVE",
     value,
