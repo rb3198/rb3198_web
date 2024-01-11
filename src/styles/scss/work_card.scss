@@ -95,8 +95,8 @@
     @include media("mobile") {
         border-width: 1px;
         width: map-get($pc_spacing, 8);
-        margin-top: map-get($abs_spacing, 2);
-        margin-bottom: map-get($abs_spacing, 2);
+        margin-top: map-get($abs_spacing, 4);
+        margin-bottom: map-get($abs_spacing, 4);
     }
 }
 

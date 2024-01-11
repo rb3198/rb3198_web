@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { setScreenSize } from "rb3198/action_creators";
+import { setNavActive, setScreenSize } from "rb3198/action_creators";
 import { ConnectedProps, connect } from "react-redux";
 import { Dispatch, bindActionCreators } from "redux";
 import { Screens } from "rb3198/types/enum/Screens";
@@ -7,7 +7,7 @@ import { Screens } from "rb3198/types/enum/Screens";
 type ReduxProps = ConnectedProps<typeof connector>;
 
 const ScreenSizeListenerComponent: React.FC<ReduxProps> = (props) => {
-  const { setScreenSize } = props;
+  const { setScreenSize, setNavActive } = props;
 
   const screenSizeListener = useCallback(() => {
     switch (true) {
@@ -32,7 +32,10 @@ const ScreenSizeListenerComponent: React.FC<ReduxProps> = (props) => {
       default:
         break;
     }
-  }, [setScreenSize]);
+    if (window.innerWidth > Screens.Small) {
+      setNavActive(false);
+    }
+  }, [setScreenSize, setNavActive]);
 
   useEffect(() => {
     screenSizeListener();
@@ -49,6 +52,7 @@ const ScreenSizeListenerComponent: React.FC<ReduxProps> = (props) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     setScreenSize: bindActionCreators(setScreenSize, dispatch),
+    setNavActive: bindActionCreators(setNavActive, dispatch),
   };
 };
 
