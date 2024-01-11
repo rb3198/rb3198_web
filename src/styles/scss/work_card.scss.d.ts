@@ -5,8 +5,11 @@ interface CssExports {
   'card': string;
   'cardSubtitle': string;
   'cardText': string;
+  'cardTextContainer': string;
   'cardTitle': string;
   'content': string;
+  'descButtonsStackContainer': string;
+  'galleryWidthClasses': string;
   'gitButton': string;
   'readMore': string;
   'subtitleSeparator': string;
