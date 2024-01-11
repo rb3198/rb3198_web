@@ -36,9 +36,7 @@ export const GitLink: React.FC<GitLinkProps> = ({
       data-uppercase={isUppercase}
     >
       <div className={styles.iconAndLabelContainer}>
-        <IconContext.Provider
-          value={{ className: styles.iconClasses, size: "14px" }}
-        >
+        <IconContext.Provider value={{ className: styles.iconClasses }}>
           <SiGithub />
         </IconContext.Provider>
         {label || "View Code"}
