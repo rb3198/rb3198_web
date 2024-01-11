@@ -54,6 +54,9 @@
     @include themed() {
         color: getThemeColor("inactive_font");
     }
+    @include media("mobile") {
+        margin-top: map-get($abs_spacing, 4);
+    }
 }
 
 .cardSubtitle {
