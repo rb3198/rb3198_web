@@ -29,6 +29,7 @@ export interface WorkCardProps {
   description: string;
   timeline: string;
   gitLinkConfig: GitLinkConfig;
+  liveLink?: string;
   techStack: TechStack;
   images?: GalleryImage[];
   tabularProjectData: TabularProjectData[];
@@ -45,6 +46,7 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
   techStack,
   images,
   screenSize,
+  liveLink,
   tabularProjectData,
 }) => {
   const [modalActive, setModalActive] = useState(false);
@@ -59,21 +61,36 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
 
   const renderReadMoreAndGitLinks = useCallback(() => {
     const { label, link } = gitLinkConfig;
+    const redirect = () => {
+      window.open(liveLink, "_blank");
+    };
+
     return (
       <div className={styles.actionsContainer}>
         <Button containerClasses={styles.readMore} onClick={openModal}>
           <p>Read More</p>
           <BiChevronRight />
         </Button>
-        <GitLink
-          isUppercase={!!link}
-          classes={styles.gitButton}
-          label={label}
-          gitLink={link}
-        />
+        {liveLink ? (
+          <Button
+            containerClasses={styles.liveLinkButton}
+            onClick={redirect}
+            disabled={false}
+          >
+            <p>View Live</p>
+            <BiChevronRight />
+          </Button>
+        ) : (
+          <GitLink
+            isUppercase={!!link}
+            classes={styles.gitButton}
+            label={label}
+            gitLink={link}
+          />
+        )}
       </div>
     );
-  }, [gitLinkConfig, openModal]);
+  }, [gitLinkConfig, liveLink, openModal]);
 
   const renderTitle = useCallback(() => {
     return (

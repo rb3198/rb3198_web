@@ -11,6 +11,7 @@ interface CssExports {
   'descButtonsStackContainer': string;
   'galleryWidthClasses': string;
   'gitButton': string;
+  'liveLinkButton': string;
   'readMore': string;
   'subtitleSeparator': string;
   'techStackContainer': string;
