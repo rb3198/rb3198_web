@@ -25,7 +25,7 @@
     }
 }
 
-.tabHead[data-isActive="true"] {
+.tabHead[data-active="true"] {
     @include themed() {
         color: getThemeColor("accent");
         border-bottom: map-get($abs_spacing, 1) solid getThemeColor("accent");
