@@ -3,6 +3,7 @@
 interface CssExports {
   'header': string;
   'logo': string;
+  'menuIcon': string;
   'navAndToggleContainer': string;
   'scrolled': string;
   'scrolledUp': string;

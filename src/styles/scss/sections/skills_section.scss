@@ -2,6 +2,7 @@
 @import "~theme";
 @import "~theme/_spacings";
 @import "~theme/_z_levels";
+@import "~theme/_screens";
 
 .skillsSection {
     flex-direction: column;
@@ -15,10 +16,19 @@
 
 .titleIconTd {
     width: map-get($abs_spacing, 12);
+    svg {
+        font-size: map-get($font-sizes, "xxl");
+    }
+    @include media("mobile", "tablet_portrait", "tablet_landscape") {
+        width: map-get($abs_spacing, 9);
+    }
 }
 
 .subsectionTitleIcon {
-    margin-right: map-get($abs_spacing, 5);
+    margin-right: map-get($abs_spacing, 0);
+    @include media("tablet_landscape") {
+        margin-right: map-get($abs_spacing, 5);
+    }
 }
 
 .subsectionTitleIcon path{
@@ -38,6 +48,26 @@
     a {
         cursor: pointer;
     }
+    svg {
+        font-size: map-get($font-sizes, "subtitle");
+        @include media("mobile") {
+            font-size: map-get($font-sizes, "xxl");
+        }
+    }
+    @include media("sm") {
+        padding-top: map-get($abs_spacing, 7);
+        padding-bottom: map-get($abs_spacing, 7);
+        padding-right: map-get($abs_spacing, 12);
+    }
+    @include media("mobile") {
+        padding-top: map-get($abs_spacing, 6);
+        padding-bottom: map-get($abs_spacing, 6);
+        padding-right: map-get($abs_spacing, 8);
+    }
+}
+
+.skillTd:last-of-type {
+    padding-right: 0;
 }
 
 .skillTooltip {

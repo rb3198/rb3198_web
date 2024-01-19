@@ -1,14 +1,17 @@
 @import "~theme/_fonts.scss";
 @import "~theme/_spacings.scss";
 @import "~theme/";
+@import "~theme/_screens";
 
 .navigationList {
     display: flex;
     align-items: center;
     list-style: none;
+
     a {
         text-decoration: none;
         text-transform: capitalize;
+
         @include themed() {
             color: getThemeColor("inactive_font");
         }
@@ -21,7 +24,7 @@
     }
 
     li {
-        font-size: map-get($font-sizes,"m");
+        font-size: map-get($font-sizes, "m");
         margin-right: map-get($abs_spacing, 7);
         font-weight: normal;
         font-family: "Raleway";
@@ -30,8 +33,19 @@
 
     a[data-selected="true"] {
         font-weight: bold;
+
         @include themed() {
             color: getThemeColor("active_font");
+        }
+    }
+
+    @include media("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+        li {
+            font-size: map-get($font-sizes, "xxl");
+            margin-right: 0;
+            margin-bottom: map-get($abs_spacing, 7);
         }
     }
 }

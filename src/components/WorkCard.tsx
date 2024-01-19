@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "rb3198/styles/scss/work_card.scss";
 import { GitLink } from "./GitLink";
 import { Button } from "./Button";
@@ -12,6 +12,16 @@ import {
   PiHammerDuotone,
 } from "react-icons/pi";
 import { TechStack } from "rb3198/types/TechStack";
+import { ProjectDetailModal } from "./ProjectDetailModal";
+import {
+  GalleryImage,
+  TabularProjectData,
+} from "rb3198/types/TabularProjectData";
+import { Gallery } from "./Gallery";
+import { useVerticalTextOverflow } from "rb3198/hooks/useVerticalTextOverflow";
+import { RootReducer } from "rb3198/reducers";
+import { ConnectedProps, connect } from "react-redux";
+import { Screens } from "rb3198/types/enum/Screens";
 
 export interface WorkCardProps {
   title: string;
@@ -19,50 +29,92 @@ export interface WorkCardProps {
   description: string;
   timeline: string;
   gitLinkConfig: GitLinkConfig;
+  liveLink?: string;
   techStack: TechStack;
+  images?: GalleryImage[];
+  tabularProjectData: TabularProjectData[];
 }
 
-export const WorkCard: React.FC<WorkCardProps> = ({
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
   title,
   subtitle,
   timeline,
   description,
   gitLinkConfig,
   techStack,
+  images,
+  screenSize,
+  liveLink,
+  tabularProjectData,
 }) => {
-  const renderTitleAndDesc = useCallback(() => {
+  const [modalActive, setModalActive] = useState(false);
+  const [_, summaryBoxRectRef] = useVerticalTextOverflow();
+
+  const openModal = useCallback(() => {
+    setModalActive(true);
+  }, []);
+  const closeModal = useCallback(() => {
+    setModalActive(false);
+  }, []);
+
+  const renderReadMoreAndGitLinks = useCallback(() => {
+    const { label, link } = gitLinkConfig;
+    const redirect = () => {
+      window.open(liveLink, "_blank");
+    };
+
+    return (
+      <div className={styles.actionsContainer}>
+        <Button containerClasses={styles.readMore} onClick={openModal}>
+          <p>Read More</p>
+          <BiChevronRight />
+        </Button>
+        {liveLink ? (
+          <Button
+            containerClasses={styles.liveLinkButton}
+            onClick={redirect}
+            disabled={false}
+          >
+            <p>View Live</p>
+            <BiChevronRight />
+          </Button>
+        ) : (
+          <GitLink
+            isUppercase={!!link}
+            classes={styles.gitButton}
+            label={label}
+            gitLink={link}
+          />
+        )}
+      </div>
+    );
+  }, [gitLinkConfig, liveLink, openModal]);
+
+  const renderTitle = useCallback(() => {
     return (
       <>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardSubtitle}>
-          {subtitle}, <span>{timeline}</span>
+          {subtitle + (screenSize === Screens.Mobile ? "" : ", ")}
+          <span>{timeline}</span>
         </p>
         <hr className={styles.subtitleSeparator} />
+      </>
+    );
+  }, [title, screenSize, renderReadMoreAndGitLinks]);
+
+  const renderDescription = useCallback(() => {
+    return (
+      <div className={styles.cardTextContainer} ref={summaryBoxRectRef}>
         <p
           className={styles.cardText}
           dangerouslySetInnerHTML={{ __html: description }}
         ></p>
-      </>
-    );
-  }, [title, description]);
-
-  const renderViewMoreAndGitLinks = useCallback(() => {
-    const { label, link } = gitLinkConfig;
-    return (
-      <div className={styles.actionsContainer}>
-        <Button containerClasses={styles.readMore}>
-          <p>Read More</p>
-          <BiChevronRight />
-        </Button>
-        <GitLink
-          isUppercase={!!link}
-          classes={styles.gitButton}
-          label={label}
-          gitLink={link}
-        />
       </div>
     );
-  }, [gitLinkConfig]);
+  }, [description]);
 
   const renderTechStack = useCallback(() => {
     if (!techStack) {
@@ -71,9 +123,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({
     const { frontend, backend, dbs, tools } = techStack;
     return (
       <div className={styles.techStackContainer}>
-        <IconContext.Provider
-          value={{ size: "24px", className: styles.techStackIcon }}
-        >
+        <IconContext.Provider value={{ className: styles.techStackIcon }}>
           <div className={styles.techStackFacet}>
             <PiMonitorDuotone />
             <p>{frontend.join(", ")}</p>
@@ -97,19 +147,55 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   const renderContent = useCallback(() => {
     return (
       <div className={styles.textContainer}>
-        {renderTitleAndDesc()}
-        {renderViewMoreAndGitLinks()}
-        {renderTechStack()}
+        {renderTitle()}
+        <div className={styles.descButtonsStackContainer}>
+          {renderDescription()}
+          {renderReadMoreAndGitLinks()}
+          {renderTechStack()}
+        </div>
       </div>
     );
-  }, [renderTitleAndDesc, renderViewMoreAndGitLinks]);
+  }, [renderTitle, renderDescription, renderReadMoreAndGitLinks]);
+
+  const renderImages = useCallback(() => {
+    if (!images || images.length === 0) {
+      return null;
+    }
+    return (
+      <Gallery
+        images={images}
+        showControls={screenSize > Screens.Mobile}
+        widthClasses={styles.galleryWidthClasses}
+      />
+    );
+  }, [images, screenSize]);
 
   return (
-    <div className={styles.card}>
-      <div className={styles.content}>
-        {renderContent()}
-        <div style={{ display: "flex", flex: 1, background: "#aaa" }}></div>
+    <>
+      <div className={styles.card}>
+        <div className={styles.content}>
+          {renderContent()}
+          {renderImages()}
+        </div>
       </div>
-    </div>
+      {modalActive && (
+        <ProjectDetailModal
+          onClose={closeModal}
+          title={title}
+          tabularProjectData={tabularProjectData}
+        />
+      )}
+    </>
   );
 };
+
+const mapStateToProps = (state: RootReducer) => {
+  const { screenSize } = state;
+  return {
+    screenSize,
+  };
+};
+
+const connector = connect(mapStateToProps);
+
+export const WorkCard = connector(WorkCardComponent);

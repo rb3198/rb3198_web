@@ -1,23 +1,42 @@
 @import "~theme/_fonts";
 @import "~theme";
 @import "~theme/_spacings";
+@import "~theme/_screens";
 
 .contactContainer {
     display: flex;
     width: 100%;
+    padding-bottom: 4vh;
+    @include media("mobile") {
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
 }
 
 .contactForm {
     display: flex;
-    padding-right: 10%;
+    padding-right: 8%;
     flex-direction: column;
     flex: 1;
+    @include media("sm", "tablet_portrait") {
+        padding-right: 4%;
+    }
+    @include media("mobile") {
+        padding-right: 0;
+    }
 }
 
 .contactLinkContainer {
     display: flex;
     flex: 1;
     flex-direction: column;
+    @include media("sm") {
+        flex: unset;
+    }
+    @include media("mobile") {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .contactLink {
@@ -37,42 +56,26 @@
     font-size: map-get($font-sizes, "m");
     margin-bottom: map-get($abs_spacing, 3);
     font-weight: bold;
+    @include media("mobile") {
+        display: none;
+    }
 }
 
 .contactLinkSubtitle {
     font-size: map-get($font-sizes, "s");
+    @include media("mobile") {
+        display: none;
+    }
+}
+
+.contactIcon:last-of-type {
+    @include media("mobile") {
+        margin-right: 0;
+    }
 }
 
 .contactIcon path {
     @include themed() {
         color: getThemeColor("accent");
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .contactContainer {
-        flex-direction: column;
-        flex-flow: column-reverse;
-    }
-
-    .contactLinkContainer {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .contactLinkTitle {
-        display: none;
-    }
-
-    .contactLinkSubtitle {
-        display: none;
-    }
-
-    .contactIcon:last-of-type {
-        margin-right: 0;
-    }
-    
-    .contactForm {
-        padding-right: 0;
     }
 }

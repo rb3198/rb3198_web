@@ -1,0 +1,72 @@
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme";
+@import "~theme/_screens";
+
+.mainContainer {
+    display: flex;
+    width: map-get($pc_spacing, 12);
+    min-height: 0;
+    @include media("sm") {
+        flex-direction: column-reverse;
+    }
+}
+
+// Text content
+.contentContainer {
+    overflow: auto;
+    padding-top: map-get($abs_spacing, 5);
+}
+
+.contentContainer::-webkit-scrollbar {
+    width: 16px;
+}
+
+.contentContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px transparent;
+    border-radius: 8px;
+    border: solid 6px transparent;
+}
+
+.contentContainer::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px rgba($color: #888, $alpha: 0.25);
+    border-radius: 8px;
+    border: solid 6px transparent;
+}
+
+.galleryWidthClasses {
+    width: map-get($pc_spacing, 5);
+    @include media("sm") {
+        width: map-get($pc_spacing, 12);
+    }
+}
+
+.title {
+    font-family: Inter;
+    margin-bottom: map-get($abs_spacing, 5);
+}
+
+.description {
+    font-family: Raleway;
+    text-align: justify;
+    font-size: map-get($font-sizes, "m");
+    margin-bottom: map-get($abs_spacing, 5);
+}
+
+.liveLink {
+    text-decoration: none;
+}
+
+.liveLinkButton {
+    margin-top: map-get($abs_spacing, 7);
+    margin-bottom: map-get($abs_spacing, 7);
+    display: flex;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.liveLinkButton:hover {
+    @include themed() {
+        background-color: getThemeColor("accent");
+    }
+}

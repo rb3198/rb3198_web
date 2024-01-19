@@ -1,6 +1,7 @@
 @import "~theme/";
 @import "~theme/_z_levels";
 @import "~theme/_spacings";
+@import "~theme/_screens";
 
 .swiperContainer {
     position: relative;
@@ -32,6 +33,17 @@
     @include themed() {
         background-color: getThemeColor("bg_2");
         box-shadow: 0 0 10px getThemeColor("shadow");
+        svg {
+            color: getThemeColor("active_font");
+        }
+    }
+    @include media("sm") {
+        height: 4.5vw;
+        width: 4.5vw;
+    }
+    @include media("mobile") {
+        height: 7.5vw;
+        width: 7.5vw;
     }
     z-index: map-get($zLevels, 6);
 }
@@ -64,6 +76,10 @@
     cursor: pointer;
     @include themed() {
         border: 1px solid getThemeColor("border");
+    }
+    @include media("mobile") {
+        height: 1vw;
+        width: 8vw;
     }
 }
 

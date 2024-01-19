@@ -1,0 +1,83 @@
+@import "~theme";
+@import "~theme/_z_levels";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme/_screens";
+
+.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: map-get($zLevels, "max");
+    overflow-x: hidden;
+}
+
+.closeIconContainer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    font-size: map-get($font-sizes, "xxl");
+    margin-bottom: map-get($abs_spacing, 7);
+    @include themed() {
+        path {
+            color: getThemeColor("active_font");
+        }
+    }
+}
+
+.navBg {
+    height: 100%;
+    width: 100%;
+    @include themed() {
+        background-color: getThemeColor("modal_bottom_bg");
+    }
+}
+
+.navDrawer {
+    width: map-get($pc_spacing, 9);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    transform: translateX(100%);
+    animation: .5s slideIn ease-in-out;
+    animation-fill-mode: forwards;
+    padding-top: map-get($abs_spacing, 9);
+    padding-left: map-get($abs_spacing, 9);
+    padding-right: map-get($abs_spacing, 9);
+    @include themed() {
+        background-color: getThemeColor("bg_0");
+    }
+    @include media("mobile") {
+        width: map-get($pc_spacing, 12);
+    }
+}
+
+.drawerShadow {
+    box-shadow: -10px 0 10px #333;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.navDrawer[data-closing="true"] {
+    animation: .5s slideOut ease-in-out;
+}

@@ -1,22 +1,38 @@
 @import "~theme/_spacings";
 @import "~theme/_z_levels";
 @import "~theme";
+@import "~theme/_fonts";
+@import "~theme/_screens";
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    right: map-get($abs_spacing, 10);
+    right: $common_header_section_padding;
     bottom: 0;
-    transform: translateY(- map-get($abs_spacing, 7));
+    transform: translate(0, - map-get($abs_spacing, 7));
     transition: transform .25s ease-in-out;
     height: 60px;
     width: 60px;
     border-radius: 50%;
     cursor: pointer;
     @include themed() {
-        background-color: getThemeColor("bg_2");
+        background-color: getThemeColor("bg_3");
+    }
+    font-size: map-get($font-sizes, "xl");
+    @include media("sm") {
+        right: $sm_padding;
+    }
+    @include media("mobile") {
+        height: 44px;
+        width: 44px;
+        transform: translate(25%, - map-get($abs_spacing, 7));
+    }
+}
+
+.container {
+    @include themed() {
         box-shadow: 0 0 5px getThemeColor("shadow");
     }
 }

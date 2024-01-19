@@ -2,6 +2,7 @@
 @import "~theme/index.scss";
 @import "~theme/fonts.scss";
 @import "~theme/_z_levels";
+@import "~theme/_screens";
 
 .logo {
     @include themed()
@@ -22,13 +23,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: map-get($map: $abs_spacing, $key: 14);
-    padding-right: map-get($map: $abs_spacing, $key: 14);
+    padding-left: $common_header_section_padding;
+    padding-right: $common_header_section_padding;
     font-weight: bold;
     transition: transform .25s ease-in, box-shadow 0s .25s;
     @include themed() {
         background-color: getThemeColor("bg_0");
     }
+    @include media("sm") {
+        padding-left: $sm_padding;
+        padding-right: $sm_padding;
+    }
+}
+
+.header[data-theme="2"].scrolledUp {
+    border-bottom: 1px solid #333;
 }
 
 .header.scrolled {
@@ -45,4 +54,15 @@
 .navAndToggleContainer {
     display: flex;
     align-items: center;
+}
+
+
+.menuIcon {
+    font-size: map-get($font-sizes, "xxl");
+    cursor: pointer;
+    @include themed() {
+        path {
+            color: getThemeColor("active_font");
+        }
+    }
 }

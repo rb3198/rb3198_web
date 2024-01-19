@@ -1,5 +1,6 @@
 @import "~theme/index.scss";
 @import "~theme/_spacings.scss";
+@import "~theme/_screens";
 
 @mixin section {
     display: flex;
@@ -9,5 +10,15 @@
     position: relative;
     @include themed() {
         background-color: getThemeColor("bg_0");
+    }
+    @include media("tablet_portrait", "tablet_landscape") {
+        padding: 0 $common_header_section_padding;
+    }
+    @include media("sm") {
+        padding: 0 $sm_padding;
+        min-height: 75vh;
+    }
+    @include screenHeightCutoff {
+        min-height: 65vh;
     }
 }

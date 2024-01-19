@@ -1,10 +1,17 @@
 @import "~theme/_spacings";
 @import "~theme/_fonts";
 @import "~theme/";
+@import "~theme/_screens";
 
 .helloSection {
     flex-direction: column;
     justify-content: center;
+    @include media("sm") {
+        min-height: 100vh !important;
+    }
+    @include screenHeightCutoff {
+        min-height: 100vh !important;
+    }
 }
 
 .subtext {
@@ -16,6 +23,9 @@
     font-size: map-get($font-sizes, "subtitle");
     font-family: "Playfair Display";
     font-weight: 600;
+    @include media("mobile") {
+        font-size: map-get($font-sizes, "xxl");
+    }
 }
 
 .title {
@@ -25,11 +35,18 @@
     @include themed() {
         color: getThemeColor("active_font");
     }
+    @include media("mobile") {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .titleIcons {
     margin-left: map-get($abs_spacing, 8);
     font-size: map-get($font-sizes, "xxl");
+    @include media("mobile") {
+        margin-left: 0;
+    }
 }
 
 .titleIcons path {
@@ -52,4 +69,5 @@
     max-width: 800px;
     font-family: Raleway;
     font-size: map-get($font-sizes, "s");
+    text-align: justify;
 }

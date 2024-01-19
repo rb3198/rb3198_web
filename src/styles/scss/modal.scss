@@ -1,0 +1,77 @@
+@import "~theme";
+@import "~theme/_z_levels";
+@import "~theme/_spacings";
+@import "~theme/_fonts";
+@import "~theme/_screens";
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: map-get($zLevels, "max");
+}
+.modalBg {
+    height: 100%;
+    width: 100%;
+    @include themed() {
+        background-color: getThemeColor("modal_bottom_bg");
+    }
+}
+
+.modalHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: map-get($font-sizes, "xl");
+    font-family: Inter;
+    text-transform: uppercase;
+    padding: map-get($abs_spacing, 8);
+    svg {
+        cursor: pointer;
+    }
+    h3 {
+        font-size: map-get($font-sizes, "xxl");
+        @include themed() {
+            color: getThemeColor("inactive_font");
+        }
+    }
+}
+
+.modalContentContainer {
+    position: fixed;
+    min-height: 0;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    width: map-get($pc_spacing, 10);
+    height: map-get($pc_spacing, 10);
+    transform: translate(-50%, -50%);
+    z-index: map-get($zLevels, "max");
+    display: flex;
+    flex-direction: column;
+    @include themed() {
+        background-color: getThemeColor("bg_1");
+    }
+}
+
+.modalContent {
+    padding: map-get($abs_spacing, 8);
+    min-height: 0;
+    padding-top: 0;
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    @include media("mobile") {
+        padding: map-get($abs_spacing, 6);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .modalContentContainer {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+    }
+}
