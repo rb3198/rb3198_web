@@ -138,6 +138,22 @@
     }
 }
 
+.liveLinkButton {
+    text-transform: uppercase;
+    display: flex;
+    font-weight: bold;
+    margin-left: map-get($abs_spacing, 5);
+    @include media("mobile") {
+        flex-grow: 1;
+    }
+}
+
+.liveLinkButton:hover {
+    @include themed() {
+        background-color: getThemeColor("accent") !important;
+    }
+}
+
 .gitButton {
     margin-left: map-get($abs_spacing, 5);
     @include media("mobile") {

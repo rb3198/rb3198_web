@@ -224,6 +224,7 @@ export const compareCarsCardProps: WorkCardProps = {
     dbs: ["MySQL"],
     tools: ["Git", "Jenkins", "VS Code"],
   },
+  liveLink: "https://www.carwale.com/compare-cars",
   images: compareCarsImages,
   tabularProjectData: compareCarsTabularData,
 };
@@ -411,6 +412,8 @@ export const retailCardProps: WorkCardProps = {
     dbs: ["MySQL"],
     tools: ["Git", "Jenkins", "VS Code"],
   },
+  liveLink:
+    "https://www.bikewale.com/yamaha-bikes/fascino/book-online/?v=12627&c=28845&d=12865&m=1350&ci=1&ai=63",
   images: retailProductGallery,
   tabularProjectData: retailTabularData,
 };
@@ -518,6 +521,7 @@ export const financeCardProps: WorkCardProps = {
     dbs: ["MySQL"],
     tools: ["Git", "Jenkins", "VS Code"],
   },
+  liveLink: "https://www.carwale.com/car-loan",
   images: financeProductGallery,
   tabularProjectData: financeTabularData,
 };
