@@ -109,7 +109,14 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
             />
           );
         });
-      rows.push(<div className={styles.imgSelectionsRow}>{selections}</div>);
+      rows.push(
+        <div
+          className={styles.imgSelectionsRow}
+          key={`gallery_selection_row_${rowNo}`}
+        >
+          {selections}
+        </div>
+      );
     }
     return rows;
   }, [images, activeImgIdx, maxSelectionsPerRow]);

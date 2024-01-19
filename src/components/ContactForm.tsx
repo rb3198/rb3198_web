@@ -252,7 +252,7 @@ export const ContactForm: React.FC<ContactFormProps> = (props) => {
         placeholder="Message*"
         className={styles.message}
         value={message.value}
-        data-isValid={message.isValid}
+        data-is-valid={message.isValid}
         disabled={formStage === FormStage.Sending}
       />
       {!message.isValid && (

@@ -1,4 +1,5 @@
 import styles from "rb3198/styles/scss/input.scss";
+import { getDomValidProps } from "rb3198/utils";
 
 export interface InputProps
   extends React.DetailedHTMLProps<
@@ -13,16 +14,16 @@ export interface InputProps
 
 export const Input: React.FC<InputProps> = (props) => {
   const { className, message, isValid = true, containerClasses } = props;
+  const domProps = getDomValidProps(props);
   return (
     <div className={`${containerClasses || ""} ${styles.inputContainer}`}>
       <input
-        {...props}
+        {...domProps}
         className={`${styles.input} ${className}`}
-        data-isValid={isValid}
-        data-isMessageShown={!!message}
+        data-is-valid={isValid}
       ></input>
       {message && (
-        <p data-isValid={isValid} className={styles.message}>
+        <p data-is-valid={isValid} className={styles.message}>
           {message}
         </p>
       )}
