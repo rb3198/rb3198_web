@@ -22,7 +22,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = (
             <div
               className={styles.tabHead}
               key={`project-tab-${title}`}
-              data-isActive={activeTabIdx === idx}
+              data-active={activeTabIdx === idx}
               onClick={setActiveTabIdx.bind(this, idx)}
             >
               {title}
