@@ -25,6 +25,11 @@ import retailTestDriveFlow from "../../assets/work/retail/retail_test_drive_flow
 import retailPotentialLeadsFlow from "../../assets/work/retail/retail_potential_leads.svg";
 import retailPaymentsFlow from "../../assets/work/retail/retail_payment_flow.svg";
 //#endregion
+//#region Finance imports
+import financeLanding from "../../assets/work/finance/finance_landing.png";
+import financeForm from "../../assets/work/finance/finance_form.png";
+import financeResults from "../../assets/work/finance/finance_results.png";
+//#endregion
 
 //#region Compare Cars
 
@@ -408,6 +413,113 @@ export const retailCardProps: WorkCardProps = {
   },
   images: retailProductGallery,
   tabularProjectData: retailTabularData,
+};
+
+//#endregion
+
+//#region Finance
+const financeSummary = `
+<b>CarTrade Finance</b> is a common module for selling Automobile loans to users of <a href="www.carwale.com/car-loan/">carwale.com</a> and <a href="www.bikewale.com/bike-loan/">bikewale.com</a> that 
+aims to make the cumbersome process of vehicle loan applications easy. Loan applications can be completed at your fingertips.<br>
+Customers only need to fill a two-page form to apply for a loan to finance their vehicle. Banks can be onboarded for any one or both of the applications.<br>
+Customers can offer to exchange vehicles owned by them when applying for a loan for a new one. Using OTP based sign-in, users can track their loan application(s), or hop back in to complete incomplete applications.<br>`;
+
+const financeProductGallery: GalleryImage[] = [
+  {
+    label: "Landing Page",
+    alt: "Landing Page",
+    src: financeLanding,
+  },
+  {
+    label: "Loan Form",
+    alt: "Loan Form",
+    src: financeForm,
+  },
+  {
+    label: "Loan Offers",
+    alt: "Loan Offers",
+    src: financeResults,
+  },
+];
+
+const financeTechGallery: GalleryImage[] = [];
+
+const financeTabbedContent: { [key: string]: TabularProjectData } = {
+  overview: {
+    title: "Product Overview",
+    imgConfig: financeProductGallery,
+    content: [
+      {
+        summary: financeSummary,
+        liveLink: `https://www.carwale.com/car-loan/`,
+      },
+      {
+        title: "Features",
+        summary: `
+        <p>CarTrade Finance makes Vehicle Loan applications easier.</p>
+        <ol style="list-style-position: inside; text-align: justify">
+          <li style="margin-top: 12px;">
+            <b style="font-family: Inter">A Simple Application Process</b>
+            <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+              <li>The customer selects a vehicle they wish to purchase.</li>
+              <li>They then fill a two page form using their mobile number, personal details, and employment details to get the loan, at their convenience.
+              Partially filled form details are saved for the next visit.</li>
+              <li>A list of loan offers are presented right at their fingertips, instantly upon filling the form.</li>
+              <li>Customers can offer their used cars in exchange while filling the application. The loan offers are adjusted accordingly.</li>
+              <li>Loan offers are also emailed to the customers for their convenience.</li>
+            </ul>
+          </li>
+          <li style="margin-top: 12px;">
+            <b style="font-family: Inter">A Single Codebase for Three Applications</b>
+            <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+              <li>A single codebase is shared across three applications - <a href="https://www.carwale.com/car-loan">Carwale</a>, 
+              <a href="https://www.bikewale.com/bike-loan">Bikewale</a>, and <a href="https://www.cartrade.com/car-loan">CarTrade</a>.</li>
+              <li>Helps minimize code and maintain design consistency across applications.</li>
+            </ul>
+          </li>
+          <li style="margin-top: 12px;">
+            <b style="font-family: Inter">Easy Boarding - Deboarding of Banks</b>
+            <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+              <li><b>Over 20 banks are onboarded</b> across the three applications.</li>
+              <li><b>A single panel</b> can be used by Product Owners to board or deboard a bank.</li>
+              <li>Each bank may have their unique API to submit an application, all of which is taken care by the single panel and our application.</li>
+            </ul>
+          </li>
+          <li style="margin-top: 12px;">
+            <b style="font-family: Inter">Integrated across Pages</b>
+            <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+              <li>Many pages, including retail pages, listing pages, used car pages, etc. use this module to integrate vehicle financing without needing the user to navigate to the loan landing page.</li>
+              <li>Mini-forms are maintained for ease of use.</li>
+              <li><b>EMI Calculator</b> is built to let the customer instantly calculate their EMIs based on bank offers.</li>
+            </ul>
+          </li>
+        </ol>
+        `,
+      },
+    ],
+  },
+};
+
+const financeTabularData: TabularProjectData[] =
+  Object.values(financeTabbedContent);
+
+export const financeCardProps: WorkCardProps = {
+  title: "CarTrade Finance",
+  subtitle: "Finance Arm of CarTrade",
+  description: financeSummary,
+  timeline: "November 2020 - September 2021",
+  gitLinkConfig: {
+    label: "Not Available, Private",
+    link: undefined,
+  },
+  techStack: {
+    frontend: ["React.js", "Sass"],
+    backend: [".NET Framework", "gRPC Protocol"],
+    dbs: ["MySQL"],
+    tools: ["Git", "Jenkins", "VS Code"],
+  },
+  images: financeProductGallery,
+  tabularProjectData: financeTabularData,
 };
 
 //#endregion
