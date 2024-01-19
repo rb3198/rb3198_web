@@ -19,6 +19,11 @@ import retailListing from "../../assets/work/retail/retail_listing.png";
 import retailForm from "../../assets/work/retail/retail_form.png";
 import retailMyBookings from "../../assets/work/retail/retail_my_bookings.png";
 import retailFlow from "../../assets/work/retail/retail_flow.svg";
+import retailCreationBackend from "../../assets/work/retail/retail_creation_backend_flow.svg";
+import retailUpdateBackend from "../../assets/work/retail/retail_update_backend_flow.svg";
+import retailTestDriveFlow from "../../assets/work/retail/retail_test_drive_flow.svg";
+import retailPotentialLeadsFlow from "../../assets/work/retail/retail_potential_leads.svg";
+import retailPaymentsFlow from "../../assets/work/retail/retail_payment_flow.svg";
 //#endregion
 
 //#region Compare Cars
@@ -247,8 +252,34 @@ const retailProductGallery: GalleryImage[] = [
 // TODO: Add Test Drive Flow, My Booking Flow
 const retailTechGallery: GalleryImage[] = [
   {
-    label: "Booking Flow",
+    label: "Frontend Flow",
     src: retailFlow,
+    alt: "Frontend Flow",
+  },
+  {
+    label: "Creation Flow",
+    src: retailCreationBackend,
+    alt: "Backend Creation Flow",
+  },
+  {
+    label: "Update Flow",
+    src: retailUpdateBackend,
+    alt: "Backend Update Flow",
+  },
+  {
+    label: "Payment Flow",
+    src: retailPaymentsFlow,
+    alt: "Payment Flow",
+  },
+  {
+    label: "Potential Leads Flow",
+    src: retailPotentialLeadsFlow,
+    alt: "Potential Leads Flow",
+  },
+  {
+    label: "Test Drive Flow",
+    src: retailTestDriveFlow,
+    alt: "Test Drive Flow",
   },
 ];
 
@@ -298,7 +329,62 @@ const retailTabbedContent: { [key: string]: TabularProjectData } = {
   implementation: {
     title: "Technical Details",
     imgConfig: retailTechGallery,
-    content: [],
+    content: [
+      {
+        title: "Robust Core and Payment Flows",
+        summary: `With the help of jobs, we created a robust flow for booking creation and updates. The creation of a booking involved
+        the multiple discrete interactions with the database and other microservices, resulting in multiple points of failure.<br>
+        In case of failures, the service rolled back the changes and created jobs configured with exponential backoff strategy to 
+        attempt the creation again. This ensured that the booking was created and updated consistently. A bot was configured to inform the tech team 
+        about jobs which hadn't run successfully even after 24 hours of attempts.`,
+      },
+      {
+        title: "Handling Updates",
+        summary: `Every booking had a particular status attached to it. This status helped the user and the back-office track the booking, from creation, to payment, to delivery.
+        Since each update to this status was unique and involved side-effects we wanted to implement, we made use of the <i>Factory Pattern</i>, creating
+        <i>Status Update Handlers</i> to handle these side effects on every status update.<br>
+        Again, the updates ran behind a job, which was rolled back and requeued in case of failures, maintaining consistency in the data and ensuring successful updates.`,
+      },
+      {
+        title: "The Payment Flow",
+        summary: `
+        We had created a microservice to abstract the interactions with a third-party Payment Gateway.<br>
+        Transactions made through the Payment Gateway could result in "Success", "Failure", and "Pending" states of the payment. The "Pending" State meant that the bank needed more
+        time to process the payment, resulting in a "Pending" Screen Shown to our customers.<br>
+        A minor problem arose due to these, since the third-party gateway did not offer a callback API we could provide to update the transaction data on our end when this "Pending" state was resolved.<br>
+        Again, we made use of jobs to tackle this:
+        <br> - We created a job that ran every 4 hours. 
+        <br> - It queried all the bookings in our database with "Pending" as their transaction states, and get their transaction IDs.
+        <br> - It then sent a batched API request to the gateway, to query the updated state of given transactions.
+        <br> - Finally, it updated the status on our side  through our microservice, if resolved. The <i>status update handler</i> for appropriate final states then ran the side effects.
+        `,
+      },
+      {
+        title: "The Potential Leads Flow",
+        summary: `
+        <p>Predominantly, Bikewale was a <b>Leads business</b> - Users of the site filled an interest form, and Bikewale forwarded these details to the most relevant automobile dealer to the user.
+        <br>
+        With this project, Bikewale shifted its focus to shipping motorcycles directly to the customer.<br>
+        - However, since this was a new endeavor, we only had a select few motorcycles in our inventory to sell directly.
+        Therefore, the Product team decided to keep both the flows simultaneously, to maintain revenue from both the operations.<br>
+        This led to an interesting problem - some users only filled the interest form <i>even when the motorcycle was available for purchase directly</i>.<br>
+        So, we came up with the <b>Potential Leads Flow</b>.<br>
+        - Every lead generated got processed in the LXMS Microservice. Once this processing was complete, the service emitted an event to which our Booking service subscribed to.
+        <br>- Our service then checked if a <u>Booking Campaign</u> existed on the same city, area as the original lead. It also checked if the user had already used our service using his mobile number.
+        <br>- If a booking campaign did exist, and the user was not aware of this service, we sent a WhatsApp message to the user, informing them of the automobile being available for sale directly.
+        <br><br>This flow led to a whopping increase in the number of bookings made through our platform, <b>increasing them by ~5x</b> within a month of go-live.
+        </p>
+        `,
+      },
+      {
+        title: "Test Drives",
+        // TODO
+        summary: `
+        The <i>Test Drive Service</i> was created to enable customers to test-ride the vehicle pre-purchase. It was integrated with the Booking Service with the help of a simple flag in booking campaigns.
+        If the flag was true, a test drive was available in that area for the vehicle. A new microservice was spawned along with its own database to handle these test drives.
+        `,
+      },
+    ],
   },
 };
 
