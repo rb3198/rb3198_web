@@ -15,7 +15,7 @@
 // Text content
 .contentContainer {
     overflow: auto;
-    padding-top: map-get($abs_spacing, 7);
+    padding-top: map-get($abs_spacing, 5);
 }
 
 .contentContainer::-webkit-scrollbar {
@@ -50,6 +50,7 @@
     font-family: Raleway;
     text-align: justify;
     font-size: map-get($font-sizes, "m");
+    margin-bottom: map-get($abs_spacing, 5);
 }
 
 .liveLink {

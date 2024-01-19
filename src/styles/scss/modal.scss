@@ -2,6 +2,7 @@
 @import "~theme/_z_levels";
 @import "~theme/_spacings";
 @import "~theme/_fonts";
+@import "~theme/_screens";
 
 .modal {
     position: fixed;
@@ -61,7 +62,10 @@
     padding-top: 0;
     display: flex;
     flex-flow: column;
-    flex: 1
+    flex: 1;
+    @include media("mobile") {
+        padding: map-get($abs_spacing, 6);
+    }
 }
 
 @media screen and (max-width: 900px) {

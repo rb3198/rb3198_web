@@ -37,7 +37,7 @@ const compareCarsImages: GalleryImage[] = [
     src: compareCarsLanding,
   },
   {
-    label: "Finance Options",
+    label: "Financing",
     alt: "Comparison Page - Finance Options",
     src: compareCarsFinance,
   },
