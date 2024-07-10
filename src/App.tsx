@@ -14,6 +14,7 @@ import { ScrollUp } from "./components/ScrollUp";
 import { ContactSection } from "./sections/ContactSection";
 import { ScreenSizeListener } from "./components/ScreenSizeListener";
 import { HeaderNavigationMobile } from "./components/HeaderNavigation.mobile";
+import { Footer } from "./sections/Footer";
 
 interface AppProps extends ThemedProps {}
 
@@ -40,6 +41,7 @@ const App: React.FC<AppProps> = (props) => {
                 <SkillsSection />
                 <ExperienceSection />
                 <ContactSection />
+                <Footer />
                 <ScrollUp />
               </>
             }

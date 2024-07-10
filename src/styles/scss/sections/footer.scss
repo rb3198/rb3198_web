@@ -1,0 +1,89 @@
+@import "~theme/index.scss";
+@import "~theme/_spacings.scss";
+@import "~theme/_screens";
+@import "~theme/fonts";
+
+#footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 15vh;
+    background-color: #181818;
+    padding: 0 map-get($abs_spacing, 42);
+    color: white;
+    font-family: Inter;
+    @include media("tablet_portrait", "tablet_landscape") {
+        padding: 0 $common_header_section_padding;
+    }
+
+    @include media("sm") {
+        padding: 0 $sm_padding;
+        justify-content: flex-start;
+        padding-top: 4vw;
+    }
+}
+
+#summary {
+    display: flex;
+    justify-content: space-between;
+    font-size: map-get($font-sizes, "l");
+    @include media("sm") {
+        flex-direction: column;
+    }
+}
+
+#summary h3 {
+    font-family: "Playfair Display";
+    color: white;
+}
+
+.info {
+    position: absolute;
+    bottom: 1vh;
+    font-size: map-get($font-sizes, "xs");
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaa;
+    @include media("sm") {
+        position: relative;
+        text-align: center;
+        margin-top: 4vw;
+        margin-bottom: 2vw;
+    }
+}
+
+.info b, .info a {
+    color: #aaa;
+}
+
+#navigator {
+    list-style: none;
+    display: flex;
+    @include media("sm") {
+        flex-direction: column;
+        margin-top: 2vw;
+    }
+}
+
+#navigator a {
+    margin-right: 2vw;
+    text-decoration: none;
+    font-size: map-get($font-sizes, "s");
+    @include media("sm") {
+        margin-right: 0;
+        margin-bottom: 1vw;
+    }
+}
+
+#navigator a li {
+    color: #ccc;
+}
+
+#navigator a:hover li {
+    color: white;
+}
+
+#navigator a:last-of-type {
+    margin-right: 0;
+}
