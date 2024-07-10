@@ -6,7 +6,8 @@
 
 .section {
     @include section;
-
+    opacity: 0;
+    transition: opacity 1s ease-in;
     .title {
         text-decoration: none;
         width: min-content;
@@ -39,4 +40,8 @@
             border-bottom: 1px solid getThemeColor("active_font");
         }
     }
+}
+
+.visibleSection {
+    opacity: 1;
 }

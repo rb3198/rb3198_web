@@ -12,7 +12,7 @@ interface HelloSectionProps {}
 
 export const HelloSection: React.FC<HelloSectionProps> = (props) => {
   return (
-    <Section id={Sections.Hello} classes={styles.helloSection}>
+    <Section id={Sections.Hello} classes={styles.helloSection} alwaysVisible>
       <div>
         <p className={styles.subtext}>Hello there, I'm</p>
         <p className={styles.title}>
