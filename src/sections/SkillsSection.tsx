@@ -8,12 +8,14 @@ import {
   PiDatabaseDuotone,
   PiHammerDuotone,
   PiFlaskDuotone,
+  PiBrainDuotone,
 } from "react-icons/pi";
 import { IconContext, IconType } from "react-icons";
 import {
   BACKEND_DEV_DATA,
   DB_DEV_DATA,
   FRONTEND_DEV_DATA,
+  ML_DEV_DATA,
   TESTING_DEV_DATA,
   TOOLS_DEV_DATA,
 } from "rb3198/constants";
@@ -93,8 +95,10 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
       {renderSubsection(
         "Backend Development",
         PiComputerTowerDuotone,
+        // @ts-ignore
         BACKEND_DEV_DATA
       )}
+      {renderSubsection("Machine Learning", PiBrainDuotone, ML_DEV_DATA)}
       {renderSubsection("Databases", PiDatabaseDuotone, DB_DEV_DATA)}
       {renderSubsection("Testing", PiFlaskDuotone, TESTING_DEV_DATA)}
       {renderSubsection("Tools & Platforms", PiHammerDuotone, TOOLS_DEV_DATA)}
