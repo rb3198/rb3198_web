@@ -2,9 +2,9 @@ $screens: (
     // pairs of (min-width, max-width)
     mobile: (0, 599px),
     sm: (0, 768px),
-    tablet_portrait: (600px, 899px),
+    tablet_portrait: (600px, 1023px),
     md: (769px),
-    tablet_landscape: (900px, 1368px),
+    tablet_landscape: (1024px, 1368px),
     desktop: (1369px, 1799px),
     big_desktop: (1800px),
 );
