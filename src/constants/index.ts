@@ -18,6 +18,10 @@ import {
   SiWebpack,
   SiCypress,
   SiJest,
+  SiScikitlearn,
+  SiTensorflow,
+  SiPython,
+  SiPostgresql,
 } from "react-icons/si";
 import { TbHexagonLetterX } from "react-icons/tb";
 import { IconGrpcLogo } from "../../assets/icons/IconGrpcLogo";
@@ -96,6 +100,10 @@ export const DB_DEV_DATA = [
     label: "MySQL",
   },
   {
+    TechIcon: SiPostgresql,
+    label: "Postgres",
+  },
+  {
     TechIcon: SiMongodb,
     label: "MongoDB",
   },
@@ -117,6 +125,21 @@ export const TOOLS_DEV_DATA = [
   {
     TechIcon: SiVisualstudiocode,
     label: "VS Code",
+  },
+];
+
+export const ML_DEV_DATA = [
+  {
+    TechIcon: SiPython,
+    label: "Python",
+  },
+  {
+    TechIcon: SiTensorflow,
+    label: "TensorFlow",
+  },
+  {
+    TechIcon: SiScikitlearn,
+    label: "Sci-kit Learn",
   },
 ];
 

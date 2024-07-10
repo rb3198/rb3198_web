@@ -4,13 +4,73 @@
 @import "~theme/_screens";
 
 .helloSection {
-    flex-direction: column;
-    justify-content: center;
-    @include media("sm") {
+    flex-direction: row !important;
+    align-items: center;
+    @include media("sm", "tablet_portrait") {
+        flex-direction: column-reverse !important;
         min-height: 100vh !important;
     }
     @include screenHeightCutoff {
         min-height: 100vh !important;
+    }
+}
+
+.helloSection > div {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+#dp_container {
+    flex-grow: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include media("tablet_portrait") {
+        flex-grow: 1;
+    }
+}
+
+.dp_ring {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    @include themed() {
+        border: 1px solid getThemeColor("accent");
+    }
+    animation: expand_ring 1s ease-in-out infinite backwards;
+}
+
+#dp_ring_2 {
+    animation-delay: 0.5s;
+}
+
+@keyframes expand_ring {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+#dp {
+    position: relative;
+    border-radius: 50%;
+    height: 15vw;
+    width: 15vw;
+    background-image: url("../../../../assets/dp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: 50% 35%;
+    background-size: cover;
+    @include media("sm", "tablet_portrait") {
+        height: 35vw;
+        width: 35vw;
     }
 }
 

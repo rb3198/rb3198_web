@@ -13,34 +13,42 @@ interface HelloSectionProps {}
 export const HelloSection: React.FC<HelloSectionProps> = (props) => {
   return (
     <Section id={Sections.Hello} classes={styles.helloSection}>
-      <p className={styles.subtext}>Hello there, I'm</p>
-      <p className={styles.title}>
-        Ronit.{" "}
-        <IconContext.Provider value={{ className: styles.titleIcons }}>
-          {titleLinks.map((linkConfig, idx) => {
-            const { href, icon: Icon } = linkConfig;
-            return (
-              <a href={href} key={`title_links_${idx}`} target="_blank">
-                <Icon />
-              </a>
-            );
-          })}
-        </IconContext.Provider>
-      </p>
-      <p className={styles.oneLineDesc}>
-        I'm{" "}
-        <Typing
-          displayDuration={2}
-          eraseDuration={2}
-          typingDuration={2}
-          strings={ONE_LINERS}
-          classes={styles.oneLiners}
-        />
-      </p>
-      <p
-        className={styles.detailedDescription}
-        dangerouslySetInnerHTML={{ __html: DETAILED_DESC }}
-      ></p>
+      <div>
+        <p className={styles.subtext}>Hello there, I'm</p>
+        <p className={styles.title}>
+          Ronit.{" "}
+          <IconContext.Provider value={{ className: styles.titleIcons }}>
+            {titleLinks.map((linkConfig, idx) => {
+              const { href, icon: Icon } = linkConfig;
+              return (
+                <a href={href} key={`title_links_${idx}`} target="_blank">
+                  <Icon />
+                </a>
+              );
+            })}
+          </IconContext.Provider>
+        </p>
+        <p className={styles.oneLineDesc}>
+          I'm{" "}
+          <Typing
+            displayDuration={2}
+            eraseDuration={2}
+            typingDuration={2}
+            strings={ONE_LINERS}
+            classes={styles.oneLiners}
+          />
+        </p>
+        <p
+          className={styles.detailedDescription}
+          dangerouslySetInnerHTML={{ __html: DETAILED_DESC }}
+        ></p>
+      </div>
+      <div id={styles.dp_container}>
+        <div id={styles.dp}>
+          <div className={styles.dp_ring} />
+          <div className={styles.dp_ring} id={styles.dp_ring_2} />
+        </div>
+      </div>
       <ScrollDown scrollTo={Sections.Work} />
     </Section>
   );
