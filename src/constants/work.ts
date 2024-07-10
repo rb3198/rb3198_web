@@ -296,7 +296,7 @@ const retailTabbedContent: { [key: string]: TabularProjectData } = {
     content: [
       {
         summary: retailSummary,
-        liveLink: `https://www.bikewale.com/yamaha-bikes/fascino/book-online/?v=12627&c=28845&d=12865&m=1350&ci=1&ai=63`,
+        liveLink: `https://www.bikewale.com/honda-bikes/sp-125/book-online/?v=12739&m=1334&ci=2&ai=19494&si=12`,
       },
       {
         title: "Features",
@@ -413,7 +413,7 @@ export const retailCardProps: WorkCardProps = {
     tools: ["Git", "Jenkins", "VS Code"],
   },
   liveLink:
-    "https://www.bikewale.com/yamaha-bikes/fascino/book-online/?v=12627&c=28845&d=12865&m=1350&ci=1&ai=63",
+    "https://www.bikewale.com/honda-bikes/sp-125/book-online/?v=12739&m=1334&ci=2&ai=19494&si=12",
   images: retailProductGallery,
   tabularProjectData: retailTabularData,
 };
