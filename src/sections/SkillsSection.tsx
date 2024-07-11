@@ -60,26 +60,29 @@ const SkillsRow: React.FC<{ data: SubsectionData[] }> = memo(({ data }) => {
   return (
     <tr ref={ref}>
       <td colSpan={2}></td>
-      {data.map(({ TechIcon, label }, idx) => {
+      {data.map(({ TechIcon, label }) => {
         const anchorId = `skill_${label
           .split(" ")
           .join("_")
           .replace(".", "dot")}`;
         return (
-          <td colSpan={1} className={styles.skillTd} key={anchorId}>
-            <a id={anchorId}>
-              <IconContext.Provider value={techIconConfig}>
-                <TechIcon className={techIconConfig.className} />
-              </IconContext.Provider>
-            </a>
+          <>
+            <td colSpan={1} className={styles.skillTd} key={anchorId}>
+              <a id={anchorId}>
+                <IconContext.Provider value={techIconConfig}>
+                  <TechIcon className={techIconConfig.className} />
+                </IconContext.Provider>
+              </a>
+            </td>
             <Tooltip
               anchorSelect={`#${anchorId}`}
               place="bottom-end"
+              opacity={1}
               className={styles.skillTooltip}
             >
               {label}
             </Tooltip>
-          </td>
+          </>
         );
       })}
     </tr>
