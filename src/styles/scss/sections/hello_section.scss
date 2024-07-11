@@ -22,7 +22,7 @@
 }
 
 #dp_container {
-    flex-grow: 0.5;
+    flex-grow: 0.75;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +78,9 @@
 .subtext {
     font-family: "Raleway";
     font-size: map-get($font-sizes, "m");
+    @include media("mobile") {
+        margin-top: 2.5vw;
+    }
 }
 
 .oneLineDesc {
