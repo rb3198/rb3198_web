@@ -89,7 +89,7 @@
     font-size: map-get($font-sizes, "subtitle");
 }
 
-.techIcon:hover path {
+.skillTd a:hover path {
     @include themed() {
         color: getThemeColor("accent");
     }
