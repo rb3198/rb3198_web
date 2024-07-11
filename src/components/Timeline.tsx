@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCalendar4Week } from "react-icons/bs";
 import { InView } from "react-intersection-observer";
+import { SkillPill } from "./SkillPill";
 
 export interface ContentBoxProps {
   type: "left" | "right";
@@ -11,14 +12,15 @@ export interface ContentBoxProps {
   at: string;
   timeline: string;
   bullets: string[];
+  skills: string[];
 }
 
 export interface TimelineProps {
-  content: ContentBoxProps[];
+  content: Omit<ContentBoxProps, "type">[];
 }
 
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
-  const { type, title, at, timeline, bullets } = props;
+  const { type, title, at, timeline, bullets, skills } = props;
   const [isExpanded, setIsExpanded] = useState(false);
   const [visible, setVisible] = useState(false);
 
@@ -82,6 +84,20 @@ const ContentBox: React.FC<ContentBoxProps> = (props) => {
     );
   }, [timeline]);
 
+  const renderSkills = useCallback(() => {
+    return (
+      <div id={styles.skillsContainer}>
+        {skills.map((skill) => (
+          <SkillPill
+            label={skill}
+            key={`${title}_${skill}`}
+            marginClasses={styles.skillPillMarginClasses}
+          />
+        ))}
+      </div>
+    );
+  }, [skills, title]);
+
   const containerClasses =
     type === "left" ? styles.leftContainer : styles.rightContainer;
   return (
@@ -96,6 +112,7 @@ const ContentBox: React.FC<ContentBoxProps> = (props) => {
       <div className={styles.content}>
         {renderTitleLocation()}
         {renderBullets()}
+        {renderSkills()}
         {renderTimeline()}
       </div>
     </InView>

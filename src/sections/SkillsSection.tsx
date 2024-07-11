@@ -127,10 +127,10 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
         // @ts-ignore
         BACKEND_DEV_DATA
       )}
-      {renderSubsection("Machine Learning", PiBrainDuotone, ML_DEV_DATA)}
       {renderSubsection("Databases", PiDatabaseDuotone, DB_DEV_DATA)}
-      {renderSubsection("Testing", PiFlaskDuotone, TESTING_DEV_DATA)}
       {renderSubsection("Tools & Platforms", PiHammerDuotone, TOOLS_DEV_DATA)}
+      {renderSubsection("Machine Learning", PiBrainDuotone, ML_DEV_DATA)}
+      {renderSubsection("Testing", PiFlaskDuotone, TESTING_DEV_DATA)}
     </Section>
   );
 };
