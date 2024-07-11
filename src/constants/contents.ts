@@ -12,6 +12,14 @@ const sde2Props: ContentBoxPropsWoTypes = {
     `Optimized Page SEO through keyword targeting and linking, <b>boosting page landings by 400% and conversion rate by 8%</b>.`,
     "Achieved a <b>700% rise in leads & 500% increase in vehicle bookings</b> by implementing potential lead WhatsApp flow using RabbitMQ.",
   ],
+  skills: [
+    "Leadership",
+    "Agile Planning",
+    "Microservice Design",
+    "Messaging Queues",
+    "React",
+    "Mono-repo",
+  ],
 };
 
 const sde1Props: ContentBoxPropsWoTypes = {
@@ -22,6 +30,13 @@ const sde1Props: ContentBoxPropsWoTypes = {
     "<b>Conserved database calls by 40%</b> and prevented DB timeouts through a complete transformation of caching structure.",
     "Developed a WhatsApp module to enable instant and delayed notification sharing with customers.",
     "Built a car comparison tool - https://www.carwale.com/compare-cars, achieving a <b>10% hike in leads generated</b>.",
+  ],
+  skills: [
+    "Caching",
+    "Database Design",
+    "SSR, CSR, Hydration, React",
+    "C# .NET Microservices",
+    "Webpack",
   ],
 };
 
@@ -35,6 +50,13 @@ const sdeProps: ContentBoxPropsWoTypes = {
     "Improved client side and microservice side unit test coverage, from <b>20% to 85%</b> ",
     "Effectively refactored and documented about 20k lines of code into smaller, more manageable React components.",
   ],
+  skills: [
+    "Documentation",
+    "Test Driven Development",
+    "SSR, CSR, Hydration, React",
+    "API Design",
+    "C# .NET Micro-services",
+  ],
 };
 
 const ctInternProps: ContentBoxPropsWoTypes = {
@@ -44,6 +66,7 @@ const ctInternProps: ContentBoxPropsWoTypes = {
   bullets: [
     "Developed an analytical tool for inspecting Webpack chunks, helping the company to optimize dependencies of carwale.com.",
   ],
+  skills: ["Visualization", "Webpack"],
 };
 
 const iiflInternProps: ContentBoxPropsWoTypes = {
@@ -54,6 +77,7 @@ const iiflInternProps: ContentBoxPropsWoTypes = {
     "Worked on designing & implementing an API to be used for Single Sign-On (SSO) by IIFL applications, using Windows Communication Foundation (WCF) framework based on VB.net.",
     "Design of this System was based on Kerberos architecture.",
   ],
+  skills: ["Single Sign On", "WCF"],
 };
 
 export const timelineContent: ContentBoxPropsWoTypes[] = [

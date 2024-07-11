@@ -1,0 +1,31 @@
+@import "~theme";
+@import "~theme/_fonts";
+@import "~theme/_screens";
+
+.container {
+    border-radius: 2vmin;
+    padding: .5vmin 1vmin;
+    font-family: Inter;
+    font-size: map-get($font-sizes, "xs");
+    display: flex;
+    align-items: center;
+    @include themed() {
+        border: 1px solid getThemeColor("accent");
+        background-color: #{getThemeColor("accent") + "20"};
+    }
+    @include media("mobile") {
+        border-radius: 2vmax;
+            padding: .5vmax 1vmax;
+    }
+}
+
+.icon {
+    width: 1vmin;
+    height: 1vmin;
+    margin-right: .5vmin;
+    @include media("mobile") {
+        width: 1vmax;
+            height: 1vmax;
+            margin-right: .5vmax;
+    }
+}

@@ -254,3 +254,13 @@ $contentBg: "bg_2";
         margin-left: map-get($abs_spacing, 3);
     }
 }
+
+#skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skillPillMarginClasses {
+    margin-right: map-get($abs_spacing, 3);
+    margin-bottom: map-get($abs_spacing, 3);
+}

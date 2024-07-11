@@ -14,6 +14,8 @@ interface CssExports {
   'leftContainer': string;
   'rightContainer': string;
   'rotated': string;
+  'skillPillMarginClasses': string;
+  'skillsContainer': string;
   'timeline': string;
   'titleAtContainer': string;
 }
