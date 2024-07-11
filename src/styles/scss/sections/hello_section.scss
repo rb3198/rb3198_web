@@ -6,12 +6,13 @@
 .helloSection {
     flex-direction: row !important;
     align-items: center;
+    min-height: 92vh !important;
     @include media("sm", "tablet_portrait") {
         flex-direction: column-reverse !important;
-        min-height: 100vh !important;
+        min-height: 92vh !important;
     }
     @include screenHeightCutoff {
-        min-height: 100vh !important;
+        min-height: 92vh !important;
     }
 }
 

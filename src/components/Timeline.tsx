@@ -3,6 +3,7 @@ import styles from "rb3198/styles/scss/timeline.scss";
 import { IconContext } from "react-icons";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCalendar4Week } from "react-icons/bs";
+import { InView } from "react-intersection-observer";
 
 export interface ContentBoxProps {
   type: "left" | "right";
@@ -19,6 +20,11 @@ export interface TimelineProps {
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
   const { type, title, at, timeline, bullets } = props;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const onInViewChange = useCallback((visible: boolean) => {
+    visible && setVisible(visible);
+  }, []);
 
   const handleContainerClick = useCallback(() => {
     setIsExpanded(!isExpanded);
@@ -79,16 +85,20 @@ const ContentBox: React.FC<ContentBoxProps> = (props) => {
   const containerClasses =
     type === "left" ? styles.leftContainer : styles.rightContainer;
   return (
-    <div
-      className={`${styles.container} ${containerClasses}`}
+    <InView
+      className={`${styles.container} ${containerClasses} ${
+        visible && styles.final
+      }`}
+      onChange={onInViewChange}
       onClick={handleContainerClick}
+      threshold={0.2}
     >
       <div className={styles.content}>
         {renderTitleLocation()}
         {renderBullets()}
         {renderTimeline()}
       </div>
-    </div>
+    </InView>
   );
 };
 

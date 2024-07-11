@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { memo, useCallback, useRef, useState } from "react";
 import styles from "../styles/scss/sections/skills_section.scss";
 import { Section } from "./Section";
 import { Sections } from "rb3198/types/enum/Sections";
@@ -20,6 +20,7 @@ import {
   TOOLS_DEV_DATA,
 } from "rb3198/constants";
 import { Tooltip } from "react-tooltip";
+import { useInView } from "react-intersection-observer";
 
 interface SkillsSectionProps {}
 
@@ -35,6 +36,58 @@ const subsectionTitleIconConfig = {
 const techIconConfig = {
   className: styles.techIcon,
 };
+
+const SkillsRow: React.FC<{ data: SubsectionData[] }> = memo(({ data }) => {
+  const [ref, inViewport, entry] = useInView();
+  const [visible, setVisible] = useState(false);
+  if (inViewport && !visible) {
+    if (entry) {
+      const { target } = entry;
+      const { childNodes } = target;
+      let i = 0;
+      for (let childId in childNodes) {
+        const child = childNodes[childId];
+        if (child.nodeType === child.ELEMENT_NODE && child.nodeName === "TD") {
+          const el = child as HTMLElement;
+          el.style.transitionDelay = `${i / 4}s`;
+          el.classList.add(styles.visibleTd);
+        }
+        i++;
+      }
+    }
+    setVisible(true);
+  }
+  return (
+    <tr ref={ref}>
+      <td colSpan={2}></td>
+      {data.map(({ TechIcon, label }) => {
+        const anchorId = `skill_${label
+          .split(" ")
+          .join("_")
+          .replace(".", "dot")}`;
+        return (
+          <>
+            <td colSpan={1} className={styles.skillTd} key={anchorId}>
+              <a id={anchorId}>
+                <IconContext.Provider value={techIconConfig}>
+                  <TechIcon className={techIconConfig.className} />
+                </IconContext.Provider>
+              </a>
+            </td>
+            <Tooltip
+              anchorSelect={`#${anchorId}`}
+              place="bottom-end"
+              opacity={1}
+              className={styles.skillTooltip}
+            >
+              {label}
+            </Tooltip>
+          </>
+        );
+      })}
+    </tr>
+  );
+});
 
 export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
   const renderSubsection = useCallback(
@@ -53,31 +106,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
                 <h4 className={styles.subsectionTitle}>{title}</h4>
               </td>
             </tr>
-            <tr>
-              <td colSpan={2}></td>
-              {data.map(({ TechIcon, label }) => {
-                const anchorId = `skill_${label
-                  .split(" ")
-                  .join("_")
-                  .replace(".", "dot")}`;
-                return (
-                  <td colSpan={1} className={styles.skillTd} key={anchorId}>
-                    <a id={anchorId}>
-                      <IconContext.Provider value={techIconConfig}>
-                        <TechIcon className={techIconConfig.className} />
-                      </IconContext.Provider>
-                    </a>
-                    <Tooltip
-                      anchorSelect={`#${anchorId}`}
-                      place="bottom-end"
-                      className={styles.skillTooltip}
-                    >
-                      {label}
-                    </Tooltip>
-                  </td>
-                );
-              })}
-            </tr>
+            <SkillsRow data={data} />
           </tbody>
         </table>
       );

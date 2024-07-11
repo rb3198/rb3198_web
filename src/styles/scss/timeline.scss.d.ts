@@ -10,6 +10,7 @@ interface CssExports {
   'contentTimeline': string;
   'contentTitle': string;
   'expanded': string;
+  'final': string;
   'leftContainer': string;
   'rightContainer': string;
   'rotated': string;
