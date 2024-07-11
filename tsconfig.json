@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
+    // "types": ["./src/Globals.d.ts"],
     "module": "esnext",
     "moduleResolution": "bundler",
     "target": "ES6",
