@@ -6,6 +6,7 @@ import { setActiveSection } from "rb3198/action_creators";
 import { connect, ConnectedProps } from "react-redux";
 import { Sections } from "rb3198/types/enum/Sections";
 import { HashLink } from "react-router-hash-link";
+import { fireImpTracking } from "rb3198/utils/tracking";
 
 interface SectionProps {
   id: Sections;
@@ -36,6 +37,7 @@ const SectionComponent: React.FC<
   onExit,
 }) => {
   const [visible, setVisible] = useState(alwaysVisible || false);
+  const [impTrackingFired, setImpTrackingFired] = useState(false);
   const handleChange = (isInViewport: boolean) => {
     isInViewport && setActiveSection(id);
   };
@@ -44,6 +46,10 @@ const SectionComponent: React.FC<
     if (isInViewport) {
       setVisible(true);
       onEnter && onEnter();
+      if (!impTrackingFired) {
+        fireImpTracking("SectionImpression", "Viewed", id);
+        setImpTrackingFired(true);
+      }
       return;
     }
     onExit && onExit();
