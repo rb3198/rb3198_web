@@ -13,6 +13,7 @@ import { ValidationResponse } from "rb3198/types/ValidationResponse";
 import { EMAIL_HASH } from "rb3198/constants";
 import { FormStage } from "rb3198/types/enum/FormStage";
 import { Loader } from "./Loader";
+import { fireClickTracking } from "rb3198/utils/tracking";
 
 export interface ContactFormProps {
   containerClasses?: string;
@@ -128,8 +129,10 @@ export const ContactForm: React.FC<ContactFormProps> = (props) => {
       e.preventDefault();
       const { name, email, message, subject } = emailInfo;
       if (!validateForm()) {
+        fireClickTracking("form_clicks", "submit", "isValid=false");
         return;
       }
+      fireClickTracking("form_clicks", "submit", "isValid=true");
       try {
         setFormStage(FormStage.Sending);
         const response = await fetch(
