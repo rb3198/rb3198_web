@@ -165,4 +165,15 @@ export const TESTING_DEV_DATA = [
 ];
 
 export const EMAIL_HASH = "d94d454f3a9d1cd57e67577e35006f93";
-export const FORBIDDEN_DOM_KEYS = ["containerClasses", "children", "isValid"];
+export const FORBIDDEN_DOM_KEYS = [
+  "containerClasses",
+  "children",
+  "isValid",
+  "as",
+  "cat",
+  "act",
+  "lab",
+  "trackClick",
+  "trackImp",
+  "threshold",
+];

@@ -1,3 +1,4 @@
+import { getDomValidProps } from "rb3198/utils";
 import { fireClickTracking, fireImpTracking } from "rb3198/utils/tracking";
 import React, {
   AnchorHTMLAttributes,
@@ -8,7 +9,6 @@ import React, {
   PropsWithChildren,
   RefCallback,
   useCallback,
-  useMemo,
   useState,
 } from "react";
 import { useInView } from "react-intersection-observer";
@@ -115,11 +115,12 @@ export const Track: React.FC<TrackProps> = (props) => {
     setImpFired(true);
   }
 
+  const domValidProps = getDomValidProps(props);
   switch (as) {
     case "button":
       return (
         <button
-          {...props}
+          {...domValidProps}
           onClick={clickHandler}
           ref={mergeRefs(ref, passedRef as MutableRefObject<HTMLButtonElement>)}
         >
@@ -129,7 +130,7 @@ export const Track: React.FC<TrackProps> = (props) => {
     case "a":
       return (
         <a
-          {...props}
+          {...domValidProps}
           href={undefined}
           onClick={clickHandler}
           ref={mergeRefs(ref, passedRef as MutableRefObject<HTMLAnchorElement>)}
@@ -140,7 +141,7 @@ export const Track: React.FC<TrackProps> = (props) => {
     case "div":
       return (
         <div
-          {...props}
+          {...domValidProps}
           onClick={clickHandler}
           ref={mergeRefs(ref, passedRef as MutableRefObject<HTMLDivElement>)}
         >
