@@ -22,6 +22,7 @@ import {
   SiTensorflow,
   SiPython,
   SiPostgresql,
+  SiJirasoftware,
 } from "react-icons/si";
 import { TbHexagonLetterX } from "react-icons/tb";
 import { IconGrpcLogo } from "../../assets/icons/IconGrpcLogo";
@@ -32,11 +33,12 @@ import { IconGrpcLogo } from "../../assets/icons/IconGrpcLogo";
 export const ONE_LINERS = [
   "a Full-Stack Developer.",
   "a budding ML Engineer.",
+  "a History Buff.",
   "a Fitness Enthusiast.",
 ];
 
-export const DETAILED_DESC =
-  "I'm an experienced web developer with a genuine passion for creating exceptional user experiences. From the back-end architecture to crafting intuitive user interfaces, I love bringing ideas to life. With a robust foundation in Progressive Web Apps and microservices, I offer three years of hands-on skills in software development. <br /><br/>Currently pursuing an MS in CS at the University of Florida, seeking internships for Summer 2024.<br />Scroll on to explore my projects and technical skills!";
+export const DETAILED_DESC = `I'm an experienced developer with a genuine passion for creating exceptional user experiences. From the back-end architecture to crafting intuitive user interfaces, I love bringing ideas to life. 
+  With a robust foundation in Progressive Web Apps and microservices, I offer three years of hands-on skills in software development. <br /><br/>Currently pursuing an MS in CS at the University of Florida, I'm honing my skills in data science and visualization, and am available for co-ops and full-time employment.<br />Scroll on to explore my projects and technical skills!`;
 
 export const REPO_LINK = "https://www.github.com/rb3198/rb3198_web";
 
@@ -125,6 +127,10 @@ export const TOOLS_DEV_DATA = [
   {
     TechIcon: SiVisualstudiocode,
     label: "VS Code",
+  },
+  {
+    TechIcon: SiJirasoftware,
+    label: "Jira",
   },
 ];
 
