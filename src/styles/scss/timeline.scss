@@ -40,7 +40,8 @@ $contentBg: "bg_2";
     background-color: inherit;
     width: 40%;
     opacity: 0;
-    transition: transform .5s ease-in, opacity .5s ease-in;
+    transition: transform .5s ease, opacity .5s ease;
+    transition-delay: 0.1s;
     @include media("mobile") {
         /* Full-width containers */
         width: 100%;

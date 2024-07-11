@@ -7,7 +7,8 @@
 .section {
     @include section;
     opacity: 0;
-    transition: opacity 1s ease-in;
+    transition-delay: 0.1s;
+    transition: opacity 1s ease;
     .title {
         text-decoration: none;
         width: min-content;
