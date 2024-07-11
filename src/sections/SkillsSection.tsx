@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef, useState } from "react";
+import React, { Fragment, memo, useCallback, useRef, useState } from "react";
 import styles from "../styles/scss/sections/skills_section.scss";
 import { Section } from "./Section";
 import { Sections } from "rb3198/types/enum/Sections";
@@ -66,8 +66,8 @@ const SkillsRow: React.FC<{ data: SubsectionData[] }> = memo(({ data }) => {
           .join("_")
           .replace(".", "dot")}`;
         return (
-          <>
-            <td colSpan={1} className={styles.skillTd} key={anchorId}>
+          <Fragment key={anchorId}>
+            <td colSpan={1} className={styles.skillTd}>
               <a id={anchorId}>
                 <IconContext.Provider value={techIconConfig}>
                   <TechIcon className={techIconConfig.className} />
@@ -82,7 +82,7 @@ const SkillsRow: React.FC<{ data: SubsectionData[] }> = memo(({ data }) => {
             >
               {label}
             </Tooltip>
-          </>
+          </Fragment>
         );
       })}
     </tr>
