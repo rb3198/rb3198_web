@@ -14,7 +14,7 @@ export interface ContentBoxProps {
 }
 
 export interface TimelineProps {
-  content: ContentBoxProps[];
+  content: Omit<ContentBoxProps, "type">[];
 }
 
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
