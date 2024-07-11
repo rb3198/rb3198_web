@@ -7,6 +7,7 @@ import { Gallery } from "./Gallery";
 
 export interface ProjectModalContentProps {
   content: WorkContent[];
+  title: string;
   images?: GalleryImage[];
 }
 
@@ -33,6 +34,7 @@ const LiveLinkButton: React.FC<LiveLinkButtonProps> = ({ href }) => {
 
 export const ProjectModalContent: React.FC<ProjectModalContentProps> = ({
   content,
+  title,
   images,
 }) => {
   return (
@@ -52,7 +54,11 @@ export const ProjectModalContent: React.FC<ProjectModalContentProps> = ({
         ))}
       </div>
       {images && images.length > 0 && (
-        <Gallery images={images} widthClasses={styles.galleryWidthClasses} />
+        <Gallery
+          images={images}
+          widthClasses={styles.galleryWidthClasses}
+          title={title}
+        />
       )}
     </div>
   );

@@ -11,7 +11,7 @@ export interface ProjectDetailModalProps extends ModalProps {
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = (
   props
 ) => {
-  const { tabularProjectData } = props;
+  const { tabularProjectData, title } = props;
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
   const renderTabs = useCallback(() => {
@@ -40,6 +40,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = (
     <Modal {...props}>
       {renderTabs()}
       <ProjectModalContent
+        title={title || ""}
         content={tabularProjectData[activeTabIdx].content}
         images={tabularProjectData[activeTabIdx].imgConfig}
       />

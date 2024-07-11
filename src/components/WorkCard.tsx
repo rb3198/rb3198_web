@@ -175,6 +175,7 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
     return (
       <Gallery
         images={images}
+        title={title}
         showControls={screenSize > Screens.Mobile}
         widthClasses={styles.galleryWidthClasses}
       />
