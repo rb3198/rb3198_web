@@ -67,12 +67,23 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
 
     return (
       <div className={styles.actionsContainer}>
-        <Button containerClasses={styles.readMore} onClick={openModal}>
+        <Button
+          containerClasses={styles.readMore}
+          onClick={openModal}
+          trackClick
+          cat="work_section_clicks"
+          act="read_more_clicked"
+          lab={title}
+        >
           <p>Read More</p>
           <BiChevronRight />
         </Button>
         {liveLink ? (
           <Button
+            trackClick
+            cat="work_section_clicks"
+            act="live_link_clicked"
+            lab={title}
             containerClasses={styles.liveLinkButton}
             onClick={redirect}
             disabled={false}
