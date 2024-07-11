@@ -1,5 +1,6 @@
 import { fireClickTracking, fireImpTracking } from "rb3198/utils/tracking";
 import React, {
+  AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   HTMLAttributes,
@@ -46,8 +47,15 @@ type DivTrackProps = DetailedHTMLProps<
   as: "div";
 };
 
+type AnchorTrackProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+> & {
+  as: "a";
+};
+
 type TrackProps = PropsWithChildren<
-  (ButtonTrackProps | DivTrackProps) & {
+  (ButtonTrackProps | DivTrackProps | AnchorTrackProps) & {
     cat: string;
     act: string;
     lab: string;
@@ -77,19 +85,26 @@ export const Track: React.FC<TrackProps> = (props) => {
       event:
         | React.MouseEvent<HTMLButtonElement, MouseEvent>
         | React.MouseEvent<HTMLDivElement, MouseEvent>
+        | React.MouseEvent<HTMLAnchorElement, MouseEvent>
     ) => {
       trackClick && fireClickTracking(cat, act, lab);
-      switch (as) {
-        case "button":
-          onClick &&
+      if (onClick) {
+        switch (as) {
+          case "button":
             onClick(event as React.MouseEvent<HTMLButtonElement, MouseEvent>);
-          break;
-        case "div":
-          onClick &&
+            break;
+          case "div":
             onClick(event as React.MouseEvent<HTMLDivElement, MouseEvent>);
-          break;
-        default:
-          break;
+            break;
+          case "a":
+            onClick(event as React.MouseEvent<HTMLAnchorElement, MouseEvent>);
+            break;
+          default:
+            break;
+        }
+      }
+      if (as === "a" && props.href) {
+        window.open(props.href, props.target);
       }
     },
     [as, cat, act, lab, trackClick, onClick]
@@ -110,6 +125,17 @@ export const Track: React.FC<TrackProps> = (props) => {
         >
           {children}
         </button>
+      );
+    case "a":
+      return (
+        <a
+          {...props}
+          href={undefined}
+          onClick={clickHandler}
+          ref={mergeRefs(ref, passedRef as MutableRefObject<HTMLAnchorElement>)}
+        >
+          {children}
+        </a>
       );
     case "div":
       return (

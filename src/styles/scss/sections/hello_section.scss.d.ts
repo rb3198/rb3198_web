@@ -8,6 +8,7 @@ interface CssExports {
   'dp_ring_2': string;
   'expand_ring': string;
   'helloSection': string;
+  'links': string;
   'oneLineDesc': string;
   'oneLiners': string;
   'subtext': string;
