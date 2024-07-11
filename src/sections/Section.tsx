@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import styles from "rb3198/styles/scss/sections/section.scss";
 import { Dispatch, bindActionCreators } from "redux";
@@ -12,19 +12,41 @@ interface SectionProps {
   alwaysVisible?: boolean;
   title?: string;
   classes?: string;
+  /**
+   * Callback fired upon the section entering the viewport
+   */
+  onEnter?: () => unknown;
+  /**
+   * Callback fired upon the section exiting the viewport
+   */
+  onExit?: () => unknown;
 }
 
 type ReduxProps = ConnectedProps<typeof connector>;
 const SectionComponent: React.FC<
   PropsWithChildren<SectionProps> & ReduxProps
-> = ({ id, title, classes, children, alwaysVisible, setActiveSection }) => {
-  const [visible, setVisible] = useState(alwaysVisible);
+> = ({
+  id,
+  title,
+  classes,
+  children,
+  alwaysVisible,
+  setActiveSection,
+  onEnter,
+  onExit,
+}) => {
+  const [visible, setVisible] = useState(alwaysVisible || false);
   const handleChange = (isInViewport: boolean) => {
     isInViewport && setActiveSection(id);
   };
 
   const onInnerChange = (isInViewport: boolean) => {
-    isInViewport && setVisible(true);
+    if (isInViewport) {
+      setVisible(true);
+      onEnter && onEnter();
+      return;
+    }
+    onExit && onExit();
   };
 
   return (
