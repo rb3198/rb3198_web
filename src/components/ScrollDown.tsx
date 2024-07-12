@@ -2,6 +2,7 @@ import React, { useCallback, useLayoutEffect, useState } from "react";
 import styles from "rb3198/styles/scss/scroll_down.scss";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { Track } from "./Track";
 
 type ScrollDownProps = {
   /**
@@ -34,12 +35,20 @@ export const ScrollDown: React.FC<ScrollDownProps> = ({ scrollTo }) => {
   }, [screenSizeListener]);
   return (
     (textVisible || iconVisible) && (
-      <div className={styles.container} onClick={scroll}>
+      <Track
+        as="div"
+        trackClick
+        cat="button_clicks"
+        act="explore_profile"
+        lab=""
+        className={styles.container}
+        onClick={scroll}
+      >
         <IconContext.Provider value={{ className: styles.scrollIcon }}>
           {textVisible && <p>Explore my Profile!</p>}
           {iconVisible && <BsChevronDoubleDown />}
         </IconContext.Provider>
-      </div>
+      </Track>
     )
   );
 };
