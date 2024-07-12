@@ -4,6 +4,7 @@ interface CssExports {
   'footer': string;
   'info': string;
   'navigator': string;
+  'repo_link': string;
   'summary': string;
 }
 export const cssExports: CssExports;

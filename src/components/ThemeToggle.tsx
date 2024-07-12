@@ -4,6 +4,7 @@ import { ThemedProps } from "rb3198/types/interfaces/ThemedProps";
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { Theme } from "rb3198/types/enum/Theme";
+import { Track } from "./Track";
 
 interface ThemeToggleProps extends ThemedProps {}
 
@@ -23,7 +24,15 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
     }, 200);
   }, [theme, toggleTheme]);
   return (
-    <div className={styles.container} onClick={handleToggleClick}>
+    <Track
+      trackClick
+      cat="button_clicks"
+      act="theme_toggle"
+      lab={`to_${theme === Theme.Dark ? Theme.Light : Theme.Dark}`}
+      as="div"
+      className={styles.container}
+      onClick={handleToggleClick}
+    >
       <div className={styles.toggle} data-theme={theme?.toString()}>
         <div />
       </div>
@@ -36,6 +45,6 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
       >
         {activeIcon}
       </IconContext.Provider>
-    </div>
+    </Track>
   );
 };

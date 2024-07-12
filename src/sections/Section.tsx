@@ -1,4 +1,9 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { InView } from "react-intersection-observer";
 import styles from "rb3198/styles/scss/sections/section.scss";
 import { Dispatch, bindActionCreators } from "redux";
@@ -6,6 +11,7 @@ import { setActiveSection } from "rb3198/action_creators";
 import { connect, ConnectedProps } from "react-redux";
 import { Sections } from "rb3198/types/enum/Sections";
 import { HashLink } from "react-router-hash-link";
+import { fireClickTracking, fireImpTracking } from "rb3198/utils/tracking";
 
 interface SectionProps {
   id: Sections;
@@ -36,6 +42,7 @@ const SectionComponent: React.FC<
   onExit,
 }) => {
   const [visible, setVisible] = useState(alwaysVisible || false);
+  const [impTrackingFired, setImpTrackingFired] = useState(false);
   const handleChange = (isInViewport: boolean) => {
     isInViewport && setActiveSection(id);
   };
@@ -44,10 +51,18 @@ const SectionComponent: React.FC<
     if (isInViewport) {
       setVisible(true);
       onEnter && onEnter();
+      if (!impTrackingFired) {
+        fireImpTracking("section_impression", "Viewed", id);
+        setImpTrackingFired(true);
+      }
       return;
     }
     onExit && onExit();
   };
+
+  const onTitleClick = useCallback(() => {
+    fireClickTracking("section_clicks", "navigated", title || "");
+  }, [title]);
 
   return (
     <InView as="section" id={id} onChange={handleChange} threshold={0.8}>
@@ -59,7 +74,11 @@ const SectionComponent: React.FC<
         threshold={0.3}
       >
         {title && (
-          <HashLink to={`#${id.toString()}`} className={styles.title}>
+          <HashLink
+            to={`#${id.toString()}`}
+            className={styles.title}
+            onClick={onTitleClick}
+          >
             <h1>{title}</h1>
           </HashLink>
         )}

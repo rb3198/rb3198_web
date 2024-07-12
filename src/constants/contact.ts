@@ -17,10 +17,10 @@ export const EMAIL = "ronitbhatia98@gmail.com";
 export const PHONE = "+1 352 577 4091";
 
 export const titleLinks = [
-  { href: GIT_URL, icon: PiGithubLogoDuotone },
-  { href: LINKED_IN_URL, icon: PiLinkedinLogoDuotone },
-  { href: MEDIUM_URL, icon: PiMediumLogoDuotone },
-  { href: `mailto:${EMAIL}`, icon: PiEnvelopeDuotone },
+  { href: GIT_URL, icon: PiGithubLogoDuotone, label: "git" },
+  { href: LINKED_IN_URL, icon: PiLinkedinLogoDuotone, label: "linkedIn" },
+  { href: MEDIUM_URL, icon: PiMediumLogoDuotone, label: "medium" },
+  { href: `mailto:${EMAIL}`, icon: PiEnvelopeDuotone, label: "mail" },
 ];
 
 export const contactSectionLinks = [
@@ -29,24 +29,34 @@ export const contactSectionLinks = [
     icon: PiPhoneDuotone,
     label: "Call",
     value: PHONE,
+    trackingLabel: "call",
   },
-  { href: GIT_URL, icon: PiGithubLogoDuotone, label: "GitHub", value: GIT_URL },
+  {
+    href: GIT_URL,
+    icon: PiGithubLogoDuotone,
+    label: "GitHub",
+    value: GIT_URL,
+    trackingLabel: "git",
+  },
   {
     href: CT_GIT_URL,
     icon: PiGithubLogoDuotone,
     label: "GitHub 2",
     value: CT_GIT_URL,
+    trackingLabel: "git_2",
   },
   {
     href: LINKED_IN_URL,
     icon: PiLinkedinLogoDuotone,
     label: "LinkedIn",
     value: LINKED_IN_URL,
+    trackingLabel: "linkedIn",
   },
   {
     href: `mailto:${EMAIL}`,
     icon: PiEnvelopeDuotone,
     label: "Email",
     value: EMAIL,
+    trackingLabel: "mail",
   },
 ];

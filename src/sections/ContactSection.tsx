@@ -5,6 +5,7 @@ import styles from "rb3198/styles/scss/sections/contact_section.scss";
 import { ContactForm } from "rb3198/components/ContactForm";
 import { contactSectionLinks } from "rb3198/constants/contact";
 import { IconContext, IconType } from "react-icons";
+import { Track } from "rb3198/components/Track";
 
 interface ContactSectionProps {}
 
@@ -13,13 +14,19 @@ interface ContactLinkProps {
   icon: IconType;
   label: string;
   value: string;
+  trackingLabel: string;
 }
 
 const ContactLink: React.FC<ContactLinkProps> = memo((props) => {
-  const { href, icon: Icon, label, value } = props;
+  const { href, icon: Icon, label, value, trackingLabel } = props;
   return (
     <IconContext.Provider value={{ className: styles.contactIcon }}>
-      <a
+      <Track
+        as="a"
+        trackClick
+        cat="link_clicks"
+        act="out_link"
+        lab={`contact_section_${trackingLabel}`}
         href={href}
         className={styles.contactLink}
         target="_blank"
@@ -30,7 +37,7 @@ const ContactLink: React.FC<ContactLinkProps> = memo((props) => {
           <p className={styles.contactLinkTitle}>{label}</p>
           <p className={styles.contactLinkSubtitle}>{value}</p>
         </div>
-      </a>
+      </Track>
     </IconContext.Provider>
   );
 });
