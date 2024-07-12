@@ -9,6 +9,7 @@ interface CssExports {
   'subsectionTitleIcon': string;
   'techIcon': string;
   'titleIconTd': string;
+  'visibleTd': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

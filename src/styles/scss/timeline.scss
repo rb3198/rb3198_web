@@ -12,6 +12,7 @@ $contentBg: "bg_2";
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -37,7 +38,10 @@ $contentBg: "bg_2";
     padding: $containerPaddingTop map-get($abs_spacing, 5);
     position: relative;
     background-color: inherit;
-    width: 50%;
+    width: 40%;
+    opacity: 0;
+    transition: transform .5s ease, opacity .5s ease;
+    transition-delay: 0.1s;
     @include media("mobile") {
         /* Full-width containers */
         width: 100%;
@@ -85,16 +89,28 @@ $contentBg: "bg_2";
 
 /* Place the container to the left */
 .leftContainer {
-    left: 0;
+    left: 10%;
+    transform: translateX(-50%);
+    @include media("mobile") {
+        transform: translateX(50%);
+        left: 0;
+    }
 }
 
 /* Place the container to the right */
 .rightContainer {
     left: 50%;
+    transform: translateX(50%);
     @include media("mobile") {
         /* Make all right containers behave like the left ones */
-        left: 0%;
+        left: 0;
+        transform: translateX(50%);
     }
+}
+
+.final {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .leftContainer::after {
@@ -130,6 +146,9 @@ $contentBg: "bg_2";
         border: medium solid getThemeColor($contentBg);
         border-color: transparent transparent transparent getThemeColor($contentBg);
         border-width: 0 0 10px 10px;
+    }
+    @include media("mobile") {
+        transform: rotate(90deg);
     }
 }
 
@@ -234,4 +253,14 @@ $contentBg: "bg_2";
     p {
         margin-left: map-get($abs_spacing, 3);
     }
+}
+
+#skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skillPillMarginClasses {
+    margin-right: map-get($abs_spacing, 3);
+    margin-bottom: map-get($abs_spacing, 3);
 }

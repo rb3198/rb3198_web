@@ -10,9 +10,12 @@ interface CssExports {
   'contentTimeline': string;
   'contentTitle': string;
   'expanded': string;
+  'final': string;
   'leftContainer': string;
   'rightContainer': string;
   'rotated': string;
+  'skillPillMarginClasses': string;
+  'skillsContainer': string;
   'timeline': string;
   'titleAtContainer': string;
 }

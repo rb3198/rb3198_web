@@ -7,23 +7,34 @@ import { Sections } from "rb3198/types/enum/Sections";
 import { ScrollDown } from "rb3198/components/ScrollDown";
 import { IconContext } from "react-icons";
 import { titleLinks } from "rb3198/constants/contact";
+import { Track } from "rb3198/components/Track";
 
 interface HelloSectionProps {}
 
 export const HelloSection: React.FC<HelloSectionProps> = (props) => {
   return (
-    <Section id={Sections.Hello} classes={styles.helloSection}>
+    <Section id={Sections.Hello} classes={styles.helloSection} alwaysVisible>
       <div>
         <p className={styles.subtext}>Hello there, I'm</p>
         <p className={styles.title}>
           Ronit.{" "}
           <IconContext.Provider value={{ className: styles.titleIcons }}>
             {titleLinks.map((linkConfig, idx) => {
-              const { href, icon: Icon } = linkConfig;
+              const { href, icon: Icon, label } = linkConfig;
               return (
-                <a href={href} key={`title_links_${idx}`} target="_blank">
+                <Track
+                  as="a"
+                  trackClick
+                  cat="link_clicks"
+                  act="out_link"
+                  lab={`hello_section_${label}`}
+                  href={href}
+                  className={styles.links}
+                  key={`title_links_${idx}`}
+                  target="_blank"
+                >
                   <Icon />
-                </a>
+                </Track>
               );
             })}
           </IconContext.Provider>

@@ -3,6 +3,8 @@ import styles from "rb3198/styles/scss/timeline.scss";
 import { IconContext } from "react-icons";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCalendar4Week } from "react-icons/bs";
+import { InView } from "react-intersection-observer";
+import { SkillPill } from "./SkillPill";
 
 export interface ContentBoxProps {
   type: "left" | "right";
@@ -10,15 +12,21 @@ export interface ContentBoxProps {
   at: string;
   timeline: string;
   bullets: string[];
+  skills: string[];
 }
 
 export interface TimelineProps {
-  content: ContentBoxProps[];
+  content: Omit<ContentBoxProps, "type">[];
 }
 
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
-  const { type, title, at, timeline, bullets } = props;
+  const { type, title, at, timeline, bullets, skills } = props;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const onInViewChange = useCallback((visible: boolean) => {
+    visible && setVisible(visible);
+  }, []);
 
   const handleContainerClick = useCallback(() => {
     setIsExpanded(!isExpanded);
@@ -76,19 +84,38 @@ const ContentBox: React.FC<ContentBoxProps> = (props) => {
     );
   }, [timeline]);
 
+  const renderSkills = useCallback(() => {
+    return (
+      <div id={styles.skillsContainer}>
+        {skills.map((skill) => (
+          <SkillPill
+            label={skill}
+            key={`${title}_${skill}`}
+            marginClasses={styles.skillPillMarginClasses}
+          />
+        ))}
+      </div>
+    );
+  }, [skills, title]);
+
   const containerClasses =
     type === "left" ? styles.leftContainer : styles.rightContainer;
   return (
-    <div
-      className={`${styles.container} ${containerClasses}`}
+    <InView
+      className={`${styles.container} ${containerClasses} ${
+        visible && styles.final
+      }`}
+      onChange={onInViewChange}
       onClick={handleContainerClick}
+      threshold={0.2}
     >
       <div className={styles.content}>
         {renderTitleLocation()}
         {renderBullets()}
+        {renderSkills()}
         {renderTimeline()}
       </div>
-    </div>
+    </InView>
   );
 };
 

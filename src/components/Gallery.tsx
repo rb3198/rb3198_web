@@ -1,10 +1,15 @@
 import { GalleryImage } from "rb3198/types/TabularProjectData";
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "rb3198/styles/scss/gallery.scss";
+import { Track } from "./Track";
 
 interface GalleryProps {
   images: GalleryImage[];
   widthClasses: string;
+  /**
+   * Used for tracking purposes
+   */
+  title: string;
   /**
    * Default 3
    */
@@ -15,6 +20,7 @@ const DEFAULT_MAX_SELECTIONS_PER_ROW = 3;
 const DEFAULT_SHOW_CONTROLS = true;
 interface SelectionProps {
   images: GalleryImage[];
+  title: string;
   rowNo: number;
   noOfSelectionsInRow: number;
   maxSelectionsPerRow: number;
@@ -33,6 +39,7 @@ const Selection: React.FC<SelectionProps> = (props) => {
   const {
     images,
     rowNo,
+    title,
     maxSelectionsPerRow,
     selectionLocalIdx,
     activeImgIdx,
@@ -50,20 +57,26 @@ const Selection: React.FC<SelectionProps> = (props) => {
 
   const { label } = images[selectionGlobalIdx] || {};
   return (
-    <div
+    <Track
+      as="div"
+      trackClick
+      cat="work_section_clicks"
+      act="gallery_option_clicked"
+      lab={`${title}_${label}`}
       style={{ width: `${100 / noOfSelectionsInRow}%` }}
       className={styles.imgSelections}
       onClick={handleClick}
       data-active={selectionGlobalIdx === activeImgIdx}
     >
       {label}
-    </div>
+    </Track>
   );
 };
 
 export const Gallery: React.FC<GalleryProps> = (props) => {
   const {
     images,
+    title,
     widthClasses,
     showControls = DEFAULT_SHOW_CONTROLS,
     maxSelectionsPerRow = DEFAULT_MAX_SELECTIONS_PER_ROW,
@@ -99,6 +112,7 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
           return (
             <Selection
               activeImgIdx={activeImgIdx}
+              title={title}
               key={`gallery_img_${selectionGlobalIdx}`}
               images={images}
               maxSelectionsPerRow={maxSelectionsPerRow}
