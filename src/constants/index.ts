@@ -23,9 +23,12 @@ import {
   SiPython,
   SiPostgresql,
   SiJirasoftware,
+  SiFastapi,
 } from "react-icons/si";
+import { AiFillApi } from "react-icons/ai";
 import { TbHexagonLetterX } from "react-icons/tb";
 import { IconGrpcLogo } from "../../assets/icons/IconGrpcLogo";
+import { IconType } from "react-icons";
 
 /**
  * List of one liners to be rendered cyclically on the home page when describing myself
@@ -84,11 +87,22 @@ export const BACKEND_DEV_DATA = [
     label: "NextJs",
   },
   {
+    TechIcon: SiFastapi,
+    label: "Fast API",
+  },
+];
+
+export const MESSAGING_DATA = [
+  {
     TechIcon: SiGraphql,
     label: "GraphQL",
   },
   {
-    TechIcon: IconGrpcLogo,
+    TechIcon: AiFillApi,
+    label: "REST APIs",
+  },
+  {
+    TechIcon: IconGrpcLogo as IconType,
     label: "Google RPC",
   },
   {
