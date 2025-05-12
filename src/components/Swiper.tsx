@@ -1,4 +1,10 @@
-import React, { PropsWithChildren, useRef, useState, useEffect } from "react";
+import React, {
+  PropsWithChildren,
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 import styles from "rb3198/styles/scss/swiper.scss";
 import { BiChevronLeft } from "react-icons/bi";
 import { IconContext } from "react-icons";
@@ -43,7 +49,7 @@ const SwiperStatus: React.FC<SwiperStatusProps> = ({
         activeBar.current.classList.add(styles.activeBarAnimated);
       }
     }
-  }, [activeSlide]);
+  }, [activeSlide, totalSlides]);
 
   const bars = new Array(totalSlides)
     .fill(null)
@@ -100,17 +106,23 @@ export const Swiper: React.FC<PropsWithChildren<SwiperProps>> = ({
     const newSlideIdx = (activeSlide + 1) % childrenRefs.current.length;
     scroll(newSlideIdx);
   };
+  const nChildren = React.Children.count(children);
 
+  useLayoutEffect(() => {
+    setActiveSlide(0);
+  }, [nChildren]);
   return (
     <div className={`${styles.swiperContainer} ${containerClasses || ""}`}>
-      <IconContext.Provider value={iconConfig}>
-        <div className={styles.swipeLeft} onClick={scrollLeft}>
-          <BiChevronLeft />
-        </div>
-        <div className={styles.swipeRight} onClick={scrollRight}>
-          <BiChevronLeft />
-        </div>
-      </IconContext.Provider>
+      {(nChildren > 1 && (
+        <IconContext.Provider value={iconConfig}>
+          <div className={styles.swipeLeft} onClick={scrollLeft}>
+            <BiChevronLeft />
+          </div>
+          <div className={styles.swipeRight} onClick={scrollRight}>
+            <BiChevronLeft />
+          </div>
+        </IconContext.Provider>
+      )) || <></>}
       <div className={styles.swiperContent} ref={contentContainerRef}>
         {React.Children.map(children, (child, idx) => (
           <div
@@ -119,10 +131,7 @@ export const Swiper: React.FC<PropsWithChildren<SwiperProps>> = ({
               height: "100%",
               display: "flex",
               flexShrink: 0,
-              marginRight:
-                idx !== React.Children.count(children) - 1
-                  ? spacing || ""
-                  : undefined,
+              marginRight: idx !== nChildren - 1 ? spacing || "" : undefined,
             }}
             ref={(el) => (childrenRefs.current[idx] = el)}
           >
@@ -132,7 +141,7 @@ export const Swiper: React.FC<PropsWithChildren<SwiperProps>> = ({
       </div>
       <SwiperStatus
         activeSlide={activeSlide}
-        totalSlides={React.Children.count(children)}
+        totalSlides={nChildren}
         containerDomRect={contentContainerRef?.current?.getBoundingClientRect()}
         scroll={scroll}
       />

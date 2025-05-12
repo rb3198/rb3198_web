@@ -1,0 +1,18 @@
+@import "~theme/_spacings";
+@import "~theme/_screens";
+
+#container {
+    transition: opacity .2s ease-in-out;
+}
+
+#container[data-transitioning="true"] {
+    opacity: 0;
+}
+
+#pill_container {
+    display: flex;
+    margin-bottom: map-get($abs_spacing, 8);
+    @include media("mobile") {
+        justify-content: center;
+    }
+}

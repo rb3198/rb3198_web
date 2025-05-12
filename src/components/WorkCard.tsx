@@ -78,7 +78,7 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
           <p>Read More</p>
           <BiChevronRight />
         </Button>
-        {liveLink ? (
+        {(liveLink && (
           <Button
             trackClick
             cat="work_section_clicks"
@@ -91,14 +91,15 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
             <p>View Live</p>
             <BiChevronRight />
           </Button>
-        ) : (
+        )) || <></>}
+        {(link && (
           <GitLink
             isUppercase={!!link}
             classes={styles.gitButton}
             label={label}
             gitLink={link}
           />
-        )}
+        )) || <></>}
       </div>
     );
   }, [gitLinkConfig, liveLink, openModal]);
@@ -143,10 +144,12 @@ export const WorkCardComponent: React.FC<ReduxProps & WorkCardProps> = ({
             <PiComputerTowerDuotone />
             <p>{backend.join(", ")}</p>
           </div>
-          <div className={styles.techStackFacet}>
-            <PiDatabaseDuotone />
-            <p>{dbs.join(", ")}</p>
-          </div>
+          {(dbs.length && (
+            <div className={styles.techStackFacet}>
+              <PiDatabaseDuotone />
+              <p>{dbs.join(", ")}</p>
+            </div>
+          )) || <></>}
           <div className={styles.techStackFacet}>
             <PiHammerDuotone />
             <p>{tools.join(", ")}</p>
