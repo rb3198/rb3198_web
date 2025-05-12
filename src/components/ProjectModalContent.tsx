@@ -13,9 +13,10 @@ export interface ProjectModalContentProps {
 
 interface LiveLinkButtonProps {
   href: string;
+  label?: string;
 }
 
-const LiveLinkButton: React.FC<LiveLinkButtonProps> = ({ href }) => {
+const LiveLinkButton: React.FC<LiveLinkButtonProps> = ({ label, href }) => {
   const handleClick = useCallback(() => {
     window.open(href, "_blank");
   }, [href]);
@@ -26,7 +27,7 @@ const LiveLinkButton: React.FC<LiveLinkButtonProps> = ({ href }) => {
       onClick={handleClick}
       disabled={false}
     >
-      <p>View Live</p>
+      <p>{label || "View Live"}</p>
       <BiChevronRight />
     </Button>
   );
@@ -40,16 +41,21 @@ export const ProjectModalContent: React.FC<ProjectModalContentProps> = ({
   return (
     <div className={styles.mainContainer}>
       <div className={styles.contentContainer}>
-        {content.map(({ title, summary, liveLink, imgSrc }, idx) => (
+        {content.map(({ title, summary, liveLink, readMoreLink }, idx) => (
           <div key={`project_modal_content_${idx}`}>
             <div>
               {title && <h3 className={styles.title}>{title}</h3>}
-              <p
+              <div
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: summary }}
-              ></p>
+              ></div>
             </div>
-            {liveLink && <LiveLinkButton href={liveLink} />}
+            <div id={styles.content_buttons_container}>
+              {readMoreLink && (
+                <LiveLinkButton href={readMoreLink} label="Read More" />
+              )}
+              {liveLink && <LiveLinkButton href={liveLink} />}
+            </div>
           </div>
         ))}
       </div>

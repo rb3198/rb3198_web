@@ -9,6 +9,7 @@ export type WorkContent = {
   title?: string;
   summary: string | TrustedHTML;
   liveLink?: string;
+  readMoreLink?: string;
 };
 
 export type TabularProjectData = {
