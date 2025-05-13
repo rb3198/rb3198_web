@@ -1,0 +1,50 @@
+@import "~theme";
+@import "~theme/_fonts";
+@import "~theme/_screens";
+@import "~theme/_spacings";
+
+.container {
+    border-radius: 2vmin;
+    padding: .5vmin 1vmin;
+    font-family: Inter;
+    font-size: map-get($font-sizes, "s");
+    display: flex;
+    align-items: center;
+    margin-right: map-get($abs_spacing, 5);
+    cursor: pointer;
+
+    @include themed() {
+        border: 1px solid getThemeColor("accent");
+        background-color: #{getThemeColor("accent") + "20"};
+    }
+
+    @include media("mobile") {
+        border-radius: 2vmax;
+        padding: .5vmax 1vmax;
+    }
+}
+
+.container[data-active="true"], .container:hover {
+    @include themed() {
+        background-color: getThemeColor("accent");
+        color: getThemeColor("active_font");
+    }
+}
+
+.icon {
+    width: 1vmin;
+    height: 1vmin;
+    margin-right: .5vmin;
+    width: map-get($font-sizes, "m");
+    height: map-get($font-sizes, "m");
+    @include themed() {
+        path {
+            font-size: map-get($font-sizes, "m");
+            color: getThemeColor("active_font");
+        }
+    }
+
+    @include media("mobile") {
+        margin-right: .5vmax;
+    }
+}

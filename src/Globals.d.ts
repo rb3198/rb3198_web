@@ -5,6 +5,7 @@ declare global {
   declare module "*.pdf";
   declare module "*.png";
   declare module "*.svg";
+  declare module "*.gif";
   interface Window {
     dataLayer: Record<string, any>[];
   }

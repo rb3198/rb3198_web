@@ -9,12 +9,14 @@ import {
   PiHammerDuotone,
   PiFlaskDuotone,
   PiBrainDuotone,
+  PiMessengerLogoDuotone,
 } from "react-icons/pi";
 import { IconContext, IconType } from "react-icons";
 import {
   BACKEND_DEV_DATA,
   DB_DEV_DATA,
   FRONTEND_DEV_DATA,
+  MESSAGING_DATA,
   ML_DEV_DATA,
   TESTING_DEV_DATA,
   TOOLS_DEV_DATA,
@@ -124,9 +126,9 @@ export const SkillsSection: React.FC<SkillsSectionProps> = (props) => {
       {renderSubsection(
         "Backend Development",
         PiComputerTowerDuotone,
-        // @ts-ignore
         BACKEND_DEV_DATA
       )}
+      {renderSubsection("Messaging", PiMessengerLogoDuotone, MESSAGING_DATA)}
       {renderSubsection("Databases", PiDatabaseDuotone, DB_DEV_DATA)}
       {renderSubsection("Tools & Platforms", PiHammerDuotone, TOOLS_DEV_DATA)}
       {renderSubsection("Machine Learning", PiBrainDuotone, ML_DEV_DATA)}

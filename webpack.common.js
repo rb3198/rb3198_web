@@ -63,7 +63,7 @@ const commonConfig = {
         ],
       },
       {
-        test: /\.(svg|png|jpg|gif|pdf)$/,
+        test: /\.(svg|png|jpg|gif|pdf|mp4)$/,
         type: "asset/resource",
       },
     ],
