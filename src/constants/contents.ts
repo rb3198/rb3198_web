@@ -2,6 +2,16 @@ import { ContentBoxProps } from "rb3198/components/Timeline";
 
 type ContentBoxPropsWoTypes = Omit<ContentBoxProps, "type">;
 
+const softTechProps: ContentBoxPropsWoTypes = {
+  title: "Software Development Co-Op",
+  at: "Soft Technovations, Inc., US - Remote",
+  timeline: "February 2025 - May 2025",
+  bullets: [
+    "Architected an AI-driven ECC to S4/HANA transformation tool projected to cut ETL time by 80% using a FastAPI server, while managing scalable AWS infrastructure (EC2, IAM) and Postgres backend",
+  ],
+  skills: ["React", "Electron", "FastAPI", "AWS", "Gen AI"],
+};
+
 const sde2Props: ContentBoxPropsWoTypes = {
   title: "Software Development Engineer II",
   at: "CarTrade Tech, India",
@@ -81,6 +91,7 @@ const iiflInternProps: ContentBoxPropsWoTypes = {
 };
 
 export const timelineContent: ContentBoxPropsWoTypes[] = [
+  softTechProps,
   sde2Props,
   sde1Props,
   sdeProps,

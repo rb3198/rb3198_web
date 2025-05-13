@@ -30,6 +30,14 @@ import financeLanding from "../../assets/work/finance/finance_landing.png";
 import financeForm from "../../assets/work/finance/finance_form.png";
 import financeResults from "../../assets/work/finance/finance_results.png";
 //#endregion
+//#region Personal work imports
+import ospfMain from "../../assets/work/ospf_viz/main.gif";
+import ospfRoutingTable from "../../assets/work/ospf_viz/routing_table.gif";
+import ospfNeighborTable from "../../assets/work/ospf_viz/neighbor_table.gif";
+import lsDb from "../../assets/work/ospf_viz/ls_db.png";
+import packetInspector from "../../assets/work/ospf_viz/packet_inspector.png";
+import networkTuts from "../../assets/work/ospf_viz/tutorials.png";
+//#endregion
 
 //#region Compare Cars
 
@@ -447,7 +455,7 @@ const financeProductGallery: GalleryImage[] = [
 
 const financeTechGallery: GalleryImage[] = [];
 
-const financeTabbedContent: { [key: string]: TabularProjectData } = {
+const financeTabbedContent: Record<string, TabularProjectData> = {
   overview: {
     title: "Product Overview",
     imgConfig: financeProductGallery,
@@ -524,6 +532,192 @@ export const financeCardProps: WorkCardProps = {
   liveLink: "https://www.carwale.com/car-loan",
   images: financeProductGallery,
   tabularProjectData: financeTabularData,
+};
+
+//#endregion
+
+//#region OSPF Viz
+const ospfVisualizerGallery: GalleryImage[] = [
+  {
+    label: "Simulation",
+    src: ospfMain,
+    alt: "Video of the OSPF Simulation",
+  },
+  {
+    label: "Neighbor Table",
+    src: ospfNeighborTable,
+    alt: "The Neighbor Table",
+  },
+  {
+    label: "Routing Table",
+    src: ospfRoutingTable,
+    alt: "The Routing Table",
+  },
+  {
+    label: "Link State Database",
+    src: lsDb,
+    alt: "OSPF Link State Database",
+  },
+  {
+    label: "Packet Inspector",
+    src: packetInspector,
+    alt: "OSPF Packet Inspector",
+  },
+  {
+    label: "Network Tutorials",
+    src: networkTuts,
+    alt: "OSPF Network Tutorials",
+  },
+];
+
+const ospfVizSummary = `
+  The OSPF Simulator is an interactive tool to build networks and watch OSPF routing behavior in real time. It aims to simulate
+  OSPF convergence for P2P Networks. <br/>
+  You can explore neighbor relationships, LSAs, routing tables, and packet exchanges visually. <br/>
+  Designed for learners and educators, it helps demystify how OSPF converges and adapts to network changes. <br/>
+  Users can create <b><i>custom networks</i></b> by creating areas, placing routers, and defining links. 
+  One can also quickly get started by choosing from a set of pre-defined networks. <br/>
+  Each router runs its own instance of the OSPF protocol, exchanging Hello packets, forming adjacencies, flooding LSAs, and constructing their routing tables. 
+  <br/>As the network topology changes, you can observe how routes are recalculated and how the protocol maintains a consistent view across routers.
+  `;
+
+const ospfTabbedContent: Record<string, TabularProjectData> = {
+  overview: {
+    title: "Project Overview",
+    content: [
+      {
+        summary: ospfVizSummary,
+        liveLink: "https://ospf-visualizer.netlify.app/",
+      },
+      {
+        title: "Features",
+        summary: `
+          <p>The OSPF Visualizer helps users explore how routers communicate and converge to form a stable view of the network.</p>
+          <ol style="list-style-position: inside; text-align: justify">
+            <li style="margin-top: 12px;">
+              <b style="font-family: Inter">Interactive Network Building</b>
+              <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+                <li>Create routers, assign IP addresses, and define point-to-point links with ease.</li>
+                <li>Topology updates are reflected gradually - You see visually how OSPF packets flood through the network to reflect a topology change. This allows users to simulate link failures, recoveries, and router additions.</li>
+                <li>Each router independently runs the OSPF protocol, creating a realistic distributed system.</li>
+              </ul>
+            </li>
+            <li style="margin-top: 12px;">
+              <b style="font-family: Inter">Real-time Protocol Simulation</b>
+              <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+                <li>Watch Hello packets form neighbor relationships, leading to adjacency formation and LSA flooding.</li>
+                <li>See OSPF packets travel across IP links, each carrying protocol-specific payloads handled by appropriate interfaces.</li>
+                <li>Observe how routing tables evolve over time, reflecting link-state recalculations.</li>
+              </ul>
+            </li>
+            <li style="margin-top: 12px;">
+              <b style="font-family: Inter">Detailed Router State</b>
+              <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+                <li>Inspect each router’s Link State Database, Neighbor Table, and Routing Table.</li>
+                <li>Debug OSPF convergence by stepping through packet-level events or pausing the simulation at any time.</li>
+                <li>Each LSA and route entry includes detailed metadata to aid understanding.</li>
+              </ul>
+            </li>
+            <li style="margin-top: 12px;">
+              <b style="font-family: Inter">Built for Learning and Teaching</b>
+              <ul style="padding-left: 40px; margin-top: 12px; list-style-position: outside;">
+                <li>The tool abstracts low-level networking mechanics while preserving protocol behavior.</li>
+                <li>Perfect for students, educators, and engineers who want to build intuition about how OSPF works under the hood.</li>
+                <li>Accompanied by tutorials and guided examples to explore key protocol scenarios and edge cases.</li>
+              </ul>
+            </li>
+          </ol>`,
+      },
+    ],
+    imgConfig: ospfVisualizerGallery,
+  },
+  technicalDetails: {
+    title: "Technical Details",
+    content: [
+      {
+        title: "Motivation",
+        summary: `
+        During my Master’s, I took a networks course that briefly touched on OSPF. 
+        The thought of simulating the algorithm intricately, 
+        along with the prospect of using Dijkstra's algorithm for a real-world problem myself excited me, and this project was born.
+        <br/>
+        What started as a side project quickly turned into one of the most rewarding challenges I’ve taken on. <br/>
+        It helped me break down a complex system into something visual and intuitive, and now I hope it helps others do the same.<br/>
+        It helped me gain a footing in HTML Canvas and gave me an opportunity to manage geometrical data on a low level.<br/>
+        Finally, it made me model real-world objects like routers and networks using OOPS, and make heavy use of algorithms and data structures.
+        `,
+      },
+      {
+        title: "Storing Geometrical data using K-D Trees",
+        summary: `
+        <p>
+          Unlike conventional HTML elements, the HTML Canvas is a <b><i>blank slate</i></b>. 
+          This necessitates the need for managing the positional state of objects manually.
+        </p>
+        When a user clicks on the canvas, we need to determine what was clicked:
+        <ul>
+          <li>Check if the click is within an area.</li>
+          <li>Yes &#8594; Check if the click is on the router.<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes &#8594; we open the router menu near the router. <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else &#8594; give the option to place a router inside the area
+          </li>
+          <li>If outside of any area, open a menu giving the option to create an area there.</li>
+        </ul>
+        Such a search involves <b><i>querying the 2D space for the nearest object to the point that was clicked.</i></b><br/>
+        Hence, a K-D tree was perfect to store area and router locations inside the 2D grid that was formed.
+        `,
+        readMoreLink:
+          "https://medium.com/@ronitbhatia98/k-d-trees-with-a-real-world-example-7e95e6f1b34e",
+      },
+      {
+        title: "Modeling OSPF Entities using TypeScript",
+        summary: `
+        <p>
+      I used object-oriented design in TypeScript to bring OSPF to life — modeling routers as independent entities with their own protocol interfaces (like OSPF and ICMP) and internal state.
+    </p>
+    <ul>
+      <li>Each router maintained its own <b>Link State Database</b>, <b>Neighbor Table</b>, and <b>Routing Table</b>, just like a real implementation.</li>
+      <li>Routers communicated through custom <b>IP Link</b> classes — abstractions that exposed methods to transmit packets to the other end, simulating physical or virtual links.</li>
+      <li>At the core of the simulation were the <b>packets</b> themselves. Every packet, no matter the protocol, shared a common structure: 
+        <ol>
+          <li>A header</li>
+          <li>A body</li>
+        </ol>
+        IP packets wrapped protocol-specific payloads — most often OSPF packets — and these OSPF packets were also modeled as classes extending a base <code>Packet</code> type.
+      </li>
+      <li><b>LSAs (Link State Advertisements)</b> were treated as first-class citizens. A base LSA class captured common structure, while individual types extended it to add specific behavior.</li>
+      <li><b>Packet Handlers</b> followed a clean interface: a base handler class defined an abstract <code>handle()</code> method, allowing protocol-specific logic to plug in seamlessly.</li>
+      <li>When a router received a packet, it routed it to the correct interface based on the <b>protocol number in the IP header</b>.</li>
+      <li>The OSPF interface then passed the packet to the correct handler based on the <b>OSPF type</b> in the body — neatly demonstrating multi-layer packet parsing and dispatch.</li>
+    </ul>
+    <p>
+      This structured approach made it easier to simulate real protocol behavior, debug edge cases, and extend the system as needed — all while reinforcing solid software architecture principles.
+    </p>
+        `,
+      },
+    ],
+  },
+};
+
+const ospfTabularData = Object.values(ospfTabbedContent);
+export const ospfVisualizerProps: WorkCardProps = {
+  title: "OSPF Visualizer",
+  subtitle: "A visualizer for learning OSPF",
+  description: ospfVizSummary,
+  timeline: "August 2024 - May 2025",
+  gitLinkConfig: {
+    label: "View Code",
+    link: "https://www.github.com/rb3198/routing-visualizer",
+  },
+  techStack: {
+    frontend: ["React.js", "TypeScript", "HTML Canvas"],
+    backend: ["OSPF Protocol"],
+    dbs: [],
+    tools: ["Git", "VS Code"],
+  },
+  liveLink: "https://ospf-visualizer.netlify.app/",
+  images: ospfVisualizerGallery,
+  tabularProjectData: ospfTabularData,
 };
 
 //#endregion

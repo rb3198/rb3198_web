@@ -132,6 +132,7 @@
 .actionsContainer {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     @include media("mobile") {
         margin-top: map-get($abs_spacing, 5);
         justify-content: space-between;
@@ -157,7 +158,9 @@
 .gitButton {
     margin-left: map-get($abs_spacing, 5);
     @include media("mobile") {
-        flex-grow: 1;
+        margin-top: map-get($abs_spacing, 5);
+        margin-left: 0;
+        width: 100%;
     }
 }
 

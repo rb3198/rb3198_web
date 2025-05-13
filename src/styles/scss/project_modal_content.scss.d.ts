@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'contentContainer': string;
+  'content_buttons_container': string;
   'description': string;
   'galleryWidthClasses': string;
   'liveLink': string;

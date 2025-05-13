@@ -23,9 +23,12 @@ import {
   SiPython,
   SiPostgresql,
   SiJirasoftware,
+  SiFastapi,
 } from "react-icons/si";
+import { AiFillApi } from "react-icons/ai";
 import { TbHexagonLetterX } from "react-icons/tb";
 import { IconGrpcLogo } from "../../assets/icons/IconGrpcLogo";
+import { IconType } from "react-icons";
 
 /**
  * List of one liners to be rendered cyclically on the home page when describing myself
@@ -38,7 +41,8 @@ export const ONE_LINERS = [
 ];
 
 export const DETAILED_DESC = `I'm an experienced developer with a genuine passion for creating exceptional user experiences. From the back-end architecture to crafting intuitive user interfaces, I love bringing ideas to life. 
-  With a robust foundation in Progressive Web Apps and microservices, I offer three years of hands-on skills in software development. <br /><br/>Currently pursuing an MS in CS at the University of Florida, I'm honing my skills in data science and visualization, and am available for co-ops and full-time employment.<br />Scroll on to explore my projects and technical skills!`;
+  With a robust foundation in Progressive Web Apps and microservices, I offer three years of professional experience in software development. <br /><br/>
+  I've recently graduated with an MS in CS from the University of Florida, and am available for co-ops and full-time employment.<br />Scroll on to explore my projects and technical skills!`;
 
 export const REPO_LINK = "https://www.github.com/rb3198/rb3198_web";
 
@@ -83,11 +87,22 @@ export const BACKEND_DEV_DATA = [
     label: "NextJs",
   },
   {
+    TechIcon: SiFastapi,
+    label: "Fast API",
+  },
+];
+
+export const MESSAGING_DATA = [
+  {
     TechIcon: SiGraphql,
     label: "GraphQL",
   },
   {
-    TechIcon: IconGrpcLogo,
+    TechIcon: AiFillApi,
+    label: "REST APIs",
+  },
+  {
+    TechIcon: IconGrpcLogo as IconType,
     label: "Google RPC",
   },
   {
